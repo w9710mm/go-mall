@@ -1,0 +1,221 @@
+definitions:
+  model.PmsBrand:
+    properties:
+      big_pic:
+        description: 是否可空:YES 专区大图
+        type: string
+      brand_story:
+        description: 是否可空:YES 品牌故事
+        type: string
+      factory_status:
+        description: 是否可空:YES 是否为品牌制造商：0->不是；1->是
+        type: integer
+      first_letter:
+        description: 是否可空:YES 首字母
+        type: string
+      id:
+        description: 是否可空:NO
+        type: integer
+      logo:
+        description: 是否可空:YES 品牌logo
+        type: string
+      name:
+        description: 是否可空:YES
+        type: string
+      product_comment_count:
+        description: 是否可空:YES 产品评论数量
+        type: integer
+      product_count:
+        description: 是否可空:YES 产品数量
+        type: integer
+      show_status:
+        description: 是否可空:YES
+        type: integer
+      sort:
+        description: 是否可空:YES
+        type: integer
+    type: object
+  response.ResponseMsg:
+    properties:
+      code:
+        type: integer
+      data: {}
+      message:
+        type: string
+    type: object
+host: 127.0.0.1:8080
+info:
+  contact:
+    email: 962349367@qq.com
+    name: meme
+  description: mall
+  termsOfService: https://github.com/18211167516/Go-Gin-Api
+  title: mall
+  version: "1.0"
+paths:
+  /brand/{id}:
+    get:
+      consumes:
+      - application/json
+      description: 获取一个品牌
+      operationId: v1/PmsBrandController/brand
+      parameters:
+      - description: brand_id
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: success
+          schema:
+            allOf:
+            - $ref: '#/definitions/response.ResponseMsg'
+            - properties:
+                data:
+                  $ref: '#/definitions/model.PmsBrand'
+              type: object
+        "500":
+          description: failure
+          schema:
+            $ref: '#/definitions/response.ResponseMsg'
+      summary: 获取一个品牌
+      tags:
+      - 品牌接口
+  /brand/create:
+    post:
+      consumes:
+      - application/json
+      description: 创建一个品牌
+      operationId: v1/PmsBrandController/createBrand
+      parameters:
+      - description: pmsBrand
+        in: body
+        name: pmsBrand
+        required: true
+        schema:
+          $ref: '#/definitions/model.PmsBrand'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: success
+          schema:
+            allOf:
+            - $ref: '#/definitions/response.ResponseMsg'
+            - properties:
+                data:
+                  $ref: '#/definitions/model.PmsBrand'
+              type: object
+        "500":
+          description: failure
+          schema:
+            allOf:
+            - $ref: '#/definitions/response.ResponseMsg'
+            - properties:
+                data:
+                  $ref: '#/definitions/model.PmsBrand'
+              type: object
+      summary: 创建品牌
+      tags:
+      - 品牌接口
+  /brand/delete/{id}:
+    get:
+      consumes:
+      - application/json
+      description: 删除品牌
+      operationId: v1/PmsBrandController/deleteBrand
+      parameters:
+      - description: brand_id
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: success
+          schema:
+            $ref: '#/definitions/response.ResponseMsg'
+        "500":
+          description: failure
+          schema:
+            $ref: '#/definitions/response.ResponseMsg'
+      summary: 删除品牌
+      tags:
+      - 品牌接口
+  /brand/list:
+    get:
+      consumes:
+      - application/json
+      description: 获取品牌列表
+      operationId: v1/PmsBrandController/list
+      parameters:
+      - description: page number
+        in: query
+        name: pageNum
+        type: integer
+      - description: page size
+        in: query
+        name: pageSize
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: success
+          schema:
+            allOf:
+            - $ref: '#/definitions/response.ResponseMsg'
+            - properties:
+                data:
+                  $ref: '#/definitions/model.PmsBrand'
+              type: object
+        "500":
+          description: failure
+          schema:
+            $ref: '#/definitions/response.ResponseMsg'
+      summary: 获取品牌列表
+      tags:
+      - 品牌接口
+  /brand/update/{id}:
+    post:
+      consumes:
+      - application/json
+      description: 更新品牌
+      operationId: v1/PmsBrandController/updateBrand
+      parameters:
+      - description: brand_id
+        in: path
+        name: id
+        required: true
+        type: integer
+      - description: pmsBrand
+        in: body
+        name: pmsBrand
+        required: true
+        schema:
+          $ref: '#/definitions/model.PmsBrand'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: success
+          schema:
+            allOf:
+            - $ref: '#/definitions/response.ResponseMsg'
+            - properties:
+                data:
+                  $ref: '#/definitions/model.PmsBrand'
+              type: object
+        "500":
+          description: failure
+          schema:
+            $ref: '#/definitions/response.ResponseMsg'
+      summary: 更新品牌
+      tags:
+      - 品牌接口
+swagger: "2.0"

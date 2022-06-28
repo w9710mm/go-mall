@@ -1,0 +1,159 @@
+2022-06-25T13:12:19.766+0800	info	G:/GoProject/mall/global/log/logger.go:95	Logger init success	{"application": "mall"}
+2022-06-25T13:12:19.787+0800	info	G:/GoProject/mall/main.go:6	starting server...	{"application": "mall"}
+2022-06-25T13:12:26.596+0800	info	G:/GoProject/mall/global/log/logger.go:95	Logger init success	{"application": "mall"}
+2022-06-25T13:12:26.617+0800	info	G:/GoProject/mall/main.go:6	starting server...	{"application": "mall"}
+2022-06-25T13:12:34.567+0800	info	G:/GoProject/mall/global/log/logger.go:95	Logger init success	{"application": "mall"}
+2022-06-25T13:12:34.587+0800	info	G:/GoProject/mall/main.go:6	starting server...	{"application": "mall"}
+2022-06-25T13:12:38.673+0800	info	G:/GoProject/mall/global/log/logger.go:95	Logger init success	{"application": "mall"}
+2022-06-25T13:12:38.693+0800	info	G:/GoProject/mall/main.go:6	starting server...	{"application": "mall"}
+2022-06-25T15:29:36.294+0800	info	G:/GoProject/mall/global/log/logger.go:95	Logger init success	{"application": "mall"}
+2022-06-25T15:31:02.532+0800	info	G:/GoProject/mall/global/log/logger.go:95	Logger init success	{"application": "mall"}
+2022-06-25T15:33:04.168+0800	info	G:/GoProject/mall/global/log/logger.go:95	Logger init success	{"application": "mall"}
+2022-06-25T15:33:32.813+0800	info	G:/GoProject/mall/global/log/logger.go:95	Logger init success	{"application": "mall"}
+2022-06-25T15:33:32.851+0800	info	G:/GoProject/mall/route/route.go:22	look at swagger:http//:localhost:8080/swagger	{"application": "mall"}
+2022-06-25T15:33:32.851+0800	info	G:/GoProject/mall/main.go:17	starting server...	{"application": "mall"}
+2022-06-25T15:36:21.056+0800	info	G:/GoProject/mall/global/log/logger.go:95	Logger init success	{"application": "mall"}
+2022-06-25T15:36:21.097+0800	info	G:/GoProject/mall/route/route.go:22	look at swagger:http//:localhost:8080/swagger	{"application": "mall"}
+2022-06-25T15:36:21.097+0800	info	G:/GoProject/mall/main.go:19	starting server...	{"application": "mall"}
+2022-06-25T15:41:35.026+0800	info	G:/GoProject/mall/global/log/logger.go:95	Logger init success	{"application": "mall"}
+2022-06-25T15:41:35.066+0800	info	G:/GoProject/mall/route/route.go:22	look at swagger: 
+ http://localhost:8080/swagger/index.html	{"application": "mall"}
+2022-06-25T15:41:35.066+0800	info	G:/GoProject/mall/main.go:19	starting server...	{"application": "mall"}
+2022-06-25T16:11:17.036+0800	info	G:/GoProject/mall/global/log/logger.go:95	Logger init success	{"application": "mall"}
+2022-06-25T16:11:52.548+0800	info	G:/GoProject/mall/global/log/logger.go:95	Logger init success	{"application": "mall"}
+2022-06-25T16:15:09.949+0800	info	G:/GoProject/mall/global/log/logger.go:95	Logger init success	{"application": "mall"}
+2022-06-25T16:15:20.605+0800	info	G:/GoProject/mall/global/log/logger.go:95	Logger init success	{"application": "mall"}
+2022-06-25T16:16:25.792+0800	info	G:/GoProject/mall/global/log/logger.go:95	Logger init success	{"application": "mall"}
+2022-06-25T16:26:49.831+0800	info	G:/GoProject/mall/global/log/logger.go:95	Logger init success	{"application": "mall"}
+2022-06-25T16:27:06.110+0800	info	G:/GoProject/mall/global/log/logger.go:95	Logger init success	{"application": "mall"}
+2022-06-25T16:28:26.276+0800	info	G:/GoProject/mall/global/log/logger.go:95	Logger init success	{"application": "mall"}
+2022-06-25T18:40:58.147+0800	info	G:/GoProject/mall/global/log/logger.go:95	Logger init success	{"application": "mall"}
+2022-06-25T18:41:02.037+0800	fatal	G:/GoProject/mall/global/dao/mysqlDB.go:39	fail to connect database, err: sql: unknown driver "mysql" (forgotten import?)	{"application": "mall"}
+2022-06-25T18:41:40.675+0800	info	G:/GoProject/mall/global/log/logger.go:95	Logger init success	{"application": "mall"}
+2022-06-25T18:42:31.166+0800	info	G:/GoProject/mall/global/log/logger.go:95	Logger init success	{"application": "mall"}
+2022-06-25T18:42:40.919+0800	fatal	G:/GoProject/mall/global/dao/mysqlDB.go:37	fail to connect database, err: sql: unknown driver "mysql" (forgotten import?)	{"application": "mall"}
+2022-06-25T19:00:20.394+0800	info	G:/GoProject/mall/global/log/logger.go:95	Logger init success	{"application": "mall"}
+2022-06-25T19:00:20.430+0800	fatal	G:/GoProject/mall/global/dao/mysqlDB.go:40	fail to connect database, err: invalid DSN: did you forget to escape a param value?	{"application": "mall"}
+2022-06-25T19:00:48.325+0800	info	G:/GoProject/mall/global/log/logger.go:95	Logger init success	{"application": "mall"}
+2022-06-25T19:01:32.857+0800	info	G:/GoProject/mall/global/log/logger.go:95	Logger init success	{"application": "mall"}
+2022-06-25T19:01:41.083+0800	info	G:/GoProject/mall/global/log/logger.go:95	Logger init success	{"application": "mall"}
+2022-06-25T19:01:55.007+0800	fatal	G:/GoProject/mall/global/dao/mysqlDB.go:40	fail to connect database, err: invalid DSN: did you forget to escape a param value?	{"application": "mall"}
+2022-06-25T19:02:03.402+0800	info	G:/GoProject/mall/global/log/logger.go:95	Logger init success	{"application": "mall"}
+2022-06-25T19:03:20.238+0800	fatal	G:/GoProject/mall/global/dao/mysqlDB.go:40	fail to connect database, err: invalid DSN: did you forget to escape a param value?	{"application": "mall"}
+2022-06-25T19:04:15.733+0800	info	G:/GoProject/mall/global/log/logger.go:95	Logger init success	{"application": "mall"}
+2022-06-25T19:07:02.013+0800	info	G:/GoProject/mall/global/log/logger.go:95	Logger init success	{"application": "mall"}
+2022-06-25T19:07:02.060+0800	info	G:/GoProject/mall/route/route.go:51	look at swagger: 
+ http://localhost:8080/swagger/index.html	{"application": "mall"}
+2022-06-25T19:07:02.060+0800	info	G:/GoProject/mall/main.go:20	starting server...	{"application": "mall"}
+2022-06-25T19:07:55.339+0800	info	G:/GoProject/mall/global/log/logger.go:95	Logger init success	{"application": "mall"}
+2022-06-25T19:07:55.390+0800	info	G:/GoProject/mall/route/route.go:51	look at swagger: 
+ http://localhost:8080/swagger/index.html	{"application": "mall"}
+2022-06-25T19:07:55.390+0800	info	G:/GoProject/mall/main.go:20	starting server...	{"application": "mall"}
+2022-06-25T19:08:17.461+0800	info	G:/GoProject/mall/global/log/logger.go:95	Logger init success	{"application": "mall"}
+2022-06-25T19:08:17.509+0800	info	G:/GoProject/mall/route/route.go:51	look at swagger: 
+ http://localhost:8080/swagger/index.html	{"application": "mall"}
+2022-06-25T19:08:17.509+0800	info	G:/GoProject/mall/main.go:20	starting server...	{"application": "mall"}
+2022-06-25T19:08:50.349+0800	info	G:/GoProject/mall/global/log/logger.go:95	Logger init success	{"application": "mall"}
+2022-06-25T19:08:50.398+0800	info	G:/GoProject/mall/route/route.go:51	look at swagger: 
+ http://localhost:8080/swagger/index.html	{"application": "mall"}
+2022-06-25T19:08:50.398+0800	info	G:/GoProject/mall/main.go:20	starting server...	{"application": "mall"}
+2022-06-25T19:09:28.072+0800	info	G:/GoProject/mall/global/log/logger.go:95	Logger init success	{"application": "mall"}
+2022-06-25T19:09:28.121+0800	info	G:/GoProject/mall/route/route.go:51	look at swagger: 
+ http://localhost:8080/swagger/index.html	{"application": "mall"}
+2022-06-25T19:09:28.121+0800	info	G:/GoProject/mall/main.go:20	starting server...	{"application": "mall"}
+2022-06-25T19:09:39.160+0800	info	G:/GoProject/mall/api/v1/pms_brand_controller.go:37	createdBrand sucess :{Id:0 Name:0xc000238f10 FirstLetter:0xc000238ee0 Sort:0xc0002f6058 FactoryStatus:0xc0002f6020 ShowStatus:0xc0002f6050 ProductCount:0xc0002f6048 ProductCommentCount:0xc0002f6040 Logo:0xc000238f00 BigPic:0xc000238ec0 BrandStory:0xc000238ed0}	{"application": "mall"}
+2022-06-25T20:26:27.995+0800	info	G:/GoProject/mall/global/log/logger.go:95	Logger init success	{"application": "mall"}
+2022-06-25T20:26:28.053+0800	info	G:/GoProject/mall/route/route.go:51	look at swagger: 
+ http://localhost:8080/swagger/index.html	{"application": "mall"}
+2022-06-25T20:26:28.053+0800	info	G:/GoProject/mall/main.go:20	starting server...	{"application": "mall"}
+2022-06-25T20:30:15.012+0800	info	G:/GoProject/mall/global/log/logger.go:95	Logger init success	{"application": "mall"}
+2022-06-25T20:30:50.076+0800	info	G:/GoProject/mall/global/log/logger.go:95	Logger init success	{"application": "mall"}
+2022-06-25T20:31:23.376+0800	fatal	G:/GoProject/mall/global/redis/redis.go:61	fail to connect redis, err: dial tcp 127.0.0.1:6379: connectex: No connection could be made because the target machine actively refused it.	{"application": "mall"}
+2022-06-25T20:31:31.416+0800	info	G:/GoProject/mall/global/log/logger.go:95	Logger init success	{"application": "mall"}
+2022-06-25T20:31:50.682+0800	fatal	G:/GoProject/mall/global/redis/redis.go:61	fail to connect redis, err: dial tcp 127.0.0.1:6379: connectex: No connection could be made because the target machine actively refused it.	{"application": "mall"}
+2022-06-25T20:32:06.627+0800	info	G:/GoProject/mall/global/log/logger.go:95	Logger init success	{"application": "mall"}
+2022-06-25T20:32:20.508+0800	info	G:/GoProject/mall/global/log/logger.go:95	Logger init success	{"application": "mall"}
+2022-06-25T20:32:50.674+0800	info	G:/GoProject/mall/global/log/logger.go:95	Logger init success	{"application": "mall"}
+2022-06-25T20:32:52.563+0800	info	G:/GoProject/mall/global/redis/redis.go:64	success to connect redis	{"application": "mall"}
+2022-06-25T20:32:52.584+0800	info	G:/GoProject/mall/route/route.go:51	look at swagger: 
+ http://localhost:8080/swagger/index.html	{"application": "mall"}
+2022-06-25T20:32:52.584+0800	info	G:/GoProject/mall/main.go:22	starting server...	{"application": "mall"}
+2022-06-25T20:33:48.877+0800	info	G:/GoProject/mall/global/log/logger.go:95	Logger init success	{"application": "mall"}
+2022-06-25T20:33:48.911+0800	info	G:/GoProject/mall/global/dao/mysqlDB.go:56	success to connect database	{"application": "mall"}
+2022-06-25T20:33:51.623+0800	info	G:/GoProject/mall/global/redis/redis.go:64	success to connect redis	{"application": "mall"}
+2022-06-25T20:33:51.646+0800	info	G:/GoProject/mall/route/route.go:51	look at swagger: 
+ http://localhost:8080/swagger/index.html	{"application": "mall"}
+2022-06-25T20:33:51.646+0800	info	G:/GoProject/mall/main.go:22	starting server...	{"application": "mall"}
+2022-06-26T14:11:40.677+0800	info	G:/GoProject/mall/global/log/logger.go:95	Logger init success	{"application": "mall"}
+2022-06-26T14:11:40.723+0800	info	G:/GoProject/mall/global/dao/mysqlDB.go:56	success to connect database	{"application": "mall"}
+2022-06-26T22:19:34.708+0800	info	G:/GoProject/mall/global/log/logger.go:95	Logger init success	{"application": "mall"}
+2022-06-26T22:19:34.748+0800	info	G:/GoProject/mall/global/dao/mysqlDB.go:56	success to connect database	{"application": "mall"}
+2022-06-26T22:19:44.227+0800	fatal	G:/GoProject/mall/global/redis/redis.go:61	fail to connect redis, err: dial tcp 127.0.0.1:6379: connectex: No connection could be made because the target machine actively refused it.	{"application": "mall"}
+2022-06-27T20:04:57.621+0800	info	G:/GoProject/mall/global/log/logger.go:95	Logger init success	{"application": "mall"}
+2022-06-27T20:04:58.259+0800	info	G:/GoProject/mall/global/dao/mysqlDB.go:56	success to connect database	{"application": "mall"}
+2022-06-27T20:04:58.261+0800	info	G:/GoProject/mall/global/redis/redis.go:64	success to connect redis	{"application": "mall"}
+2022-06-27T20:04:58.281+0800	info	G:/GoProject/mall/route/route.go:53	look at swagger: 
+ http://localhost:8080/swagger/index.html	{"application": "mall"}
+2022-06-27T20:04:58.281+0800	info	G:/GoProject/mall/main.go:22	starting server...	{"application": "mall"}
+2022-06-27T20:30:20.662+0800	info	G:/GoProject/mall/global/log/logger.go:95	Logger init success	{"application": "mall"}
+2022-06-27T20:30:20.713+0800	info	G:/GoProject/mall/global/dao/mysqlDB.go:56	success to connect database	{"application": "mall"}
+2022-06-27T20:30:30.188+0800	fatal	G:/GoProject/mall/global/redis/redis.go:61	fail to connect redis, err: dial tcp 127.0.0.1:6379: connectex: No connection could be made because the target machine actively refused it.	{"application": "mall"}
+2022-06-27T20:30:39.269+0800	info	G:/GoProject/mall/global/log/logger.go:95	Logger init success	{"application": "mall"}
+2022-06-27T20:30:39.308+0800	info	G:/GoProject/mall/global/dao/mysqlDB.go:56	success to connect database	{"application": "mall"}
+2022-06-27T20:30:39.311+0800	info	G:/GoProject/mall/global/redis/redis.go:64	success to connect redis	{"application": "mall"}
+2022-06-27T20:30:39.335+0800	info	G:/GoProject/mall/route/route.go:57	look at swagger: 
+ http://localhost:8080/swagger/index.html	{"application": "mall"}
+2022-06-27T20:30:39.335+0800	info	G:/GoProject/mall/main.go:22	starting server...	{"application": "mall"}
+2022-06-27T20:32:07.673+0800	info	G:/GoProject/mall/global/log/logger.go:95	Logger init success	{"application": "mall"}
+2022-06-27T20:32:07.702+0800	info	G:/GoProject/mall/global/dao/mysqlDB.go:56	success to connect database	{"application": "mall"}
+2022-06-27T20:32:07.704+0800	info	G:/GoProject/mall/global/redis/redis.go:64	success to connect redis	{"application": "mall"}
+2022-06-27T20:32:07.719+0800	info	G:/GoProject/mall/route/route.go:57	look at swagger: 
+ http://localhost:8080/swagger/index.html	{"application": "mall"}
+2022-06-27T20:32:07.719+0800	info	G:/GoProject/mall/main.go:22	starting server...	{"application": "mall"}
+2022-06-27T21:11:06.613+0800	info	G:/GoProject/mall/global/log/logger.go:95	Logger init success	{"application": "mall"}
+2022-06-27T21:11:06.650+0800	info	G:/GoProject/mall/global/dao/mysqlDB.go:56	success to connect database	{"application": "mall"}
+2022-06-27T21:11:06.651+0800	info	G:/GoProject/mall/global/redis/redis.go:64	success to connect redis	{"application": "mall"}
+2022-06-27T21:11:06.667+0800	info	G:/GoProject/mall/route/route.go:57	look at swagger: 
+ http://localhost:8080/swagger/index.html	{"application": "mall"}
+2022-06-27T21:11:06.667+0800	info	G:/GoProject/mall/main.go:22	starting server...	{"application": "mall"}
+2022-06-27T21:11:51.854+0800	info	G:/GoProject/mall/global/log/logger.go:95	Logger init success	{"application": "mall"}
+2022-06-27T21:11:51.884+0800	info	G:/GoProject/mall/global/dao/mysqlDB.go:56	success to connect database	{"application": "mall"}
+2022-06-27T21:11:51.886+0800	info	G:/GoProject/mall/global/redis/redis.go:64	success to connect redis	{"application": "mall"}
+2022-06-27T21:11:51.905+0800	info	G:/GoProject/mall/route/route.go:57	look at swagger: 
+ http://localhost:8080/swagger/index.html	{"application": "mall"}
+2022-06-27T21:11:51.905+0800	info	G:/GoProject/mall/main.go:22	starting server...	{"application": "mall"}
+2022-06-27T21:11:58.290+0800	info	G:/GoProject/mall/api/v1/pms_brand_controller.go:186	listBrand success	{"application": "mall"}
+2022-06-27T21:12:12.000+0800	debug	G:/GoProject/mall/api/v1/pms_brand_controller.go:130	brand param id error:strconv.ParseInt: parsing ":id": invalid syntax	{"application": "mall"}
+2022-06-27T21:13:46.829+0800	info	G:/GoProject/mall/global/log/logger.go:95	Logger init success	{"application": "mall"}
+2022-06-27T21:13:46.865+0800	info	G:/GoProject/mall/global/dao/mysqlDB.go:56	success to connect database	{"application": "mall"}
+2022-06-27T21:13:46.866+0800	info	G:/GoProject/mall/global/redis/redis.go:64	success to connect redis	{"application": "mall"}
+2022-06-27T21:13:46.886+0800	info	G:/GoProject/mall/route/route.go:57	look at swagger: 
+ http://localhost:8080/swagger/index.html	{"application": "mall"}
+2022-06-27T21:13:46.886+0800	info	G:/GoProject/mall/main.go:22	starting server...	{"application": "mall"}
+2022-06-27T21:13:53.715+0800	debug	G:/GoProject/mall/api/v1/pms_brand_controller.go:130	brand param id error:strconv.ParseInt: parsing ":id": invalid syntax	{"application": "mall"}
+2022-06-27T21:14:04.589+0800	debug	G:/GoProject/mall/api/v1/pms_brand_controller.go:130	brand param id error:strconv.ParseInt: parsing ":id": invalid syntax	{"application": "mall"}
+2022-06-27T21:15:24.517+0800	debug	G:/GoProject/mall/api/v1/pms_brand_controller.go:141	brand sucess :id=1	{"application": "mall"}
+2022-06-27T21:20:10.533+0800	info	G:/GoProject/mall/global/log/logger.go:95	Logger init success	{"application": "mall"}
+2022-06-27T21:20:10.566+0800	info	G:/GoProject/mall/global/dao/mysqlDB.go:56	success to connect database	{"application": "mall"}
+2022-06-27T21:20:10.568+0800	info	G:/GoProject/mall/global/redis/redis.go:64	success to connect redis	{"application": "mall"}
+2022-06-27T21:20:10.590+0800	info	G:/GoProject/mall/route/route.go:57	look at swagger: 
+ http://localhost:8080/swagger/index.html	{"application": "mall"}
+2022-06-27T21:20:10.590+0800	info	G:/GoProject/mall/main.go:22	starting server...	{"application": "mall"}
+2022-06-27T21:20:23.518+0800	debug	G:/GoProject/mall/api/v1/pms_brand_controller.go:141	brand sucess :id=1	{"application": "mall"}
+2022-06-27T21:21:04.182+0800	info	G:/GoProject/mall/global/log/logger.go:95	Logger init success	{"application": "mall"}
+2022-06-27T21:21:04.218+0800	info	G:/GoProject/mall/global/dao/mysqlDB.go:56	success to connect database	{"application": "mall"}
+2022-06-27T21:21:04.219+0800	info	G:/GoProject/mall/global/redis/redis.go:64	success to connect redis	{"application": "mall"}
+2022-06-27T21:21:04.241+0800	info	G:/GoProject/mall/route/route.go:57	look at swagger: 
+ http://localhost:8080/swagger/index.html	{"application": "mall"}
+2022-06-27T21:21:04.241+0800	info	G:/GoProject/mall/main.go:22	starting server...	{"application": "mall"}
+2022-06-27T21:21:32.933+0800	debug	G:/GoProject/mall/api/v1/pms_brand_controller.go:66	updateBrand param id error:strconv.ParseInt: parsing "{id}": invalid syntax	{"application": "mall"}
+2022-06-27T21:22:05.855+0800	info	G:/GoProject/mall/global/log/logger.go:95	Logger init success	{"application": "mall"}
+2022-06-27T21:22:05.885+0800	info	G:/GoProject/mall/global/dao/mysqlDB.go:56	success to connect database	{"application": "mall"}
+2022-06-27T21:22:05.887+0800	info	G:/GoProject/mall/global/redis/redis.go:64	success to connect redis	{"application": "mall"}
+2022-06-27T21:22:05.908+0800	info	G:/GoProject/mall/route/route.go:57	look at swagger: 
+ http://localhost:8080/swagger/index.html	{"application": "mall"}
+2022-06-27T21:22:05.908+0800	info	G:/GoProject/mall/main.go:22	starting server...	{"application": "mall"}
+2022-06-27T21:22:21.328+0800	info	G:/GoProject/mall/api/v1/pms_brand_controller.go:77	updateBrand success	{"application": "mall"}
+2022-06-27T21:23:26.404+0800	info	G:/GoProject/mall/api/v1/pms_brand_controller.go:77	updateBrand success	{"application": "mall"}
+2022-06-27T21:23:28.695+0800	debug	G:/GoProject/mall/api/v1/pms_brand_controller.go:72	updateBrand failed :id=1	{"application": "mall"}
+2022-06-27T21:24:14.628+0800	info	G:/GoProject/mall/api/v1/pms_brand_controller.go:110	deleteBrand success :id=59	{"application": "mall"}

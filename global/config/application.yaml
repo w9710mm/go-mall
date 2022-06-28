@@ -1,0 +1,37 @@
+# 服务器运行配置项
+server:
+  port: 9000
+    jwt:
+      key: HORL)JUZ&AFIW*(XGS
+      expiration: 86400
+# mysql配置项
+mysql:
+  host: localhost
+  port: 3306
+  user: root
+  password: shotrise
+  name: mall
+  charset: utf8mb4
+  loc: Asia/Shanghai
+  time: 10
+  maxOpenConns: 20
+  maxIdelConns: 2
+
+
+log:
+  path: ./out/logout
+  level: debug
+
+Redis:
+  addr: localhost:6379
+  password:
+  db: 0
+  dialTimeout: 10
+  readTimeout: 30
+  writeTimeout: 30
+  poolSize: 10
+  poolTimeout: 30
+  prefix:
+    authCode: authCode
+  expire:
+    authCode: 60
