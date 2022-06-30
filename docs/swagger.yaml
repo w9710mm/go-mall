@@ -218,4 +218,58 @@ paths:
       summary: 更新品牌
       tags:
       - 品牌接口
+  /sso/getAuthCode:
+    get:
+      consumes:
+      - application/json
+      description: 获取验证码
+      operationId: v1/UmsMemberController/GetAuthCode
+      parameters:
+      - description: telephone
+        in: query
+        name: telephone
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: success
+          schema:
+            $ref: '#/definitions/response.ResponseMsg'
+        "500":
+          description: failure
+          schema:
+            $ref: '#/definitions/response.ResponseMsg'
+      summary: 获取验证码
+      tags:
+      - 用户接口
+  /sso/verifyAuthCode:
+    post:
+      consumes:
+      - application/json
+      description: 确认验证码
+      operationId: v1/UmsMemberController/UpdatePassword
+      parameters:
+      - description: telephone
+        in: query
+        name: telephone
+        type: string
+      - description: authcode
+        in: query
+        name: authcode
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: success
+          schema:
+            $ref: '#/definitions/response.ResponseMsg'
+        "500":
+          description: failure
+          schema:
+            $ref: '#/definitions/response.ResponseMsg'
+      summary: 确认验证码
+      tags:
+      - 用户接口
 swagger: "2.0"

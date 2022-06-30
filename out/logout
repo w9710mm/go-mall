@@ -157,3 +157,61 @@
 2022-06-27T21:23:26.404+0800	info	G:/GoProject/mall/api/v1/pms_brand_controller.go:77	updateBrand success	{"application": "mall"}
 2022-06-27T21:23:28.695+0800	debug	G:/GoProject/mall/api/v1/pms_brand_controller.go:72	updateBrand failed :id=1	{"application": "mall"}
 2022-06-27T21:24:14.628+0800	info	G:/GoProject/mall/api/v1/pms_brand_controller.go:110	deleteBrand success :id=59	{"application": "mall"}
+2022-06-30T13:39:54.452+0800	info	G:/GoProject/mall/global/log/logger.go:95	Logger init success	{"application": "mall"}
+2022-06-30T13:39:54.526+0800	info	G:/GoProject/mall/global/dao/mysqlDB.go:56	success to connect database	{"application": "mall"}
+2022-06-30T13:39:54.528+0800	info	G:/GoProject/mall/global/redis/redisDB.go:66	success to connect redis	{"application": "mall"}
+2022-06-30T13:39:54.552+0800	info	G:/GoProject/mall/route/route.go:62	look at swagger: 
+ http://localhost:8080/swagger/index.html	{"application": "mall"}
+2022-06-30T13:39:54.552+0800	info	G:/GoProject/mall/main.go:21	starting server...	{"application": "mall"}
+2022-06-30T13:40:21.879+0800	info	G:/GoProject/mall/global/log/logger.go:95	Logger init success	{"application": "mall"}
+2022-06-30T13:40:21.907+0800	info	G:/GoProject/mall/global/dao/mysqlDB.go:56	success to connect database	{"application": "mall"}
+2022-06-30T13:40:21.909+0800	info	G:/GoProject/mall/global/redis/redisDB.go:66	success to connect redis	{"application": "mall"}
+2022-06-30T13:40:21.931+0800	info	G:/GoProject/mall/route/route.go:62	look at swagger: 
+ http://localhost:8080/swagger/index.html	{"application": "mall"}
+2022-06-30T13:40:21.931+0800	info	G:/GoProject/mall/main.go:21	starting server...	{"application": "mall"}
+2022-06-30T13:41:02.259+0800	info	G:/GoProject/mall/global/log/logger.go:95	Logger init success	{"application": "mall"}
+2022-06-30T13:41:02.294+0800	info	G:/GoProject/mall/global/dao/mysqlDB.go:56	success to connect database	{"application": "mall"}
+2022-06-30T13:41:02.296+0800	info	G:/GoProject/mall/global/redis/redisDB.go:66	success to connect redis	{"application": "mall"}
+2022-06-30T13:41:02.319+0800	info	G:/GoProject/mall/route/route.go:62	look at swagger: 
+ http://localhost:8080/swagger/index.html	{"application": "mall"}
+2022-06-30T13:41:02.319+0800	info	G:/GoProject/mall/main.go:21	starting server...	{"application": "mall"}
+2022-06-30T13:43:21.544+0800	debug	G:/GoProject/mall/service/ums_member_service.go:29	generate authCode:517461	{"application": "mall"}
+2022-06-30T13:43:21.544+0800	info	G:/GoProject/mall/api/v1/ums_member_controller.go:33	Generate telephone auth code	{"application": "mall", "telephone": "", "code": 517461}
+2022-06-30T13:43:42.820+0800	info	G:/GoProject/mall/api/v1/ums_member_controller.go:61	check auth code success,telephone	{"application": "mall", "": ""}
+2022-06-30T13:44:20.930+0800	info	G:/GoProject/mall/global/log/logger.go:95	Logger init success	{"application": "mall"}
+2022-06-30T13:44:20.961+0800	info	G:/GoProject/mall/global/dao/mysqlDB.go:56	success to connect database	{"application": "mall"}
+2022-06-30T13:44:20.963+0800	info	G:/GoProject/mall/global/redis/redisDB.go:66	success to connect redis	{"application": "mall"}
+2022-06-30T13:44:20.986+0800	info	G:/GoProject/mall/route/route.go:62	look at swagger: 
+ http://localhost:8080/swagger/index.html	{"application": "mall"}
+2022-06-30T13:44:20.986+0800	info	G:/GoProject/mall/main.go:21	starting server...	{"application": "mall"}
+2022-06-30T13:44:22.375+0800	error	G:/GoProject/mall/api/v1/ums_member_controller.go:56	check auth code error,telephone	{"application": "mall", "": ""}
+2022-06-30T13:44:30.288+0800	error	G:/GoProject/mall/api/v1/ums_member_controller.go:56	check auth code error,telephone	{"application": "mall", "": ""}
+2022-06-30T13:45:51.295+0800	error	G:/GoProject/mall/api/v1/ums_member_controller.go:56	check auth code error,telephone	{"application": "mall", "": ""}
+2022-06-30T13:54:08.223+0800	info	G:/GoProject/mall/global/log/logger.go:95	Logger init success	{"application": "mall"}
+2022-06-30T13:54:08.252+0800	info	G:/GoProject/mall/global/dao/mysqlDB.go:56	success to connect database	{"application": "mall"}
+2022-06-30T13:54:08.253+0800	info	G:/GoProject/mall/global/redis/redisDB.go:66	success to connect redis	{"application": "mall"}
+2022-06-30T13:54:08.274+0800	info	G:/GoProject/mall/route/route.go:62	look at swagger: 
+ http://localhost:8080/swagger/index.html	{"application": "mall"}
+2022-06-30T13:54:08.275+0800	info	G:/GoProject/mall/main.go:21	starting server...	{"application": "mall"}
+2022-06-30T13:57:26.240+0800	info	G:/GoProject/mall/global/log/logger.go:95	Logger init success	{"application": "mall"}
+2022-06-30T13:57:26.269+0800	info	G:/GoProject/mall/global/dao/mysqlDB.go:56	success to connect database	{"application": "mall"}
+2022-06-30T13:57:26.270+0800	info	G:/GoProject/mall/global/redis/redisDB.go:66	success to connect redis	{"application": "mall"}
+2022-06-30T13:57:26.291+0800	info	G:/GoProject/mall/route/route.go:62	look at swagger: 
+ http://localhost:8080/swagger/index.html	{"application": "mall"}
+2022-06-30T13:57:26.291+0800	info	G:/GoProject/mall/main.go:21	starting server...	{"application": "mall"}
+2022-06-30T13:58:28.023+0800	info	G:/GoProject/mall/global/log/logger.go:95	Logger init success	{"application": "mall"}
+2022-06-30T13:58:28.054+0800	info	G:/GoProject/mall/global/dao/mysqlDB.go:56	success to connect database	{"application": "mall"}
+2022-06-30T13:58:28.056+0800	info	G:/GoProject/mall/global/redis/redisDB.go:66	success to connect redis	{"application": "mall"}
+2022-06-30T13:58:28.078+0800	info	G:/GoProject/mall/route/route.go:62	look at swagger: 
+ http://localhost:8080/swagger/index.html	{"application": "mall"}
+2022-06-30T13:58:28.078+0800	info	G:/GoProject/mall/main.go:21	starting server...	{"application": "mall"}
+2022-06-30T13:58:44.628+0800	debug	G:/GoProject/mall/service/ums_member_service.go:29	generate authCode:156516	{"application": "mall"}
+2022-06-30T13:58:44.629+0800	info	G:/GoProject/mall/api/v1/ums_member_controller.go:34	Generate telephone auth code	{"application": "mall", "telephone": "111", "code": 156516}
+2022-06-30T13:59:09.459+0800	info	G:/GoProject/mall/api/v1/ums_member_controller.go:62	check auth code success,telephone	{"application": "mall", "111": "111"}
+2022-06-30T14:46:08.668+0800	info	G:/GoProject/mall/global/log/logger.go:95	Logger init success	{"application": "mall"}
+2022-06-30T14:46:08.694+0800	info	G:/GoProject/mall/global/dao/mysqlDB.go:56	success to connect database	{"application": "mall"}
+2022-06-30T14:46:08.696+0800	info	G:/GoProject/mall/global/redis/redisDB.go:66	success to connect redis	{"application": "mall"}
+2022-06-30T14:46:08.716+0800	info	G:/GoProject/mall/route/route.go:62	look at swagger: 
+ http://localhost:8080/swagger/index.html	{"application": "mall"}
+2022-06-30T14:46:08.716+0800	info	G:/GoProject/mall/main.go:21	starting server...	{"application": "mall"}
+2022-06-30T14:46:10.596+0800	info	G:/GoProject/mall/global/log/logger.go:95	Logger init success	{"application": "mall"}

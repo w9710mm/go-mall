@@ -77,7 +77,7 @@ func init() {
 	workDir, _ := os.Getwd()
 	viper.SetConfigName("application")
 	viper.SetConfigType("yaml")
-	viper.AddConfigPath(workDir + "\\global\\config")
+	viper.AddConfigPath(workDir)
 	err := viper.ReadInConfig()
 	if err != nil {
 		logrus.Error("An error occurred while reading the configuration file.")

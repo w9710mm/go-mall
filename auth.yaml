@@ -1,0 +1,12 @@
+#Rule
+- id: 0
+  # Resource
+  host: localhost:8080
+  path: "{/,/*.html,favicon.ico,/**/*.html,/**/*.css,/**/*.js/swagger-resources/**,/v2/api-docs/**,/admin/login,/admin/register}"
+  method: "*"
+  # Permission
+  authorized_roles:
+    - "*"
+  forbidden_roles: []
+  allow_anyone: false
+

@@ -18,12 +18,13 @@ var umsMemberService = service.UmsMemberService
 // @ID v1/UmsMemberController/GetAuthCode
 // @Accept  json
 // @Produce  json
-// @Param telephone query string false "telephone"
+// @Param telephone query string true "telephone"
 // @Success 200 {object} response.ResponseMsg "success"
 // @Failure 500 {object} response.ResponseMsg "failure"
 // @Router /sso/getAuthCode [get]
 func GetAuthCode(c *gin.Context) {
-	telephone := c.GetString("telephone")
+
+	telephone := c.Query("telephone")
 	code, err := umsMemberService.GetAuthCode(telephone)
 	if err != nil {
 		log.Logger.Error("Save authCode failed,telephone:" + telephone)
@@ -43,25 +44,27 @@ func GetAuthCode(c *gin.Context) {
 // @ID v1/UmsMemberController/UpdatePassword
 // @Accept  json
 // @Produce  json
-// @Param telephone query string false "telephone"
-// @Param authcode query string false "authcode"
+// @Param telephone query string true "telephone"
+// @Param authcode query string true "authcode"
 // @Success 200 {object} response.ResponseMsg "success"
 // @Failure 500 {object} response.ResponseMsg "failure"
 // @Router /sso/verifyAuthCode [post]
 func UpdatePassword(c *gin.Context) {
-	telephone := c.GetString("telephone")
-	authcode := c.GetString("authcode")
+	telephone := c.Query("telephone")
+	authcode := c.Query("authcode")
 	verify, err := umsMemberService.VerifyAuthCode(telephone, authcode)
 	if err != nil {
 		log.Logger.Error("check auth code error,telephone",
-			zap.String(telephone, telephone))
+			zap.String(telephone, authcode))
 		c.JSON(http.StatusInternalServerError, response.FailedMsg("error"))
 		return
 	}
-	log.Logger.Info("check auth code success,telephone",
-		zap.String(telephone, telephone))
+
 	if !verify {
 		c.JSON(http.StatusOK, response.FailedMsg("failed"))
+		return
 	}
+	log.Logger.Info("check auth code success,telephone",
+		zap.String(telephone, authcode))
 	c.JSON(http.StatusOK, response.SuccessMsg("success"))
 }

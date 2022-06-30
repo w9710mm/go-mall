@@ -290,6 +290,88 @@ const docTemplate = `{
                     }
                 }
             }
+        },
+        "/sso/getAuthCode": {
+            "get": {
+                "description": "获取验证码",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "用户接口"
+                ],
+                "summary": "获取验证码",
+                "operationId": "v1/UmsMemberController/GetAuthCode",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "telephone",
+                        "name": "telephone",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success",
+                        "schema": {
+                            "$ref": "#/definitions/response.ResponseMsg"
+                        }
+                    },
+                    "500": {
+                        "description": "failure",
+                        "schema": {
+                            "$ref": "#/definitions/response.ResponseMsg"
+                        }
+                    }
+                }
+            }
+        },
+        "/sso/verifyAuthCode": {
+            "post": {
+                "description": "确认验证码",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "用户接口"
+                ],
+                "summary": "确认验证码",
+                "operationId": "v1/UmsMemberController/UpdatePassword",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "telephone",
+                        "name": "telephone",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "authcode",
+                        "name": "authcode",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success",
+                        "schema": {
+                            "$ref": "#/definitions/response.ResponseMsg"
+                        }
+                    },
+                    "500": {
+                        "description": "failure",
+                        "schema": {
+                            "$ref": "#/definitions/response.ResponseMsg"
+                        }
+                    }
+                }
+            }
         }
     },
     "definitions": {

@@ -21,6 +21,7 @@ func init() {
 	r.Use(Cors())
 	r.Use(middleware.Recovery(true))
 	r.Use(middleware.GinLogger())
+	//r.Use(middleware.Authorization())
 	router = r
 	newRouter()
 	// server.Use(gin.Recovery())
@@ -45,7 +46,6 @@ func newRouter() {
 		sso.GET("/getAuthCode", v1.GetAuthCode)
 		sso.POST("/verifyAuthCode", v1.UpdatePassword)
 	}
-	InitApi(r)
 
 }
 

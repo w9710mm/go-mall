@@ -1,9 +1,9 @@
 # 服务器运行配置项
 server:
   port: 9000
-    jwt:
-      key: HORL)JUZ&AFIW*(XGS
-      expiration: 86400
+  jwt:
+    key: HORL)JUZ&AFIW*(XGS
+    expiration: 86400
 # mysql配置项
 mysql:
   host: localhost
