@@ -1,0 +1,26 @@
+2022-07-02T19:48:55.769+0800	info	G:/GoProject/mall/global/log/logger.go:95	Logger init success	{"application": "mall"}
+2022-07-02T19:48:57.414+0800	info	G:/GoProject/mall/global/dao/mysqlDB.go:57	success to connect database	{"application": "mall"}
+2022-07-02T19:49:30.273+0800	info	G:/GoProject/mall/global/log/logger.go:95	Logger init success	{"application": "mall"}
+2022-07-02T19:49:33.079+0800	info	G:/GoProject/mall/global/dao/mysqlDB.go:57	success to connect database	{"application": "mall"}
+2022-07-02T19:49:57.825+0800	info	G:/GoProject/mall/global/log/logger.go:95	Logger init success	{"application": "mall"}
+2022-07-02T19:49:57.853+0800	info	G:/GoProject/mall/global/dao/mysqlDB.go:57	success to connect database	{"application": "mall"}
+2022-07-02T19:50:09.834+0800	info	G:/GoProject/mall/global/log/logger.go:95	Logger init success	{"application": "mall"}
+2022-07-02T19:50:09.866+0800	info	G:/GoProject/mall/global/dao/mysqlDB.go:57	success to connect database	{"application": "mall"}
+2022-07-02T19:53:03.523+0800	info	G:/GoProject/mall/global/log/logger.go:95	Logger init success	{"application": "mall"}
+2022-07-02T19:53:03.548+0800	info	G:/GoProject/mall/global/dao/mysqlDB.go:57	success to connect database	{"application": "mall"}
+2022-07-02T19:53:21.368+0800	info	G:/GoProject/mall/global/log/logger.go:95	Logger init success	{"application": "mall"}
+2022-07-02T19:53:21.398+0800	info	G:/GoProject/mall/global/dao/mysqlDB.go:57	success to connect database	{"application": "mall"}
+2022-07-02T19:53:42.625+0800	info	G:/GoProject/mall/global/log/logger.go:95	Logger init success	{"application": "mall"}
+2022-07-02T19:53:42.653+0800	info	G:/GoProject/mall/global/dao/mysqlDB.go:57	success to connect database	{"application": "mall"}
+2022-07-02T19:54:20.405+0800	info	G:/GoProject/mall/global/log/logger.go:95	Logger init success	{"application": "mall"}
+2022-07-02T19:54:20.437+0800	info	G:/GoProject/mall/global/dao/mysqlDB.go:57	success to connect database	{"application": "mall"}
+2022-07-02T19:55:23.433+0800	info	G:/GoProject/mall/global/log/logger.go:95	Logger init success	{"application": "mall"}
+2022-07-02T19:55:23.462+0800	info	G:/GoProject/mall/global/dao/mysqlDB.go:57	success to connect database	{"application": "mall"}
+2022-07-02T19:55:57.422+0800	info	G:/GoProject/mall/global/log/logger.go:95	Logger init success	{"application": "mall"}
+2022-07-02T19:55:57.449+0800	info	G:/GoProject/mall/global/dao/mysqlDB.go:57	success to connect database	{"application": "mall"}
+2022-07-02T19:56:36.625+0800	info	G:/GoProject/mall/global/log/logger.go:95	Logger init success	{"application": "mall"}
+2022-07-02T19:56:36.654+0800	info	G:/GoProject/mall/global/dao/mysqlDB.go:57	success to connect database	{"application": "mall"}
+2022-07-02T20:16:33.798+0800	info	G:/GoProject/mall/global/log/logger.go:95	Logger init success	{"application": "mall"}
+2022-07-02T20:16:33.825+0800	info	G:/GoProject/mall/global/dao/mysqlDB.go:57	success to connect database	{"application": "mall"}
+2022-07-02T20:16:47.344+0800	info	G:/GoProject/mall/global/log/logger.go:95	Logger init success	{"application": "mall"}
+2022-07-02T20:16:47.374+0800	info	G:/GoProject/mall/global/dao/mysqlDB.go:57	success to connect database	{"application": "mall"}
