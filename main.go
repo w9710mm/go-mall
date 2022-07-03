@@ -4,8 +4,8 @@ import (
 	_ "mall/global/dao"
 	"mall/global/log"
 	_ "mall/global/redis"
-	"mall/route"
-	_ "mall/route"
+	"mall/internal/route"
+
 	"net/http"
 	"time"
 )

@@ -5,11 +5,11 @@ import (
 	swaggerFiles "github.com/swaggo/files"
 	ginSwagger "github.com/swaggo/gin-swagger"
 	"go.uber.org/zap"
-	v1 "mall/api/v1"
+	middleware2 "mall/internal/middleware"
+	v12 "mall/internal/route/api/v1"
 
 	_ "mall/docs"
 	"mall/global/log"
-	"mall/middleware"
 	"net/http"
 )
 
@@ -19,8 +19,8 @@ func init() {
 	gin.SetMode(gin.DebugMode)
 	r := gin.Default()
 	r.Use(Cors())
-	r.Use(middleware.Recovery(true))
-	r.Use(middleware.GinLogger())
+	r.Use(middleware2.Recovery(true))
+	r.Use(middleware2.GinLogger())
 	//r.Use(middleware.Authorization())
 	router = r
 	newRouter()
@@ -33,18 +33,18 @@ func newRouter() {
 
 	brand := router.Group("/brand")
 	{
-		brand.POST("/create", v1.CreateBrand)
-		brand.GET("/list", v1.ListBrand)
-		brand.GET("/:id", v1.Brand)
-		brand.GET("/delete/:id", v1.DeleteBrand)
-		brand.POST("/update/:id", v1.UpdateBrand)
+		brand.POST("/create", v12.CreateBrand)
+		brand.GET("/list", v12.ListBrand)
+		brand.GET("/:id", v12.Brand)
+		brand.GET("/delete/:id", v12.DeleteBrand)
+		brand.POST("/update/:id", v12.UpdateBrand)
 
 	}
 
 	sso := router.Group("/sso")
 	{
-		sso.GET("/getAuthCode", v1.GetAuthCode)
-		sso.POST("/verifyAuthCode", v1.UpdatePassword)
+		sso.GET("/getAuthCode", v12.GetAuthCode)
+		sso.POST("/verifyAuthCode", v12.UpdatePassword)
 	}
 
 }

@@ -3,7 +3,6 @@ package config
 import (
 	"github.com/sirupsen/logrus"
 	"github.com/spf13/viper"
-	"os"
 )
 
 type TomlConfig struct {
@@ -74,11 +73,13 @@ var c TomlConfig
 
 func init() {
 
-	workDir, _ := os.Getwd()
+	//workDir, _ := os.Getwd()
 	viper.SetConfigName("application")
 	viper.SetConfigType("yaml")
-	viper.AddConfigPath(workDir)
+	//viper.AddConfigPath(workDir+"\\global\\config")
+	viper.AddConfigPath("G:\\GoProject\\mall\\global\\config")
 	err := viper.ReadInConfig()
+
 	if err != nil {
 		logrus.Error("An error occurred while reading the configuration file.")
 	}

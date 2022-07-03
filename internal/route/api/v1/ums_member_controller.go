@@ -5,7 +5,7 @@ import (
 	"go.uber.org/zap"
 	"mall/common/response"
 	"mall/global/log"
-	"mall/service"
+	"mall/internal/service"
 	"net/http"
 )
 

@@ -2,6 +2,8 @@
 server:
   port: 9000
   jwt:
+    tokenHead: 'Bearer '
+    tokenHeader: Authorization
     key: HORL)JUZ&AFIW*(XGS
     expiration: 86400
 # mysql配置项

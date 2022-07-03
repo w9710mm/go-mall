@@ -6,6 +6,7 @@ import (
 	"gorm.io/gorm"
 	"gorm.io/gorm/logger"
 	"mall/global/config"
+	_ "mall/global/config"
 	"mall/global/log"
 	"net/url"
 )

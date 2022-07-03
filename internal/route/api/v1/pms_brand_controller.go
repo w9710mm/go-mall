@@ -6,8 +6,8 @@ import (
 	paginator "github.com/yafeng-Soong/gorm-paginator" // 导入包
 	"mall/common/response"
 	"mall/global/log"
-	"mall/model"
-	"mall/service"
+	"mall/internal/model"
+	"mall/internal/service"
 	"net/http"
 	"strconv"
 )
