@@ -1,27 +1,39 @@
 package mapper
 
 import (
+	"fmt"
 	"mall/global/dao"
 	"mall/global/dao/domain"
 	"mall/global/dao/model"
 )
 
-func GetTimeOutOrders(time int) (timeOutOrders []domain.OmsOrderDetail) {
-	order := &model.OmsOrder{}
-	dao.DB.Table(order.TableName()+" 0").Select("o.id,"+
-		"o.order_sn,"+
-		"o.coupon_id,"+
-		"o.integration,"+
-		"o.member_id,"+
-		"o.use_integration,"+
-		"or.id ot_id,"+
-		"ot.product_name ot_product_name,"+
-		"ot.product_sku_id ot_product_sku_id,"+
-		"ot.product_sku_coded ot_product_sku_code"+
-		"ot.product_quantity ot_product_quantity").
-		Joins("left join oms_order_item ot on o.id=ot.order_id").
-		Where("o.status =0 and "+
-			"date_add(NOW(),INTERVAL INTERVAL -? MINUTE ", time).
-		Scan(&timeOutOrders)
+type portalOrderMapper struct {
+}
+
+var PortalOrderMapper = new(portalOrderMapper)
+
+func (m *portalOrderMapper) GetTimeOutOrders(time int) (timeOutOrders []domain.OmsOrderDetail, err error) {
+	err = dao.DB.Model(&model.OmsOrder{}).Where(" status =0  and"+
+		" create_time <= date_add(NOW(), INTERVAL -? MINUTE)", time).
+		Preload("OrderItemList").Find(&timeOutOrders).Error
 	return
+}
+
+func (m *portalOrderMapper) UpdateOrderStatus(ids []int, status int) error {
+
+	return dao.DB.Model(model.OmsOrder{}).Where("id in ?", ids).Updates(model.OmsOrder{Status: status}).Error
+}
+
+func (m *portalOrderMapper) ReleaseSkuStockLock(list []model.OmsOrderItem) error {
+	var ids = make([]int, len(list))
+	exp := "case id "
+	for i, item := range list {
+		exp = exp + fmt.Sprintf(" when %d then lock_stock - %d", item.ProductId, item.ProductQuantity)
+		ids[i] = item.Id
+	}
+	exp = exp + " end  "
+
+	return dao.DB.Model(&model.PmsSkuStock{}).Where(ids).
+		Update("lock_stock", exp).Error
+
 }

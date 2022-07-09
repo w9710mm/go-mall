@@ -215,3 +215,70 @@
  http://localhost:8080/swagger/index.html	{"application": "mall"}
 2022-06-30T14:46:08.716+0800	info	G:/GoProject/mall/main.go:21	starting server...	{"application": "mall"}
 2022-06-30T14:46:10.596+0800	info	G:/GoProject/mall/global/log/logger.go:95	Logger init success	{"application": "mall"}
+2022-07-08T16:16:02.257+0800	info	G:/GoProject/mall/global/log/logger.go:95	Logger init success	{"application": "mall"}
+2022-07-08T16:16:02.285+0800	info	G:/GoProject/mall/global/dao/mysqlDB.go:57	success to connect database	{"application": "mall"}
+2022-07-08T16:16:11.702+0800	fatal	G:/GoProject/mall/global/dao/redisDB.go:63	fail to connect redis, err: dial tcp 127.0.0.1:6379: connectex: No connection could be made because the target machine actively refused it.	{"application": "mall"}
+2022-07-08T16:17:03.698+0800	info	G:/GoProject/mall/global/log/logger.go:95	Logger init success	{"application": "mall"}
+2022-07-08T16:17:03.735+0800	info	G:/GoProject/mall/global/dao/mysqlDB.go:57	success to connect database	{"application": "mall"}
+2022-07-08T16:17:03.738+0800	info	G:/GoProject/mall/global/dao/redisDB.go:66	success to connect redis	{"application": "mall"}
+2022-07-08T16:17:03.771+0800	info	G:/GoProject/mall/internal/route/route.go:61	look at swagger: 
+ http://localhost:8080/swagger/index.html	{"application": "mall"}
+2022-07-08T16:17:03.771+0800	info	G:/GoProject/mall/main.go:20	starting server...	{"application": "mall"}
+2022-07-08T16:21:43.972+0800	info	G:/GoProject/mall/global/log/logger.go:95	Logger init success	{"application": "mall"}
+2022-07-08T16:21:43.999+0800	info	G:/GoProject/mall/global/dao/mysqlDB.go:57	success to connect database	{"application": "mall"}
+2022-07-08T16:21:44.000+0800	info	G:/GoProject/mall/global/dao/redisDB.go:66	success to connect redis	{"application": "mall"}
+2022-07-08T16:21:44.014+0800	info	G:/GoProject/mall/internal/route/route.go:61	look at swagger: 
+ http://localhost:8080/swagger/index.html	{"application": "mall"}
+2022-07-08T16:21:44.014+0800	info	G:/GoProject/mall/main.go:20	starting server...	{"application": "mall"}
+2022-07-08T16:38:08.853+0800	info	G:/GoProject/mall/global/log/logger.go:95	Logger init success	{"application": "mall"}
+2022-07-08T16:38:20.670+0800	info	G:/GoProject/mall/global/dao/mysqlDB.go:57	success to connect database	{"application": "mall"}
+2022-07-08T16:38:20.671+0800	info	G:/GoProject/mall/global/dao/redisDB.go:66	success to connect redis	{"application": "mall"}
+2022-07-08T16:38:20.693+0800	info	G:/GoProject/mall/internal/route/route.go:61	look at swagger: 
+ http://localhost:8080/swagger/index.html	{"application": "mall"}
+2022-07-08T16:38:20.693+0800	info	G:/GoProject/mall/main.go:20	starting server...	{"application": "mall"}
+2022-07-08T16:49:12.698+0800	info	G:/GoProject/mall/global/log/logger.go:95	Logger init success	{"application": "mall"}
+2022-07-08T16:49:12.726+0800	info	G:/GoProject/mall/global/dao/mysqlDB.go:57	success to connect database	{"application": "mall"}
+2022-07-08T16:49:12.727+0800	info	G:/GoProject/mall/global/dao/redisDB.go:66	success to connect redis	{"application": "mall"}
+2022-07-08T16:49:12.742+0800	info	G:/GoProject/mall/internal/route/route.go:61	look at swagger: 
+ http://localhost:8080/swagger/index.html	{"application": "mall"}
+2022-07-08T16:49:12.742+0800	info	G:/GoProject/mall/main.go:20	starting server...	{"application": "mall"}
+2022-07-08T16:50:36.725+0800	info	G:/GoProject/mall/global/log/logger.go:95	Logger init success	{"application": "mall"}
+2022-07-08T16:50:36.752+0800	info	G:/GoProject/mall/global/dao/mysqlDB.go:57	success to connect database	{"application": "mall"}
+2022-07-08T16:50:36.754+0800	info	G:/GoProject/mall/global/dao/redisDB.go:66	success to connect redis	{"application": "mall"}
+2022-07-08T16:50:36.773+0800	info	G:/GoProject/mall/internal/route/route.go:61	look at swagger: 
+ http://localhost:8080/swagger/index.html	{"application": "mall"}
+2022-07-08T16:50:36.774+0800	info	G:/GoProject/mall/main.go:20	starting server...	{"application": "mall"}
+2022-07-08T19:25:20.141+0800	info	G:/GoProject/mall/global/log/logger.go:95	Logger init success	{"application": "mall"}
+2022-07-08T19:25:20.170+0800	info	G:/GoProject/mall/global/dao/mysqlDB.go:57	success to connect database	{"application": "mall"}
+2022-07-08T19:25:20.172+0800	info	G:/GoProject/mall/global/dao/redisDB.go:66	success to connect redis	{"application": "mall"}
+2022-07-08T19:25:20.189+0800	info	G:/GoProject/mall/internal/route/route.go:61	look at swagger: 
+ http://localhost:8080/swagger/index.html	{"application": "mall"}
+2022-07-08T19:25:20.189+0800	info	G:/GoProject/mall/main.go:21	starting server...	{"application": "mall"}
+2022-07-08T19:38:22.520+0800	info	G:/GoProject/mall/global/log/logger.go:95	Logger init success	{"application": "mall"}
+2022-07-08T19:38:25.666+0800	info	G:/GoProject/mall/global/dao/mysqlDB.go:57	success to connect database	{"application": "mall"}
+2022-07-08T19:38:25.668+0800	info	G:/GoProject/mall/global/dao/redisDB.go:66	success to connect redis	{"application": "mall"}
+2022-07-08T19:38:25.691+0800	info	G:/GoProject/mall/internal/route/route.go:61	look at swagger: 
+ http://localhost:8080/swagger/index.html	{"application": "mall"}
+2022-07-08T19:38:25.691+0800	info	G:/GoProject/mall/main.go:21	starting server...	{"application": "mall"}
+2022-07-08T19:40:01.809+0800	info	G:/GoProject/mall/global/log/logger.go:95	Logger init success	{"application": "mall"}
+2022-07-08T19:40:01.844+0800	info	G:/GoProject/mall/global/dao/mysqlDB.go:56	success to connect database	{"application": "mall"}
+2022-07-08T19:40:01.845+0800	info	G:/GoProject/mall/global/dao/redisDB.go:66	success to connect redis	{"application": "mall"}
+2022-07-08T19:40:07.743+0800	info	G:/GoProject/mall/internal/route/route.go:61	look at swagger: 
+ http://localhost:8080/swagger/index.html	{"application": "mall"}
+2022-07-08T19:40:07.743+0800	info	G:/GoProject/mall/main.go:21	starting server...	{"application": "mall"}
+2022-07-08T19:54:50.713+0800	info	G:/GoProject/mall/global/log/logger.go:95	Logger init success	{"application": "mall"}
+2022-07-08T19:54:50.747+0800	info	G:/GoProject/mall/global/dao/mysqlDB.go:56	success to connect database	{"application": "mall"}
+2022-07-08T19:54:50.748+0800	info	G:/GoProject/mall/global/dao/redisDB.go:66	success to connect redis	{"application": "mall"}
+2022-07-08T19:54:56.411+0800	info	G:/GoProject/mall/internal/route/route.go:61	look at swagger: 
+ http://localhost:8080/swagger/index.html	{"application": "mall"}
+2022-07-08T19:54:56.412+0800	info	G:/GoProject/mall/main.go:21	starting server...	{"application": "mall"}
+2022-07-08T20:00:03.702+0800	info	G:/GoProject/mall/internal/componet/order_time_out_cancel_task.go:26	Cancel order and release locked inventory according to SKU number, number of canceled orders: 	{"application": "mall", "number": 0}
+2022-07-08T20:10:00.052+0800	info	G:/GoProject/mall/internal/componet/order_time_out_cancel_task.go:26	Cancel order and release locked inventory according to SKU number, number of canceled orders: 	{"application": "mall", "number": 0}
+2022-07-08T20:20:00.041+0800	info	G:/GoProject/mall/internal/componet/order_time_out_cancel_task.go:26	Cancel order and release locked inventory according to SKU number, number of canceled orders: 	{"application": "mall", "number": 0}
+2022-07-08T20:30:00.051+0800	info	G:/GoProject/mall/internal/componet/order_time_out_cancel_task.go:26	Cancel order and release locked inventory according to SKU number, number of canceled orders: 	{"application": "mall", "number": 0}
+2022-07-08T20:40:00.048+0800	info	G:/GoProject/mall/internal/componet/order_time_out_cancel_task.go:26	Cancel order and release locked inventory according to SKU number, number of canceled orders: 	{"application": "mall", "number": 0}
+2022-07-08T20:50:00.027+0800	info	G:/GoProject/mall/internal/componet/order_time_out_cancel_task.go:26	Cancel order and release locked inventory according to SKU number, number of canceled orders: 	{"application": "mall", "number": 0}
+2022-07-08T21:00:00.030+0800	info	G:/GoProject/mall/internal/componet/order_time_out_cancel_task.go:26	Cancel order and release locked inventory according to SKU number, number of canceled orders: 	{"application": "mall", "number": 0}
+2022-07-08T21:10:00.031+0800	info	G:/GoProject/mall/internal/componet/order_time_out_cancel_task.go:26	Cancel order and release locked inventory according to SKU number, number of canceled orders: 	{"application": "mall", "number": 0}
+2022-07-08T21:20:00.018+0800	info	G:/GoProject/mall/internal/componet/order_time_out_cancel_task.go:26	Cancel order and release locked inventory according to SKU number, number of canceled orders: 	{"application": "mall", "number": 0}
+2022-07-08T21:30:00.015+0800	info	G:/GoProject/mall/internal/componet/order_time_out_cancel_task.go:26	Cancel order and release locked inventory according to SKU number, number of canceled orders: 	{"application": "mall", "number": 0}

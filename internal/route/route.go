@@ -5,7 +5,7 @@ import (
 	swaggerFiles "github.com/swaggo/files"
 	ginSwagger "github.com/swaggo/gin-swagger"
 	"go.uber.org/zap"
-	middleware2 "mall/internal/middleware"
+	middleware "mall/internal/middleware"
 	v12 "mall/internal/route/api/v1"
 
 	_ "mall/docs"
@@ -19,9 +19,9 @@ func init() {
 	gin.SetMode(gin.DebugMode)
 	r := gin.Default()
 	r.Use(Cors())
-	r.Use(middleware2.Recovery(true))
-	r.Use(middleware2.GinLogger())
-	//r.Use(middleware.Authorization())
+	r.Use(middleware.Recovery(true))
+	r.Use(middleware.GinLogger())
+
 	router = r
 	newRouter()
 	// server.Use(gin.Recovery())
@@ -40,13 +40,13 @@ func newRouter() {
 		brand.POST("/update/:id", v12.UpdateBrand)
 
 	}
-
+	brand.Use(middleware.JWTAuth())
 	sso := router.Group("/sso")
 	{
 		sso.GET("/getAuthCode", v12.GetAuthCode)
 		sso.POST("/verifyAuthCode", v12.UpdatePassword)
 	}
-
+	sso.Use(middleware.JWTAuth())
 }
 
 func GetRoute() *gin.Engine {

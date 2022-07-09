@@ -3,7 +3,7 @@ package main
 import (
 	_ "mall/global/dao"
 	"mall/global/log"
-	_ "mall/global/redis"
+	_ "mall/internal/componet"
 	"mall/internal/route"
 
 	"net/http"

@@ -4,7 +4,7 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/spf13/viper"
 	"mall/common/response"
-	"mall/internal/dto"
+	"mall/global/dao/dto"
 	"mall/internal/service"
 	"net/http"
 )

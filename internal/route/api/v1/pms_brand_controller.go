@@ -5,8 +5,8 @@ import (
 	"github.com/gin-gonic/gin"
 	paginator "github.com/yafeng-Soong/gorm-paginator" // 导入包
 	"mall/common/response"
+	"mall/global/dao/model"
 	"mall/global/log"
-	"mall/internal/model"
 	"mall/internal/service"
 	"net/http"
 	"strconv"
@@ -57,7 +57,7 @@ func UpdateBrand(c *gin.Context) {
 
 	var brand model.PmsBrand
 	c.ShouldBind(&brand)
-	id, err := strconv.ParseInt(c.Param("id"), 10, 64)
+	id, err := strconv.ParseInt(c.Param("id"), 10, 32)
 
 	if err != nil {
 		msg := "updateBrand param id error:" + err.Error()
@@ -65,7 +65,7 @@ func UpdateBrand(c *gin.Context) {
 		c.JSON(http.StatusOK, response.FailedMsg(msg))
 		return
 	}
-	count := pmsBrandSerivce.UpdateBrand(id, brand)
+	count := pmsBrandSerivce.UpdateBrand(int(id), brand)
 	if count != 1 {
 		log.Logger.Debug((fmt.Sprintf("updateBrand failed :id=%d", id)))
 		c.JSON(http.StatusOK, response.FailedMsg("updateBrand failed"))

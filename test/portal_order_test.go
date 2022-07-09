@@ -13,12 +13,39 @@ func TestFF(t *testing.T) {
 	var count = 0
 	var orderSetting model.OmsOrderSetting
 	dao.DB.First(&orderSetting)
-	timeOutOrders := GetTimeOutOrders(orderSetting.NormalOrderOvertime)
+	timeOutOrders := GetTimeOutOrders(*orderSetting.NormalOrderOvertime)
 	fmt.Println(len(timeOutOrders))
 	fmt.Println(count)
 }
+func TestReleaseSkuStockLock(t *testing.T) {
+	var list []model.OmsOrderItem
+	dao.DB.Model(&model.OmsOrderItem{}).Find(&list)
+	var ids = make([]int, len(list))
+	exp := "case id "
+	for i, item := range list {
+		exp = exp + fmt.Sprintf(" when %d then lock_stock - %d", item.ProductId, item.ProductQuantity)
+		ids[i] = item.Id
+	}
+	exp = exp + " end "
+
+	//affected := dao.DB.Model(&model.PmsSkuStock{}).Where(&model.PmsSkuStock{}, ids).
+	//	Update("lock_stock", gorm.Expr(exp)).RowsAffected
+	sql := dao.DB.ToSQL(func(tx *gorm.DB) *gorm.DB {
+		return tx.Model(&model.PmsSkuStock{}).Where(ids).
+			Update("lock_stock", exp)
+	})
+	fmt.Println(sql)
+}
 func GetTimeOutOrders(time int) (timeOutOrders []domain.OmsOrderDetail) {
 	order := &model.OmsOrder{}
+
+	dao.DB.Model(&model.OmsOrder{}).Where(" create_time <= date_add(NOW(), INTERVAL -? MINUTE)", 30).Preload("OrderItemList").Find(&timeOutOrders)
+
+	sql := dao.DB.ToSQL(func(tx *gorm.DB) *gorm.DB {
+		return tx.Model(&model.OmsOrder{}).Preload("OrderItemList").Find(&timeOutOrders)
+	})
+	fmt.Println(sql)
+
 	dao.DB.Table(order.TableName() + " o").Select("o.id," +
 		"o.order_sn," +
 		"o.coupon_id," +
@@ -34,7 +61,7 @@ func GetTimeOutOrders(time int) (timeOutOrders []domain.OmsOrderDetail) {
 		//Where("o.status =0 and "+
 		//	"date_add(NOW(),INTERVAL INTERVAL -? MINUTE ", time).
 		Scan(&timeOutOrders)
-	sql := dao.DB.ToSQL(func(tx *gorm.DB) *gorm.DB {
+	sql = dao.DB.ToSQL(func(tx *gorm.DB) *gorm.DB {
 		return tx.Table(order.TableName() + " o").Select("o.id," +
 			"o.order_sn," +
 			"o.coupon_id," +

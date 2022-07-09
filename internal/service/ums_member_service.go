@@ -3,8 +3,8 @@ package service
 import (
 	"fmt"
 	"mall/global/config"
+	"mall/global/dao"
 	"mall/global/log"
-	"mall/global/redis"
 	"math/rand"
 	"time"
 )
@@ -20,7 +20,7 @@ var redis_prefix_authcode = redisConfig.Prefix.AuthCode
 
 var redis_expire_authcode = redisConfig.Expire.AuthCode
 
-var redishelper, context = redis.GetRedis()
+var redishelper, context = dao.GetRedis()
 
 func (s umsMemberService) GetAuthCode(telephone string) (int, error) {
 

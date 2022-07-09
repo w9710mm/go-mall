@@ -4,5 +4,5 @@ import "mall/global/dao/model"
 
 type OmsOrderDetail struct {
 	model.OmsOrder
-	OrderItemList []model.OmsOrderItem
+	OrderItemList []model.OmsOrderItem `gorm:"foreignKey:OrderId"`
 }

@@ -5,13 +5,14 @@ import (
 	"github.com/spf13/viper"
 )
 
-type TomlConfig struct {
+type Config struct {
 	AppName        string
 	MySQL          MySQLConfig
 	Log            LogConfig
 	StaticPath     PathConfig
 	MsgChannelType MsgChannelType
 	Redis          RedisConfig
+	ElasticSearch  ElasticSearchConfig
 }
 
 // MySQL相关配置
@@ -69,7 +70,15 @@ type MsgChannelType struct {
 	KafkaTopic  string
 }
 
-var c TomlConfig
+type ElasticSearchConfig struct {
+	Repositories struct {
+		Enabled bool
+	}
+	ClusterNodes string
+	ClusterName  string
+}
+
+var c Config
 
 func init() {
 
@@ -87,6 +96,6 @@ func init() {
 
 }
 
-func GetConfig() TomlConfig {
+func GetConfig() Config {
 	return c
 }
