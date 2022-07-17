@@ -21,11 +21,11 @@ func (s *pmsBrandService) UpdateBrand(id int, brand model.PmsBrand) int64 {
 	return dao.DB.Save(&brand).RowsAffected
 }
 
-func (s *pmsBrandService) DeleteBrand(id int64) int64 {
+func (s *pmsBrandService) DeleteBrand(id int) int64 {
 	return dao.DB.Delete(&model.PmsBrand{}, id).RowsAffected
 }
 
-func (s *pmsBrandService) GetBrand(id int64) (model.PmsBrand, error) {
+func (s *pmsBrandService) GetBrand(id int) (model.PmsBrand, error) {
 	var brand model.PmsBrand
 	row := dao.DB.First(&brand, id).RowsAffected
 	if row != 1 {
@@ -34,8 +34,8 @@ func (s *pmsBrandService) GetBrand(id int64) (model.PmsBrand, error) {
 	return brand, nil
 }
 
-func (s *pmsBrandService) ListBrand(num int64, size int64) (paginator.Page[model.PmsBrand], error) {
-	page := paginator.Page[model.PmsBrand]{CurrentPage: 1, PageSize: size}
+func (s *pmsBrandService) ListBrand(num int, size int) (paginator.Page[model.PmsBrand], error) {
+	page := paginator.Page[model.PmsBrand]{CurrentPage: 1, PageSize: int64(size)}
 
 	query := dao.DB.Model(&model.PmsBrand{})
 

@@ -21,7 +21,7 @@ func (m *portalOrderMapper) GetTimeOutOrders(time int) (timeOutOrders []domain.O
 
 func (m *portalOrderMapper) UpdateOrderStatus(ids []int, status int) error {
 
-	return dao.DB.Model(model.OmsOrder{}).Where("id in ?", ids).Updates(model.OmsOrder{Status: status}).Error
+	return dao.DB.Model(model.OmsOrder{}).Where("id in ?", ids).Updates(model.OmsOrder{Status: &status}).Error
 }
 
 func (m *portalOrderMapper) ReleaseSkuStockLock(list []model.OmsOrderItem) error {

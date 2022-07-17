@@ -400,3 +400,417 @@
 2022-07-09T14:40:51.417+0800	info	G:/GoProject/mall/global/log/logger.go:95	Logger init success	{"application": "mall"}
 2022-07-09T14:40:51.458+0800	info	G:/GoProject/mall/global/dao/mysqlDB.go:56	success to connect database	{"application": "mall"}
 2022-07-09T14:40:51.460+0800	info	G:/GoProject/mall/global/dao/redisDB.go:66	success to connect redis	{"application": "mall"}
+2022-07-09T17:08:28.692+0800	info	G:/GoProject/mall/global/log/logger.go:95	Logger init success	{"application": "mall"}
+2022-07-09T17:08:28.743+0800	info	G:/GoProject/mall/global/dao/mysqlDB.go:56	success to connect database	{"application": "mall"}
+2022-07-09T17:08:38.172+0800	fatal	G:/GoProject/mall/global/dao/redisDB.go:63	fail to connect redis, err: dial tcp 127.0.0.1:6379: connectex: No connection could be made because the target machine actively refused it.	{"application": "mall"}
+2022-07-09T17:08:55.327+0800	info	G:/GoProject/mall/global/log/logger.go:95	Logger init success	{"application": "mall"}
+2022-07-09T17:08:55.374+0800	info	G:/GoProject/mall/global/dao/mysqlDB.go:56	success to connect database	{"application": "mall"}
+2022-07-09T17:08:55.376+0800	info	G:/GoProject/mall/global/dao/redisDB.go:66	success to connect redis	{"application": "mall"}
+2022-07-09T17:09:20.800+0800	info	G:/GoProject/mall/global/log/logger.go:95	Logger init success	{"application": "mall"}
+2022-07-09T17:09:20.848+0800	info	G:/GoProject/mall/global/dao/mysqlDB.go:56	success to connect database	{"application": "mall"}
+2022-07-09T17:09:20.849+0800	info	G:/GoProject/mall/global/dao/redisDB.go:66	success to connect redis	{"application": "mall"}
+2022-07-09T17:09:40.514+0800	info	G:/GoProject/mall/global/log/logger.go:95	Logger init success	{"application": "mall"}
+2022-07-09T17:09:40.556+0800	info	G:/GoProject/mall/global/dao/mysqlDB.go:56	success to connect database	{"application": "mall"}
+2022-07-09T17:09:40.559+0800	info	G:/GoProject/mall/global/dao/redisDB.go:66	success to connect redis	{"application": "mall"}
+2022-07-09T17:10:06.780+0800	info	G:/GoProject/mall/global/log/logger.go:95	Logger init success	{"application": "mall"}
+2022-07-09T17:10:06.826+0800	info	G:/GoProject/mall/global/dao/mysqlDB.go:56	success to connect database	{"application": "mall"}
+2022-07-09T17:10:06.827+0800	info	G:/GoProject/mall/global/dao/redisDB.go:66	success to connect redis	{"application": "mall"}
+2022-07-09T18:00:25.173+0800	info	G:/GoProject/mall/global/log/logger.go:95	Logger init success	{"application": "mall"}
+2022-07-09T18:00:25.211+0800	info	G:/GoProject/mall/global/dao/mysqlDB.go:56	success to connect database	{"application": "mall"}
+2022-07-09T18:00:25.214+0800	info	G:/GoProject/mall/global/dao/redisDB.go:66	success to connect redis	{"application": "mall"}
+2022-07-09T18:01:39.020+0800	info	G:/GoProject/mall/global/log/logger.go:95	Logger init success	{"application": "mall"}
+2022-07-09T18:01:39.054+0800	info	G:/GoProject/mall/global/dao/mysqlDB.go:56	success to connect database	{"application": "mall"}
+2022-07-09T18:01:39.056+0800	info	G:/GoProject/mall/global/dao/redisDB.go:66	success to connect redis	{"application": "mall"}
+2022-07-09T18:03:14.953+0800	info	G:/GoProject/mall/global/log/logger.go:95	Logger init success	{"application": "mall"}
+2022-07-09T18:07:02.219+0800	info	G:/GoProject/mall/global/log/logger.go:95	Logger init success	{"application": "mall"}
+2022-07-09T18:07:19.207+0800	info	G:/GoProject/mall/global/log/logger.go:95	Logger init success	{"application": "mall"}
+2022-07-09T18:08:07.163+0800	info	G:/GoProject/mall/global/log/logger.go:95	Logger init success	{"application": "mall"}
+2022-07-09T18:32:44.713+0800	info	G:/GoProject/mall/global/log/logger.go:95	Logger init success	{"application": "mall"}
+2022-07-09T18:35:37.693+0800	info	G:/GoProject/mall/global/log/logger.go:95	Logger init success	{"application": "mall"}
+2022-07-09T18:40:27.059+0800	info	G:/GoProject/mall/global/log/logger.go:95	Logger init success	{"application": "mall"}
+2022-07-09T18:41:24.203+0800	info	G:/GoProject/mall/global/log/logger.go:95	Logger init success	{"application": "mall"}
+2022-07-09T18:41:45.235+0800	info	G:/GoProject/mall/global/log/logger.go:95	Logger init success	{"application": "mall"}
+2022-07-09T18:47:04.337+0800	info	G:/GoProject/mall/global/log/logger.go:95	Logger init success	{"application": "mall"}
+2022-07-09T18:48:06.248+0800	info	G:/GoProject/mall/global/log/logger.go:95	Logger init success	{"application": "mall"}
+2022-07-09T18:48:11.318+0800	info	G:/GoProject/mall/global/dao/mysqlDB.go:56	success to connect database	{"application": "mall"}
+2022-07-09T18:48:11.320+0800	info	G:/GoProject/mall/global/dao/redisDB.go:66	success to connect redis	{"application": "mall"}
+2022-07-09T19:09:41.076+0800	info	G:/GoProject/mall/global/log/logger.go:95	Logger init success	{"application": "mall"}
+2022-07-09T19:09:48.409+0800	info	G:/GoProject/mall/global/dao/elastic_searchDB.go:37	Elasticsearch returned with code 200 and version 6.2.2
+	{"application": "mall"}
+2022-07-09T19:09:48.419+0800	info	G:/GoProject/mall/global/dao/mysqlDB.go:56	success to connect database	{"application": "mall"}
+2022-07-09T19:09:48.421+0800	info	G:/GoProject/mall/global/dao/redisDB.go:66	success to connect redis	{"application": "mall"}
+2022-07-09T19:15:31.047+0800	info	G:/GoProject/mall/global/log/logger.go:95	Logger init success	{"application": "mall"}
+2022-07-09T19:15:33.043+0800	info	G:/GoProject/mall/global/dao/elastic_searchDB.go:37	Elasticsearch returned with code 200 and version 6.2.2
+	{"application": "mall"}
+2022-07-09T19:15:33.053+0800	info	G:/GoProject/mall/global/dao/mysqlDB.go:56	success to connect database	{"application": "mall"}
+2022-07-09T19:15:33.055+0800	info	G:/GoProject/mall/global/dao/redisDB.go:66	success to connect redis	{"application": "mall"}
+2022-07-09T19:16:16.277+0800	info	G:/GoProject/mall/global/log/logger.go:95	Logger init success	{"application": "mall"}
+2022-07-09T19:16:18.802+0800	info	G:/GoProject/mall/global/dao/elastic_searchDB.go:37	Elasticsearch returned with code 200 and version 6.2.2
+	{"application": "mall"}
+2022-07-09T19:16:18.812+0800	info	G:/GoProject/mall/global/dao/mysqlDB.go:56	success to connect database	{"application": "mall"}
+2022-07-09T19:16:18.813+0800	info	G:/GoProject/mall/global/dao/redisDB.go:66	success to connect redis	{"application": "mall"}
+2022-07-13T22:58:23.215+0800	info	G:/GoProject/mall/global/log/logger.go:95	Logger init success	{"application": "mall"}
+2022-07-13T22:58:25.284+0800	error	G:/GoProject/mall/global/dao/elastic_searchDB.go:35	ping es failedGet "http://127.0.0.1:9200/": dial tcp 127.0.0.1:9200: connectex: No connection could be made because the target machine actively refused it.	{"application": "mall"}
+2022-07-13T22:58:40.409+0800	info	G:/GoProject/mall/global/log/logger.go:95	Logger init success	{"application": "mall"}
+2022-07-13T22:58:42.461+0800	error	G:/GoProject/mall/global/dao/elastic_searchDB.go:35	ping es failedGet "http://127.0.0.1:9200/": dial tcp 127.0.0.1:9200: connectex: No connection could be made because the target machine actively refused it.	{"application": "mall"}
+2022-07-14T12:08:22.019+0800	info	G:/GoProject/mall/global/log/logger.go:95	Logger init success	{"application": "mall"}
+2022-07-14T12:08:24.082+0800	error	G:/GoProject/mall/global/dao/elastic_searchDB.go:35	ping es failedGet "http://127.0.0.1:9200/": dial tcp 127.0.0.1:9200: connectex: No connection could be made because the target machine actively refused it.	{"application": "mall"}
+2022-07-14T12:08:50.293+0800	info	G:/GoProject/mall/global/log/logger.go:95	Logger init success	{"application": "mall"}
+2022-07-14T12:08:52.356+0800	error	G:/GoProject/mall/global/dao/elastic_searchDB.go:35	ping es failedGet "http://127.0.0.1:9200/": dial tcp 127.0.0.1:9200: connectex: No connection could be made because the target machine actively refused it.	{"application": "mall"}
+2022-07-14T12:09:38.533+0800	info	G:/GoProject/mall/global/log/logger.go:95	Logger init success	{"application": "mall"}
+2022-07-14T12:09:38.931+0800	info	G:/GoProject/mall/global/dao/elastic_searchDB.go:37	Elasticsearch returned with code 200 and version 6.2.2
+	{"application": "mall"}
+2022-07-14T12:09:38.962+0800	info	G:/GoProject/mall/global/dao/mysqlDB.go:56	success to connect database	{"application": "mall"}
+2022-07-14T12:09:38.963+0800	info	G:/GoProject/mall/global/dao/redisDB.go:66	success to connect redis	{"application": "mall"}
+2022-07-14T12:09:55.772+0800	info	G:/GoProject/mall/global/log/logger.go:95	Logger init success	{"application": "mall"}
+2022-07-14T12:09:55.799+0800	info	G:/GoProject/mall/global/dao/elastic_searchDB.go:37	Elasticsearch returned with code 200 and version 6.2.2
+	{"application": "mall"}
+2022-07-14T12:09:55.807+0800	info	G:/GoProject/mall/global/dao/mysqlDB.go:56	success to connect database	{"application": "mall"}
+2022-07-14T12:09:55.808+0800	info	G:/GoProject/mall/global/dao/redisDB.go:66	success to connect redis	{"application": "mall"}
+2022-07-14T12:15:02.944+0800	info	G:/GoProject/mall/global/log/logger.go:95	Logger init success	{"application": "mall"}
+2022-07-14T12:15:02.971+0800	info	G:/GoProject/mall/global/dao/elastic_searchDB.go:37	Elasticsearch returned with code 200 and version 6.2.2
+	{"application": "mall"}
+2022-07-14T12:15:02.979+0800	info	G:/GoProject/mall/global/dao/mysqlDB.go:56	success to connect database	{"application": "mall"}
+2022-07-14T12:15:02.980+0800	info	G:/GoProject/mall/global/dao/redisDB.go:66	success to connect redis	{"application": "mall"}
+2022-07-14T12:16:10.467+0800	info	G:/GoProject/mall/global/log/logger.go:95	Logger init success	{"application": "mall"}
+2022-07-14T12:16:10.494+0800	info	G:/GoProject/mall/global/dao/elastic_searchDB.go:37	Elasticsearch returned with code 200 and version 6.2.2
+	{"application": "mall"}
+2022-07-14T12:16:10.502+0800	info	G:/GoProject/mall/global/dao/mysqlDB.go:56	success to connect database	{"application": "mall"}
+2022-07-14T12:16:10.503+0800	info	G:/GoProject/mall/global/dao/redisDB.go:66	success to connect redis	{"application": "mall"}
+2022-07-14T12:16:31.188+0800	info	G:/GoProject/mall/global/log/logger.go:95	Logger init success	{"application": "mall"}
+2022-07-14T12:16:31.214+0800	info	G:/GoProject/mall/global/dao/elastic_searchDB.go:37	Elasticsearch returned with code 200 and version 6.2.2
+	{"application": "mall"}
+2022-07-14T12:16:31.223+0800	info	G:/GoProject/mall/global/dao/mysqlDB.go:56	success to connect database	{"application": "mall"}
+2022-07-14T12:16:31.224+0800	info	G:/GoProject/mall/global/dao/redisDB.go:66	success to connect redis	{"application": "mall"}
+2022-07-14T12:43:01.282+0800	info	G:/GoProject/mall/global/log/logger.go:95	Logger init success	{"application": "mall"}
+2022-07-14T12:43:01.305+0800	info	G:/GoProject/mall/global/dao/elastic_searchDB.go:37	Elasticsearch returned with code 200 and version 6.2.2
+	{"application": "mall"}
+2022-07-14T12:43:01.314+0800	info	G:/GoProject/mall/global/dao/mysqlDB.go:56	success to connect database	{"application": "mall"}
+2022-07-14T12:43:01.316+0800	info	G:/GoProject/mall/global/dao/redisDB.go:66	success to connect redis	{"application": "mall"}
+2022-07-14T12:43:51.228+0800	info	G:/GoProject/mall/global/log/logger.go:95	Logger init success	{"application": "mall"}
+2022-07-14T12:43:51.249+0800	info	G:/GoProject/mall/global/dao/elastic_searchDB.go:37	Elasticsearch returned with code 200 and version 6.2.2
+	{"application": "mall"}
+2022-07-14T12:43:51.256+0800	info	G:/GoProject/mall/global/dao/mysqlDB.go:56	success to connect database	{"application": "mall"}
+2022-07-14T12:43:51.257+0800	info	G:/GoProject/mall/global/dao/redisDB.go:66	success to connect redis	{"application": "mall"}
+2022-07-14T12:44:43.148+0800	info	G:/GoProject/mall/global/log/logger.go:95	Logger init success	{"application": "mall"}
+2022-07-14T12:44:43.168+0800	info	G:/GoProject/mall/global/dao/elastic_searchDB.go:37	Elasticsearch returned with code 200 and version 6.2.2
+	{"application": "mall"}
+2022-07-14T12:44:43.175+0800	info	G:/GoProject/mall/global/dao/mysqlDB.go:56	success to connect database	{"application": "mall"}
+2022-07-14T12:44:43.176+0800	info	G:/GoProject/mall/global/dao/redisDB.go:66	success to connect redis	{"application": "mall"}
+2022-07-14T12:46:32.765+0800	info	G:/GoProject/mall/global/log/logger.go:95	Logger init success	{"application": "mall"}
+2022-07-14T12:46:32.785+0800	info	G:/GoProject/mall/global/dao/elastic_searchDB.go:37	Elasticsearch returned with code 200 and version 6.2.2
+	{"application": "mall"}
+2022-07-14T12:46:32.794+0800	info	G:/GoProject/mall/global/dao/mysqlDB.go:56	success to connect database	{"application": "mall"}
+2022-07-14T12:46:32.795+0800	info	G:/GoProject/mall/global/dao/redisDB.go:66	success to connect redis	{"application": "mall"}
+2022-07-14T12:47:47.411+0800	info	G:/GoProject/mall/global/log/logger.go:95	Logger init success	{"application": "mall"}
+2022-07-14T12:47:47.431+0800	info	G:/GoProject/mall/global/dao/elastic_searchDB.go:37	Elasticsearch returned with code 200 and version 6.2.2
+	{"application": "mall"}
+2022-07-14T12:47:47.438+0800	info	G:/GoProject/mall/global/dao/mysqlDB.go:56	success to connect database	{"application": "mall"}
+2022-07-14T12:47:47.439+0800	info	G:/GoProject/mall/global/dao/redisDB.go:66	success to connect redis	{"application": "mall"}
+2022-07-14T12:48:28.672+0800	info	G:/GoProject/mall/global/log/logger.go:95	Logger init success	{"application": "mall"}
+2022-07-14T12:48:28.692+0800	info	G:/GoProject/mall/global/dao/elastic_searchDB.go:37	Elasticsearch returned with code 200 and version 6.2.2
+	{"application": "mall"}
+2022-07-14T12:48:28.699+0800	info	G:/GoProject/mall/global/dao/mysqlDB.go:56	success to connect database	{"application": "mall"}
+2022-07-14T12:48:28.700+0800	info	G:/GoProject/mall/global/dao/redisDB.go:66	success to connect redis	{"application": "mall"}
+2022-07-14T12:49:39.561+0800	info	G:/GoProject/mall/global/log/logger.go:95	Logger init success	{"application": "mall"}
+2022-07-14T12:49:39.581+0800	info	G:/GoProject/mall/global/dao/elastic_searchDB.go:37	Elasticsearch returned with code 200 and version 6.2.2
+	{"application": "mall"}
+2022-07-14T12:49:39.589+0800	info	G:/GoProject/mall/global/dao/mysqlDB.go:56	success to connect database	{"application": "mall"}
+2022-07-14T12:49:39.590+0800	info	G:/GoProject/mall/global/dao/redisDB.go:66	success to connect redis	{"application": "mall"}
+2022-07-14T12:49:54.935+0800	info	G:/GoProject/mall/global/log/logger.go:95	Logger init success	{"application": "mall"}
+2022-07-14T12:49:54.955+0800	info	G:/GoProject/mall/global/dao/elastic_searchDB.go:37	Elasticsearch returned with code 200 and version 6.2.2
+	{"application": "mall"}
+2022-07-14T12:49:54.963+0800	info	G:/GoProject/mall/global/dao/mysqlDB.go:56	success to connect database	{"application": "mall"}
+2022-07-14T12:49:54.964+0800	info	G:/GoProject/mall/global/dao/redisDB.go:66	success to connect redis	{"application": "mall"}
+2022-07-14T12:50:21.704+0800	info	G:/GoProject/mall/global/log/logger.go:95	Logger init success	{"application": "mall"}
+2022-07-14T12:50:21.724+0800	info	G:/GoProject/mall/global/dao/elastic_searchDB.go:37	Elasticsearch returned with code 200 and version 6.2.2
+	{"application": "mall"}
+2022-07-14T12:50:21.732+0800	info	G:/GoProject/mall/global/dao/mysqlDB.go:56	success to connect database	{"application": "mall"}
+2022-07-14T12:50:21.734+0800	info	G:/GoProject/mall/global/dao/redisDB.go:66	success to connect redis	{"application": "mall"}
+2022-07-14T12:50:31.959+0800	info	G:/GoProject/mall/global/log/logger.go:95	Logger init success	{"application": "mall"}
+2022-07-14T12:50:31.983+0800	info	G:/GoProject/mall/global/dao/elastic_searchDB.go:37	Elasticsearch returned with code 200 and version 6.2.2
+	{"application": "mall"}
+2022-07-14T12:50:31.990+0800	info	G:/GoProject/mall/global/dao/mysqlDB.go:56	success to connect database	{"application": "mall"}
+2022-07-14T12:50:31.992+0800	info	G:/GoProject/mall/global/dao/redisDB.go:66	success to connect redis	{"application": "mall"}
+2022-07-14T12:55:35.799+0800	info	G:/GoProject/mall/global/log/logger.go:95	Logger init success	{"application": "mall"}
+2022-07-14T12:55:35.820+0800	info	G:/GoProject/mall/global/dao/elastic_searchDB.go:37	Elasticsearch returned with code 200 and version 6.2.2
+	{"application": "mall"}
+2022-07-14T12:55:35.827+0800	info	G:/GoProject/mall/global/dao/mysqlDB.go:56	success to connect database	{"application": "mall"}
+2022-07-14T12:55:35.828+0800	info	G:/GoProject/mall/global/dao/redisDB.go:66	success to connect redis	{"application": "mall"}
+2022-07-14T12:55:48.337+0800	info	G:/GoProject/mall/global/log/logger.go:95	Logger init success	{"application": "mall"}
+2022-07-14T12:55:48.357+0800	info	G:/GoProject/mall/global/dao/elastic_searchDB.go:37	Elasticsearch returned with code 200 and version 6.2.2
+	{"application": "mall"}
+2022-07-14T12:55:48.364+0800	info	G:/GoProject/mall/global/dao/mysqlDB.go:56	success to connect database	{"application": "mall"}
+2022-07-14T12:55:48.365+0800	info	G:/GoProject/mall/global/dao/redisDB.go:66	success to connect redis	{"application": "mall"}
+2022-07-14T12:56:44.725+0800	info	G:/GoProject/mall/global/log/logger.go:95	Logger init success	{"application": "mall"}
+2022-07-14T12:56:44.747+0800	info	G:/GoProject/mall/global/dao/elastic_searchDB.go:37	Elasticsearch returned with code 200 and version 6.2.2
+	{"application": "mall"}
+2022-07-14T12:56:44.757+0800	info	G:/GoProject/mall/global/dao/mysqlDB.go:56	success to connect database	{"application": "mall"}
+2022-07-14T12:56:44.758+0800	info	G:/GoProject/mall/global/dao/redisDB.go:66	success to connect redis	{"application": "mall"}
+2022-07-14T12:56:57.385+0800	info	G:/GoProject/mall/global/log/logger.go:95	Logger init success	{"application": "mall"}
+2022-07-14T12:56:57.409+0800	info	G:/GoProject/mall/global/dao/elastic_searchDB.go:37	Elasticsearch returned with code 200 and version 6.2.2
+	{"application": "mall"}
+2022-07-14T12:56:57.418+0800	info	G:/GoProject/mall/global/dao/mysqlDB.go:56	success to connect database	{"application": "mall"}
+2022-07-14T12:56:57.419+0800	info	G:/GoProject/mall/global/dao/redisDB.go:66	success to connect redis	{"application": "mall"}
+2022-07-14T13:22:06.459+0800	info	G:/GoProject/mall/global/log/logger.go:95	Logger init success	{"application": "mall"}
+2022-07-14T13:22:06.479+0800	info	G:/GoProject/mall/global/dao/elastic_searchDB.go:37	Elasticsearch returned with code 200 and version 6.2.2
+	{"application": "mall"}
+2022-07-14T13:22:06.493+0800	info	G:/GoProject/mall/global/dao/mysqlDB.go:56	success to connect database	{"application": "mall"}
+2022-07-14T13:22:06.496+0800	info	G:/GoProject/mall/global/dao/redisDB.go:66	success to connect redis	{"application": "mall"}
+2022-07-14T13:22:46.746+0800	info	G:/GoProject/mall/global/log/logger.go:95	Logger init success	{"application": "mall"}
+2022-07-14T13:22:46.765+0800	info	G:/GoProject/mall/global/dao/elastic_searchDB.go:37	Elasticsearch returned with code 200 and version 6.2.2
+	{"application": "mall"}
+2022-07-14T13:22:46.773+0800	info	G:/GoProject/mall/global/dao/mysqlDB.go:56	success to connect database	{"application": "mall"}
+2022-07-14T13:22:46.774+0800	info	G:/GoProject/mall/global/dao/redisDB.go:66	success to connect redis	{"application": "mall"}
+2022-07-14T13:23:13.304+0800	info	G:/GoProject/mall/global/log/logger.go:95	Logger init success	{"application": "mall"}
+2022-07-14T13:23:13.323+0800	info	G:/GoProject/mall/global/dao/elastic_searchDB.go:37	Elasticsearch returned with code 200 and version 6.2.2
+	{"application": "mall"}
+2022-07-14T13:23:13.331+0800	info	G:/GoProject/mall/global/dao/mysqlDB.go:56	success to connect database	{"application": "mall"}
+2022-07-14T13:23:13.332+0800	info	G:/GoProject/mall/global/dao/redisDB.go:66	success to connect redis	{"application": "mall"}
+2022-07-14T13:24:21.052+0800	info	G:/GoProject/mall/global/log/logger.go:95	Logger init success	{"application": "mall"}
+2022-07-14T13:24:21.071+0800	info	G:/GoProject/mall/global/dao/elastic_searchDB.go:37	Elasticsearch returned with code 200 and version 6.2.2
+	{"application": "mall"}
+2022-07-14T13:24:21.079+0800	info	G:/GoProject/mall/global/dao/mysqlDB.go:56	success to connect database	{"application": "mall"}
+2022-07-14T13:24:21.080+0800	info	G:/GoProject/mall/global/dao/redisDB.go:66	success to connect redis	{"application": "mall"}
+2022-07-14T13:24:41.574+0800	info	G:/GoProject/mall/global/log/logger.go:95	Logger init success	{"application": "mall"}
+2022-07-14T13:24:41.594+0800	info	G:/GoProject/mall/global/dao/elastic_searchDB.go:37	Elasticsearch returned with code 200 and version 6.2.2
+	{"application": "mall"}
+2022-07-14T13:24:41.602+0800	info	G:/GoProject/mall/global/dao/mysqlDB.go:56	success to connect database	{"application": "mall"}
+2022-07-14T13:24:41.603+0800	info	G:/GoProject/mall/global/dao/redisDB.go:66	success to connect redis	{"application": "mall"}
+2022-07-14T13:44:01.400+0800	info	G:/GoProject/mall/global/log/logger.go:95	Logger init success	{"application": "mall"}
+2022-07-14T13:44:01.420+0800	info	G:/GoProject/mall/global/dao/elastic_searchDB.go:37	Elasticsearch returned with code 200 and version 6.2.2
+	{"application": "mall"}
+2022-07-14T13:44:01.428+0800	info	G:/GoProject/mall/global/dao/mysqlDB.go:56	success to connect database	{"application": "mall"}
+2022-07-14T13:44:01.430+0800	info	G:/GoProject/mall/global/dao/redisDB.go:66	success to connect redis	{"application": "mall"}
+2022-07-14T13:44:25.293+0800	info	G:/GoProject/mall/global/log/logger.go:95	Logger init success	{"application": "mall"}
+2022-07-14T13:44:25.314+0800	info	G:/GoProject/mall/global/dao/elastic_searchDB.go:37	Elasticsearch returned with code 200 and version 6.2.2
+	{"application": "mall"}
+2022-07-14T13:44:25.323+0800	info	G:/GoProject/mall/global/dao/mysqlDB.go:56	success to connect database	{"application": "mall"}
+2022-07-14T13:44:25.325+0800	info	G:/GoProject/mall/global/dao/redisDB.go:66	success to connect redis	{"application": "mall"}
+2022-07-14T13:44:59.066+0800	info	G:/GoProject/mall/global/log/logger.go:95	Logger init success	{"application": "mall"}
+2022-07-14T13:44:59.086+0800	info	G:/GoProject/mall/global/dao/elastic_searchDB.go:37	Elasticsearch returned with code 200 and version 6.2.2
+	{"application": "mall"}
+2022-07-14T13:44:59.094+0800	info	G:/GoProject/mall/global/dao/mysqlDB.go:56	success to connect database	{"application": "mall"}
+2022-07-14T13:44:59.095+0800	info	G:/GoProject/mall/global/dao/redisDB.go:66	success to connect redis	{"application": "mall"}
+2022-07-14T13:45:37.352+0800	info	G:/GoProject/mall/global/log/logger.go:95	Logger init success	{"application": "mall"}
+2022-07-14T13:45:37.373+0800	info	G:/GoProject/mall/global/dao/elastic_searchDB.go:37	Elasticsearch returned with code 200 and version 6.2.2
+	{"application": "mall"}
+2022-07-14T13:45:37.381+0800	info	G:/GoProject/mall/global/dao/mysqlDB.go:56	success to connect database	{"application": "mall"}
+2022-07-14T13:45:37.382+0800	info	G:/GoProject/mall/global/dao/redisDB.go:66	success to connect redis	{"application": "mall"}
+2022-07-14T13:45:51.545+0800	info	G:/GoProject/mall/global/log/logger.go:95	Logger init success	{"application": "mall"}
+2022-07-14T13:45:51.569+0800	info	G:/GoProject/mall/global/dao/elastic_searchDB.go:37	Elasticsearch returned with code 200 and version 6.2.2
+	{"application": "mall"}
+2022-07-14T13:45:51.578+0800	info	G:/GoProject/mall/global/dao/mysqlDB.go:56	success to connect database	{"application": "mall"}
+2022-07-14T13:45:51.580+0800	info	G:/GoProject/mall/global/dao/redisDB.go:66	success to connect redis	{"application": "mall"}
+2022-07-14T13:46:01.510+0800	info	G:/GoProject/mall/global/log/logger.go:95	Logger init success	{"application": "mall"}
+2022-07-14T13:46:01.530+0800	info	G:/GoProject/mall/global/dao/elastic_searchDB.go:37	Elasticsearch returned with code 200 and version 6.2.2
+	{"application": "mall"}
+2022-07-14T13:46:01.538+0800	info	G:/GoProject/mall/global/dao/mysqlDB.go:56	success to connect database	{"application": "mall"}
+2022-07-14T13:46:01.539+0800	info	G:/GoProject/mall/global/dao/redisDB.go:66	success to connect redis	{"application": "mall"}
+2022-07-14T13:46:48.753+0800	info	G:/GoProject/mall/global/log/logger.go:95	Logger init success	{"application": "mall"}
+2022-07-14T13:46:48.774+0800	info	G:/GoProject/mall/global/dao/elastic_searchDB.go:37	Elasticsearch returned with code 200 and version 6.2.2
+	{"application": "mall"}
+2022-07-14T13:46:48.782+0800	info	G:/GoProject/mall/global/dao/mysqlDB.go:56	success to connect database	{"application": "mall"}
+2022-07-14T13:46:48.783+0800	info	G:/GoProject/mall/global/dao/redisDB.go:66	success to connect redis	{"application": "mall"}
+2022-07-14T13:48:31.610+0800	info	G:/GoProject/mall/global/log/logger.go:95	Logger init success	{"application": "mall"}
+2022-07-14T13:48:31.630+0800	info	G:/GoProject/mall/global/dao/elastic_searchDB.go:37	Elasticsearch returned with code 200 and version 6.2.2
+	{"application": "mall"}
+2022-07-14T13:48:31.638+0800	info	G:/GoProject/mall/global/dao/mysqlDB.go:56	success to connect database	{"application": "mall"}
+2022-07-14T13:48:31.639+0800	info	G:/GoProject/mall/global/dao/redisDB.go:66	success to connect redis	{"application": "mall"}
+2022-07-14T13:49:39.034+0800	info	G:/GoProject/mall/global/log/logger.go:95	Logger init success	{"application": "mall"}
+2022-07-14T13:49:39.054+0800	info	G:/GoProject/mall/global/dao/elastic_searchDB.go:37	Elasticsearch returned with code 200 and version 6.2.2
+	{"application": "mall"}
+2022-07-14T13:49:39.062+0800	info	G:/GoProject/mall/global/dao/mysqlDB.go:56	success to connect database	{"application": "mall"}
+2022-07-14T13:49:39.063+0800	info	G:/GoProject/mall/global/dao/redisDB.go:66	success to connect redis	{"application": "mall"}
+2022-07-14T13:49:53.340+0800	info	G:/GoProject/mall/global/log/logger.go:95	Logger init success	{"application": "mall"}
+2022-07-14T13:49:53.360+0800	info	G:/GoProject/mall/global/dao/elastic_searchDB.go:37	Elasticsearch returned with code 200 and version 6.2.2
+	{"application": "mall"}
+2022-07-14T13:49:53.368+0800	info	G:/GoProject/mall/global/dao/mysqlDB.go:56	success to connect database	{"application": "mall"}
+2022-07-14T13:49:53.369+0800	info	G:/GoProject/mall/global/dao/redisDB.go:66	success to connect redis	{"application": "mall"}
+2022-07-14T13:56:18.703+0800	info	G:/GoProject/mall/global/log/logger.go:95	Logger init success	{"application": "mall"}
+2022-07-14T13:56:18.723+0800	info	G:/GoProject/mall/global/dao/elastic_searchDB.go:37	Elasticsearch returned with code 200 and version 6.2.2
+	{"application": "mall"}
+2022-07-14T13:56:18.731+0800	info	G:/GoProject/mall/global/dao/mysqlDB.go:56	success to connect database	{"application": "mall"}
+2022-07-14T13:56:18.733+0800	info	G:/GoProject/mall/global/dao/redisDB.go:66	success to connect redis	{"application": "mall"}
+2022-07-14T13:57:56.791+0800	info	G:/GoProject/mall/global/log/logger.go:95	Logger init success	{"application": "mall"}
+2022-07-14T13:57:56.811+0800	info	G:/GoProject/mall/global/dao/elastic_searchDB.go:37	Elasticsearch returned with code 200 and version 6.2.2
+	{"application": "mall"}
+2022-07-14T13:57:56.819+0800	info	G:/GoProject/mall/global/dao/mysqlDB.go:56	success to connect database	{"application": "mall"}
+2022-07-14T13:57:56.820+0800	info	G:/GoProject/mall/global/dao/redisDB.go:66	success to connect redis	{"application": "mall"}
+2022-07-14T13:58:03.829+0800	info	G:/GoProject/mall/global/log/logger.go:95	Logger init success	{"application": "mall"}
+2022-07-14T13:58:03.856+0800	info	G:/GoProject/mall/global/dao/elastic_searchDB.go:37	Elasticsearch returned with code 200 and version 6.2.2
+	{"application": "mall"}
+2022-07-14T13:58:03.865+0800	info	G:/GoProject/mall/global/dao/mysqlDB.go:56	success to connect database	{"application": "mall"}
+2022-07-14T13:58:03.866+0800	info	G:/GoProject/mall/global/dao/redisDB.go:66	success to connect redis	{"application": "mall"}
+2022-07-14T13:58:23.149+0800	info	G:/GoProject/mall/global/log/logger.go:95	Logger init success	{"application": "mall"}
+2022-07-14T13:58:23.171+0800	info	G:/GoProject/mall/global/dao/elastic_searchDB.go:37	Elasticsearch returned with code 200 and version 6.2.2
+	{"application": "mall"}
+2022-07-14T13:58:23.179+0800	info	G:/GoProject/mall/global/dao/mysqlDB.go:56	success to connect database	{"application": "mall"}
+2022-07-14T13:58:23.180+0800	info	G:/GoProject/mall/global/dao/redisDB.go:66	success to connect redis	{"application": "mall"}
+2022-07-14T13:58:58.695+0800	info	G:/GoProject/mall/global/log/logger.go:95	Logger init success	{"application": "mall"}
+2022-07-14T13:58:58.717+0800	info	G:/GoProject/mall/global/dao/elastic_searchDB.go:37	Elasticsearch returned with code 200 and version 6.2.2
+	{"application": "mall"}
+2022-07-14T13:58:58.725+0800	info	G:/GoProject/mall/global/dao/mysqlDB.go:56	success to connect database	{"application": "mall"}
+2022-07-14T13:58:58.726+0800	info	G:/GoProject/mall/global/dao/redisDB.go:66	success to connect redis	{"application": "mall"}
+2022-07-14T13:59:15.556+0800	info	G:/GoProject/mall/global/log/logger.go:95	Logger init success	{"application": "mall"}
+2022-07-14T13:59:15.575+0800	info	G:/GoProject/mall/global/dao/elastic_searchDB.go:37	Elasticsearch returned with code 200 and version 6.2.2
+	{"application": "mall"}
+2022-07-14T13:59:15.583+0800	info	G:/GoProject/mall/global/dao/mysqlDB.go:56	success to connect database	{"application": "mall"}
+2022-07-14T13:59:15.584+0800	info	G:/GoProject/mall/global/dao/redisDB.go:66	success to connect redis	{"application": "mall"}
+2022-07-14T13:59:43.905+0800	info	G:/GoProject/mall/global/log/logger.go:95	Logger init success	{"application": "mall"}
+2022-07-14T13:59:43.925+0800	info	G:/GoProject/mall/global/dao/elastic_searchDB.go:37	Elasticsearch returned with code 200 and version 6.2.2
+	{"application": "mall"}
+2022-07-14T13:59:43.932+0800	info	G:/GoProject/mall/global/dao/mysqlDB.go:56	success to connect database	{"application": "mall"}
+2022-07-14T13:59:43.933+0800	info	G:/GoProject/mall/global/dao/redisDB.go:66	success to connect redis	{"application": "mall"}
+2022-07-14T14:11:20.089+0800	info	G:/GoProject/mall/global/log/logger.go:95	Logger init success	{"application": "mall"}
+2022-07-14T14:11:20.109+0800	info	G:/GoProject/mall/global/dao/elastic_searchDB.go:37	Elasticsearch returned with code 200 and version 6.2.2
+	{"application": "mall"}
+2022-07-14T14:11:20.116+0800	info	G:/GoProject/mall/global/dao/mysqlDB.go:56	success to connect database	{"application": "mall"}
+2022-07-14T14:11:20.117+0800	info	G:/GoProject/mall/global/dao/redisDB.go:66	success to connect redis	{"application": "mall"}
+2022-07-14T14:11:29.506+0800	info	G:/GoProject/mall/global/log/logger.go:95	Logger init success	{"application": "mall"}
+2022-07-14T14:11:29.526+0800	info	G:/GoProject/mall/global/dao/elastic_searchDB.go:37	Elasticsearch returned with code 200 and version 6.2.2
+	{"application": "mall"}
+2022-07-14T14:11:29.534+0800	info	G:/GoProject/mall/global/dao/mysqlDB.go:56	success to connect database	{"application": "mall"}
+2022-07-14T14:11:29.535+0800	info	G:/GoProject/mall/global/dao/redisDB.go:66	success to connect redis	{"application": "mall"}
+2022-07-14T14:11:49.007+0800	info	G:/GoProject/mall/global/log/logger.go:95	Logger init success	{"application": "mall"}
+2022-07-14T14:11:49.027+0800	info	G:/GoProject/mall/global/dao/elastic_searchDB.go:37	Elasticsearch returned with code 200 and version 6.2.2
+	{"application": "mall"}
+2022-07-14T14:11:49.035+0800	info	G:/GoProject/mall/global/dao/mysqlDB.go:56	success to connect database	{"application": "mall"}
+2022-07-14T14:11:49.036+0800	info	G:/GoProject/mall/global/dao/redisDB.go:66	success to connect redis	{"application": "mall"}
+2022-07-14T14:12:21.106+0800	info	G:/GoProject/mall/global/log/logger.go:95	Logger init success	{"application": "mall"}
+2022-07-14T14:12:21.126+0800	info	G:/GoProject/mall/global/dao/elastic_searchDB.go:37	Elasticsearch returned with code 200 and version 6.2.2
+	{"application": "mall"}
+2022-07-14T14:12:21.133+0800	info	G:/GoProject/mall/global/dao/mysqlDB.go:56	success to connect database	{"application": "mall"}
+2022-07-14T14:12:21.134+0800	info	G:/GoProject/mall/global/dao/redisDB.go:66	success to connect redis	{"application": "mall"}
+2022-07-14T14:12:32.860+0800	info	G:/GoProject/mall/global/log/logger.go:95	Logger init success	{"application": "mall"}
+2022-07-14T14:12:32.880+0800	info	G:/GoProject/mall/global/dao/elastic_searchDB.go:37	Elasticsearch returned with code 200 and version 6.2.2
+	{"application": "mall"}
+2022-07-14T14:12:32.887+0800	info	G:/GoProject/mall/global/dao/mysqlDB.go:56	success to connect database	{"application": "mall"}
+2022-07-14T14:12:32.888+0800	info	G:/GoProject/mall/global/dao/redisDB.go:66	success to connect redis	{"application": "mall"}
+2022-07-14T14:12:59.087+0800	info	G:/GoProject/mall/global/log/logger.go:95	Logger init success	{"application": "mall"}
+2022-07-14T14:12:59.107+0800	info	G:/GoProject/mall/global/dao/elastic_searchDB.go:37	Elasticsearch returned with code 200 and version 6.2.2
+	{"application": "mall"}
+2022-07-14T14:12:59.114+0800	info	G:/GoProject/mall/global/dao/mysqlDB.go:56	success to connect database	{"application": "mall"}
+2022-07-14T14:12:59.116+0800	info	G:/GoProject/mall/global/dao/redisDB.go:66	success to connect redis	{"application": "mall"}
+2022-07-14T14:13:41.738+0800	info	G:/GoProject/mall/global/log/logger.go:95	Logger init success	{"application": "mall"}
+2022-07-14T14:13:41.759+0800	info	G:/GoProject/mall/global/dao/elastic_searchDB.go:37	Elasticsearch returned with code 200 and version 6.2.2
+	{"application": "mall"}
+2022-07-14T14:13:41.766+0800	info	G:/GoProject/mall/global/dao/mysqlDB.go:56	success to connect database	{"application": "mall"}
+2022-07-14T14:13:41.767+0800	info	G:/GoProject/mall/global/dao/redisDB.go:66	success to connect redis	{"application": "mall"}
+2022-07-14T14:13:52.140+0800	info	G:/GoProject/mall/global/log/logger.go:95	Logger init success	{"application": "mall"}
+2022-07-14T14:13:52.160+0800	info	G:/GoProject/mall/global/dao/elastic_searchDB.go:37	Elasticsearch returned with code 200 and version 6.2.2
+	{"application": "mall"}
+2022-07-14T14:13:52.167+0800	info	G:/GoProject/mall/global/dao/mysqlDB.go:56	success to connect database	{"application": "mall"}
+2022-07-14T14:13:52.168+0800	info	G:/GoProject/mall/global/dao/redisDB.go:66	success to connect redis	{"application": "mall"}
+2022-07-14T14:14:16.157+0800	info	G:/GoProject/mall/global/log/logger.go:95	Logger init success	{"application": "mall"}
+2022-07-14T14:14:16.176+0800	info	G:/GoProject/mall/global/dao/elastic_searchDB.go:37	Elasticsearch returned with code 200 and version 6.2.2
+	{"application": "mall"}
+2022-07-14T14:14:16.183+0800	info	G:/GoProject/mall/global/dao/mysqlDB.go:56	success to connect database	{"application": "mall"}
+2022-07-14T14:14:16.184+0800	info	G:/GoProject/mall/global/dao/redisDB.go:66	success to connect redis	{"application": "mall"}
+2022-07-14T14:14:38.814+0800	info	G:/GoProject/mall/global/log/logger.go:95	Logger init success	{"application": "mall"}
+2022-07-14T14:14:38.833+0800	info	G:/GoProject/mall/global/dao/elastic_searchDB.go:37	Elasticsearch returned with code 200 and version 6.2.2
+	{"application": "mall"}
+2022-07-14T14:14:38.840+0800	info	G:/GoProject/mall/global/dao/mysqlDB.go:56	success to connect database	{"application": "mall"}
+2022-07-14T14:14:38.841+0800	info	G:/GoProject/mall/global/dao/redisDB.go:66	success to connect redis	{"application": "mall"}
+2022-07-14T14:15:51.837+0800	info	G:/GoProject/mall/global/log/logger.go:95	Logger init success	{"application": "mall"}
+2022-07-14T14:15:51.856+0800	info	G:/GoProject/mall/global/dao/elastic_searchDB.go:37	Elasticsearch returned with code 200 and version 6.2.2
+	{"application": "mall"}
+2022-07-14T14:15:51.865+0800	info	G:/GoProject/mall/global/dao/mysqlDB.go:56	success to connect database	{"application": "mall"}
+2022-07-14T14:15:51.867+0800	info	G:/GoProject/mall/global/dao/redisDB.go:66	success to connect redis	{"application": "mall"}
+2022-07-14T14:16:03.126+0800	info	G:/GoProject/mall/global/log/logger.go:95	Logger init success	{"application": "mall"}
+2022-07-14T14:16:03.149+0800	info	G:/GoProject/mall/global/dao/elastic_searchDB.go:37	Elasticsearch returned with code 200 and version 6.2.2
+	{"application": "mall"}
+2022-07-14T14:16:03.156+0800	info	G:/GoProject/mall/global/dao/mysqlDB.go:56	success to connect database	{"application": "mall"}
+2022-07-14T14:16:03.158+0800	info	G:/GoProject/mall/global/dao/redisDB.go:66	success to connect redis	{"application": "mall"}
+2022-07-14T14:16:26.216+0800	info	G:/GoProject/mall/global/log/logger.go:95	Logger init success	{"application": "mall"}
+2022-07-14T14:16:26.237+0800	info	G:/GoProject/mall/global/dao/elastic_searchDB.go:37	Elasticsearch returned with code 200 and version 6.2.2
+	{"application": "mall"}
+2022-07-14T14:16:26.245+0800	info	G:/GoProject/mall/global/dao/mysqlDB.go:56	success to connect database	{"application": "mall"}
+2022-07-14T14:16:26.246+0800	info	G:/GoProject/mall/global/dao/redisDB.go:66	success to connect redis	{"application": "mall"}
+2022-07-14T15:46:40.782+0800	info	G:/GoProject/mall/global/log/logger.go:95	Logger init success	{"application": "mall"}
+2022-07-14T15:46:40.809+0800	info	G:/GoProject/mall/global/dao/elastic_searchDB.go:37	Elasticsearch returned with code 200 and version 6.2.2
+	{"application": "mall"}
+2022-07-14T15:46:40.821+0800	info	G:/GoProject/mall/global/dao/mysqlDB.go:56	success to connect database	{"application": "mall"}
+2022-07-14T15:46:40.823+0800	info	G:/GoProject/mall/global/dao/redisDB.go:66	success to connect redis	{"application": "mall"}
+2022-07-14T15:46:53.734+0800	info	G:/GoProject/mall/global/log/logger.go:95	Logger init success	{"application": "mall"}
+2022-07-14T15:46:53.759+0800	info	G:/GoProject/mall/global/dao/elastic_searchDB.go:37	Elasticsearch returned with code 200 and version 6.2.2
+	{"application": "mall"}
+2022-07-14T15:46:53.768+0800	info	G:/GoProject/mall/global/dao/mysqlDB.go:56	success to connect database	{"application": "mall"}
+2022-07-14T15:46:53.769+0800	info	G:/GoProject/mall/global/dao/redisDB.go:66	success to connect redis	{"application": "mall"}
+2022-07-14T15:47:15.617+0800	info	G:/GoProject/mall/global/log/logger.go:95	Logger init success	{"application": "mall"}
+2022-07-14T15:47:15.640+0800	info	G:/GoProject/mall/global/dao/elastic_searchDB.go:37	Elasticsearch returned with code 200 and version 6.2.2
+	{"application": "mall"}
+2022-07-14T15:47:15.648+0800	info	G:/GoProject/mall/global/dao/mysqlDB.go:56	success to connect database	{"application": "mall"}
+2022-07-14T15:47:15.649+0800	info	G:/GoProject/mall/global/dao/redisDB.go:66	success to connect redis	{"application": "mall"}
+2022-07-14T15:47:39.058+0800	info	G:/GoProject/mall/global/log/logger.go:95	Logger init success	{"application": "mall"}
+2022-07-14T15:47:39.081+0800	info	G:/GoProject/mall/global/dao/elastic_searchDB.go:37	Elasticsearch returned with code 200 and version 6.2.2
+	{"application": "mall"}
+2022-07-14T15:47:39.091+0800	info	G:/GoProject/mall/global/dao/mysqlDB.go:56	success to connect database	{"application": "mall"}
+2022-07-14T15:47:39.092+0800	info	G:/GoProject/mall/global/dao/redisDB.go:66	success to connect redis	{"application": "mall"}
+2022-07-14T15:47:59.109+0800	info	G:/GoProject/mall/global/log/logger.go:95	Logger init success	{"application": "mall"}
+2022-07-14T15:47:59.134+0800	info	G:/GoProject/mall/global/dao/elastic_searchDB.go:37	Elasticsearch returned with code 200 and version 6.2.2
+	{"application": "mall"}
+2022-07-14T15:47:59.143+0800	info	G:/GoProject/mall/global/dao/mysqlDB.go:56	success to connect database	{"application": "mall"}
+2022-07-14T15:47:59.144+0800	info	G:/GoProject/mall/global/dao/redisDB.go:66	success to connect redis	{"application": "mall"}
+2022-07-14T15:49:08.898+0800	info	G:/GoProject/mall/global/log/logger.go:95	Logger init success	{"application": "mall"}
+2022-07-14T15:49:08.922+0800	info	G:/GoProject/mall/global/dao/elastic_searchDB.go:37	Elasticsearch returned with code 200 and version 6.2.2
+	{"application": "mall"}
+2022-07-14T15:49:08.931+0800	info	G:/GoProject/mall/global/dao/mysqlDB.go:56	success to connect database	{"application": "mall"}
+2022-07-14T15:49:08.932+0800	info	G:/GoProject/mall/global/dao/redisDB.go:66	success to connect redis	{"application": "mall"}
+2022-07-14T15:50:29.312+0800	info	G:/GoProject/mall/global/log/logger.go:95	Logger init success	{"application": "mall"}
+2022-07-14T15:50:29.335+0800	info	G:/GoProject/mall/global/dao/elastic_searchDB.go:37	Elasticsearch returned with code 200 and version 6.2.2
+	{"application": "mall"}
+2022-07-14T15:50:29.343+0800	info	G:/GoProject/mall/global/dao/mysqlDB.go:56	success to connect database	{"application": "mall"}
+2022-07-14T15:50:29.344+0800	info	G:/GoProject/mall/global/dao/redisDB.go:66	success to connect redis	{"application": "mall"}
+2022-07-14T15:52:39.170+0800	info	G:/GoProject/mall/global/log/logger.go:95	Logger init success	{"application": "mall"}
+2022-07-14T15:52:39.193+0800	info	G:/GoProject/mall/global/dao/elastic_searchDB.go:37	Elasticsearch returned with code 200 and version 6.2.2
+	{"application": "mall"}
+2022-07-14T15:52:39.201+0800	info	G:/GoProject/mall/global/dao/mysqlDB.go:56	success to connect database	{"application": "mall"}
+2022-07-14T15:52:39.202+0800	info	G:/GoProject/mall/global/dao/redisDB.go:66	success to connect redis	{"application": "mall"}
+2022-07-14T15:53:02.540+0800	info	G:/GoProject/mall/global/log/logger.go:95	Logger init success	{"application": "mall"}
+2022-07-14T15:53:02.577+0800	info	G:/GoProject/mall/global/dao/elastic_searchDB.go:37	Elasticsearch returned with code 200 and version 6.2.2
+	{"application": "mall"}
+2022-07-14T15:53:02.592+0800	info	G:/GoProject/mall/global/dao/mysqlDB.go:56	success to connect database	{"application": "mall"}
+2022-07-14T15:53:02.594+0800	info	G:/GoProject/mall/global/dao/redisDB.go:66	success to connect redis	{"application": "mall"}
+2022-07-14T15:53:37.259+0800	info	G:/GoProject/mall/global/log/logger.go:95	Logger init success	{"application": "mall"}
+2022-07-14T15:53:37.283+0800	info	G:/GoProject/mall/global/dao/elastic_searchDB.go:37	Elasticsearch returned with code 200 and version 6.2.2
+	{"application": "mall"}
+2022-07-14T15:53:37.291+0800	info	G:/GoProject/mall/global/dao/mysqlDB.go:56	success to connect database	{"application": "mall"}
+2022-07-14T15:53:37.292+0800	info	G:/GoProject/mall/global/dao/redisDB.go:66	success to connect redis	{"application": "mall"}
+2022-07-14T15:54:22.367+0800	info	G:/GoProject/mall/global/log/logger.go:95	Logger init success	{"application": "mall"}
+2022-07-14T15:54:22.396+0800	info	G:/GoProject/mall/global/dao/elastic_searchDB.go:37	Elasticsearch returned with code 200 and version 6.2.2
+	{"application": "mall"}
+2022-07-14T15:54:22.404+0800	info	G:/GoProject/mall/global/dao/mysqlDB.go:56	success to connect database	{"application": "mall"}
+2022-07-14T15:54:22.406+0800	info	G:/GoProject/mall/global/dao/redisDB.go:66	success to connect redis	{"application": "mall"}
+2022-07-14T15:54:35.188+0800	info	G:/GoProject/mall/global/log/logger.go:95	Logger init success	{"application": "mall"}
+2022-07-14T15:54:35.211+0800	info	G:/GoProject/mall/global/dao/elastic_searchDB.go:37	Elasticsearch returned with code 200 and version 6.2.2
+	{"application": "mall"}
+2022-07-14T15:54:35.219+0800	info	G:/GoProject/mall/global/dao/mysqlDB.go:56	success to connect database	{"application": "mall"}
+2022-07-14T15:54:35.220+0800	info	G:/GoProject/mall/global/dao/redisDB.go:66	success to connect redis	{"application": "mall"}
+2022-07-14T15:55:32.590+0800	info	G:/GoProject/mall/global/log/logger.go:95	Logger init success	{"application": "mall"}
+2022-07-14T15:55:32.613+0800	info	G:/GoProject/mall/global/dao/elastic_searchDB.go:37	Elasticsearch returned with code 200 and version 6.2.2
+	{"application": "mall"}
+2022-07-14T15:55:32.621+0800	info	G:/GoProject/mall/global/dao/mysqlDB.go:56	success to connect database	{"application": "mall"}
+2022-07-14T15:55:32.622+0800	info	G:/GoProject/mall/global/dao/redisDB.go:66	success to connect redis	{"application": "mall"}
+2022-07-14T15:58:38.696+0800	info	G:/GoProject/mall/global/log/logger.go:95	Logger init success	{"application": "mall"}
+2022-07-14T15:58:38.721+0800	info	G:/GoProject/mall/global/dao/elastic_searchDB.go:37	Elasticsearch returned with code 200 and version 6.2.2
+	{"application": "mall"}
+2022-07-14T15:58:38.729+0800	info	G:/GoProject/mall/global/dao/mysqlDB.go:56	success to connect database	{"application": "mall"}
+2022-07-14T15:58:38.730+0800	info	G:/GoProject/mall/global/dao/redisDB.go:66	success to connect redis	{"application": "mall"}
+2022-07-14T16:00:14.213+0800	info	G:/GoProject/mall/global/log/logger.go:95	Logger init success	{"application": "mall"}
+2022-07-14T16:00:14.236+0800	info	G:/GoProject/mall/global/dao/elastic_searchDB.go:37	Elasticsearch returned with code 200 and version 6.2.2
+	{"application": "mall"}
+2022-07-14T16:00:14.245+0800	info	G:/GoProject/mall/global/dao/mysqlDB.go:56	success to connect database	{"application": "mall"}
+2022-07-14T16:00:14.246+0800	info	G:/GoProject/mall/global/dao/redisDB.go:66	success to connect redis	{"application": "mall"}
+2022-07-14T16:17:01.308+0800	info	G:/GoProject/mall/global/log/logger.go:95	Logger init success	{"application": "mall"}
+2022-07-14T16:17:01.330+0800	info	G:/GoProject/mall/global/dao/elastic_searchDB.go:37	Elasticsearch returned with code 200 and version 6.2.2
+	{"application": "mall"}
+2022-07-14T16:17:01.339+0800	info	G:/GoProject/mall/global/dao/mysqlDB.go:56	success to connect database	{"application": "mall"}
+2022-07-14T16:17:01.340+0800	info	G:/GoProject/mall/global/dao/redisDB.go:66	success to connect redis	{"application": "mall"}
+2022-07-14T16:17:24.502+0800	info	G:/GoProject/mall/global/log/logger.go:95	Logger init success	{"application": "mall"}
+2022-07-14T16:17:24.521+0800	info	G:/GoProject/mall/global/dao/elastic_searchDB.go:37	Elasticsearch returned with code 200 and version 6.2.2
+	{"application": "mall"}
+2022-07-14T16:17:24.529+0800	info	G:/GoProject/mall/global/dao/mysqlDB.go:56	success to connect database	{"application": "mall"}
+2022-07-14T16:17:24.530+0800	info	G:/GoProject/mall/global/dao/redisDB.go:66	success to connect redis	{"application": "mall"}
+2022-07-14T20:53:14.897+0800	info	G:/GoProject/mall/global/log/logger.go:95	Logger init success	{"application": "mall"}
+2022-07-14T20:53:16.953+0800	error	G:/GoProject/mall/global/dao/elastic_searchDB.go:35	ping es failedGet "http://127.0.0.1:9200/": dial tcp 127.0.0.1:9200: connectex: No connection could be made because the target machine actively refused it.	{"application": "mall"}

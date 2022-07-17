@@ -18,6 +18,7 @@ import (
 // @contact.email 962349367@qq.com
 // @host 127.0.0.1:8080
 func main() {
+
 	log.Logger.Info("starting server...")
 
 	newRouter := route.GetRoute()

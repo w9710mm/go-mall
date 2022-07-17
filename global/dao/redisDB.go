@@ -14,7 +14,7 @@ type RedisHelper struct {
 }
 
 var redisHelper *RedisHelper
-var ctx = context.Background()
+var redisCtx = context.Background()
 
 var redisOnce sync.Once
 
@@ -66,5 +66,5 @@ func init() {
 	log.Logger.Info("success to connect redis")
 }
 func GetRedis() (*RedisHelper, context.Context) {
-	return redisHelper, ctx
+	return redisHelper, redisCtx
 }

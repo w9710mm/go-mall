@@ -13,8 +13,9 @@ type esProductMapper struct {
 
 var EsProductMapper = new(esProductMapper)
 
-func (m esProductMapper) GetAllEsProductList(id int) (esProducts []document.EsProduct,
+func (m esProductMapper) GetAllEsProductList(id int64) (esProducts []document.EsProduct,
 	err error) {
+
 	product := model.PmsProduct{}
 
 	sel := "p.id id," +
@@ -55,7 +56,7 @@ func (m esProductMapper) GetAllEsProductList(id int) (esProducts []document.EsPr
 	if rows.Next() {
 		e := document.EsProduct{}
 		att := domain.EsProductAttributeValue{}
-		err := rows.Scan(&e.Id, &e.ProductSn, &e.BrandId, &e.BrandName, &e.ProductCategoryId, &e.ProductCategoryName,
+		err = rows.Scan(&e.Id, &e.ProductSn, &e.BrandId, &e.BrandName, &e.ProductCategoryId, &e.ProductCategoryName,
 			&e.Pic, &e.Name, &e.SubTitle, &e.Price, &e.Sale, &e.NewStatus, &e.RecommandStatus, &e.Stock, &e.PromotionType,
 			&e.Keywords, &e.Sort, &att.Id, &att.Value, &att.ProductAttributeID, &att.Type, &att.Name)
 		e.AttrValueList = append(e.AttrValueList, att)
@@ -70,7 +71,7 @@ func (m esProductMapper) GetAllEsProductList(id int) (esProducts []document.EsPr
 	for rows.Next() {
 		e := document.EsProduct{}
 		att := domain.EsProductAttributeValue{}
-		err := rows.Scan(&e.Id, &e.ProductSn, &e.BrandId, &e.BrandName, &e.ProductCategoryId, &e.ProductCategoryName,
+		err = rows.Scan(&e.Id, &e.ProductSn, &e.BrandId, &e.BrandName, &e.ProductCategoryId, &e.ProductCategoryName,
 			&e.Pic, &e.Name, &e.SubTitle, &e.Price, &e.Sale, &e.NewStatus, &e.RecommandStatus, &e.Stock, &e.PromotionType,
 			&e.Keywords, &e.Sort, &att.Id, &att.Value, &att.ProductAttributeID, &att.Type, &att.Name)
 		if err != nil {

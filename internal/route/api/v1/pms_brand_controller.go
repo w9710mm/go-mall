@@ -57,7 +57,7 @@ func UpdateBrand(c *gin.Context) {
 
 	var brand model.PmsBrand
 	c.ShouldBind(&brand)
-	id, err := strconv.ParseInt(c.Param("id"), 10, 32)
+	id, err := strconv.Atoi(c.Param("id"))
 
 	if err != nil {
 		msg := "updateBrand param id error:" + err.Error()
@@ -65,7 +65,7 @@ func UpdateBrand(c *gin.Context) {
 		c.JSON(http.StatusOK, response.FailedMsg(msg))
 		return
 	}
-	count := pmsBrandSerivce.UpdateBrand(int(id), brand)
+	count := pmsBrandSerivce.UpdateBrand(id, brand)
 	if count != 1 {
 		log.Logger.Debug((fmt.Sprintf("updateBrand failed :id=%d", id)))
 		c.JSON(http.StatusOK, response.FailedMsg("updateBrand failed"))
@@ -88,7 +88,7 @@ func UpdateBrand(c *gin.Context) {
 // @Failure 500 {object} response.ResponseMsg "failure"
 // @Router /brand/delete/{id} [get]
 func DeleteBrand(c *gin.Context) {
-	id, err := strconv.ParseInt(c.Param("id"), 10, 64)
+	id, err := strconv.Atoi(c.Param("id"))
 
 	if err != nil {
 		msg := "deleteBrand param id error:" + err.Error()
@@ -120,7 +120,7 @@ func DeleteBrand(c *gin.Context) {
 // @Failure 500 {object} response.ResponseMsg "failure"
 // @Router /brand/{id} [get]
 func Brand(c *gin.Context) {
-	id, err := strconv.ParseInt(c.Param("id"), 10, 64)
+	id, err := strconv.Atoi(c.Param("id"))
 
 	if err != nil {
 		msg := "brand param id error:" + err.Error()
@@ -153,14 +153,14 @@ func Brand(c *gin.Context) {
 // @Router /brand/list [get]
 func ListBrand(c *gin.Context) {
 
-	pageNum, err := strconv.ParseInt(c.DefaultQuery("pageNum", "1"), 10, 64)
+	pageNum, err := strconv.Atoi(c.DefaultQuery("pageNum", "1"))
 	if err != nil {
 		msg := "listBrand param pageNum error:" + err.Error()
 		log.Logger.Debug(msg)
 		c.JSON(http.StatusOK, response.FailedMsg(msg))
 		return
 	}
-	pageSize, err := strconv.ParseInt(c.DefaultQuery("pageSize", "3"), 10, 64)
+	pageSize, err := strconv.Atoi(c.DefaultQuery("pageSize", "3"))
 
 	if err != nil {
 		msg := "listBrand param pageSize error:" + err.Error()

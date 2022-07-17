@@ -18,8 +18,10 @@ var UmsAdminService = new(umsAdminService)
 func (s *umsAdminService) Register(adminDto dto.UmsAdminParam) (admin model.UmsAdmin, err error) {
 
 	copier.Copy(&adminDto, &admin)
-	admin.CreateTime = time.Now()
-	admin.Status = 1
+	var ct = time.Now()
+	admin.CreateTime = &ct
+	var status = 1
+	admin.Status = &status
 	var dbAdmin model.UmsAdmin
 	row := dao.DB.Where(&model.UmsAdmin{Username: admin.Username}).First(&dbAdmin).RowsAffected
 	if row > 0 {
@@ -29,7 +31,7 @@ func (s *umsAdminService) Register(adminDto dto.UmsAdminParam) (admin model.UmsA
 	if err != nil {
 		return model.UmsAdmin{}, errors.New("scrypt password error")
 	}
-	admin.Password = password
+	admin.Password = &password
 	dao.DB.Save(&admin)
 	return admin, nil
 }
