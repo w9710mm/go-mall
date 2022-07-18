@@ -5,7 +5,7 @@ import (
 	"github.com/olivere/elastic/v7"
 	"mall/global/dao"
 	"mall/global/dao/document"
-	"mall/global/dao/repositroy"
+	"mall/global/dao/repository"
 	"testing"
 )
 
@@ -25,7 +25,7 @@ func TestRe(t *testing.T) {
 		Sort("_id", false)
 
 	//value := reflect.ValueOf(ss).Elem().Field(0)
-	r := repositroy.Page[document.EsProduct]{Pages: 0, PageSize: 10}
+	r := repository.Page[document.EsProduct]{Pages: 0, PageSize: 10}
 	err := r.SelectPages(ss, []string{}, ctx)
 	if err != nil {
 		fmt.Println(err)

@@ -14,7 +14,12 @@ import (
 
 var pmsBrandSerivce = service.PmsBrandService
 
-// createBrand godoc
+type pmsBrandController struct {
+}
+
+var PmsBrandController = new(pmsBrandController)
+
+// Create godoc
 // @Summary 创建品牌
 // @Description 创建一个品牌
 // @Tags 品牌接口
@@ -25,7 +30,7 @@ var pmsBrandSerivce = service.PmsBrandService
 // @Success 200 {object} response.ResponseMsg{data=model.PmsBrand} "success"
 // @Failure 500 {object} response.ResponseMsg{data=model.PmsBrand} "failure"
 // @Router /brand/create [post]
-func CreateBrand(c *gin.Context) {
+func (b pmsBrandController) Create(c *gin.Context) {
 
 	var brand model.PmsBrand
 	c.ShouldBind(&brand)
@@ -41,7 +46,7 @@ func CreateBrand(c *gin.Context) {
 	c.JSON(http.StatusOK, response.SuccessMsg(brand))
 }
 
-// UpdateBrand godoc
+// Update godoc
 // @Summary 更新品牌
 // @Description 更新品牌
 // @Tags 品牌接口
@@ -53,7 +58,7 @@ func CreateBrand(c *gin.Context) {
 // @Success 200 {object} response.ResponseMsg{data=model.PmsBrand} "success"
 // @Failure 500 {object} response.ResponseMsg "failure"
 // @Router /brand/update/{id} [post]
-func UpdateBrand(c *gin.Context) {
+func (b pmsBrandController) Update(c *gin.Context) {
 
 	var brand model.PmsBrand
 	c.ShouldBind(&brand)
@@ -76,7 +81,7 @@ func UpdateBrand(c *gin.Context) {
 	c.JSON(http.StatusOK, response.SuccessMsg(brand))
 }
 
-// DeleteBrand godoc
+// Delete godoc
 // @Summary 删除品牌
 // @Description 删除品牌
 // @Tags 品牌接口
@@ -87,7 +92,7 @@ func UpdateBrand(c *gin.Context) {
 // @Success 200 {object} response.ResponseMsg "success"
 // @Failure 500 {object} response.ResponseMsg "failure"
 // @Router /brand/delete/{id} [get]
-func DeleteBrand(c *gin.Context) {
+func (b pmsBrandController) Delete(c *gin.Context) {
 	id, err := strconv.Atoi(c.Param("id"))
 
 	if err != nil {
@@ -119,7 +124,7 @@ func DeleteBrand(c *gin.Context) {
 // @Success 200 {object} response.ResponseMsg{data=model.PmsBrand} "success"
 // @Failure 500 {object} response.ResponseMsg "failure"
 // @Router /brand/{id} [get]
-func Brand(c *gin.Context) {
+func (b pmsBrandController) Brand(c *gin.Context) {
 	id, err := strconv.Atoi(c.Param("id"))
 
 	if err != nil {
@@ -146,12 +151,12 @@ func Brand(c *gin.Context) {
 // @ID v1/PmsBrandController/list
 // @Accept  json
 // @Produce  json
-// @Param pageNum query int false "page number" defualt(1)
+// @Param pageNum query int false "page number" defualt(0)
 // @Param pageSize query int false "page size"  defualt(3)
 // @Success 200 {object} response.ResponseMsg{data=model.PmsBrand} "success"
 // @Failure 500 {object} response.ResponseMsg "failure"
 // @Router /brand/list [get]
-func ListBrand(c *gin.Context) {
+func (b pmsBrandController) ListBrand(c *gin.Context) {
 
 	pageNum, err := strconv.Atoi(c.DefaultQuery("pageNum", "1"))
 	if err != nil {

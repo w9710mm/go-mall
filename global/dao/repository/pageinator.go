@@ -1,4 +1,4 @@
-package repositroy
+package repository
 
 import (
 	"context"
@@ -18,7 +18,7 @@ type Page[T any] struct {
 
 // 各种查询条件先在query设置好后再放进来
 func (page *Page[T]) SelectPages(ss *elastic.SearchService, search []string, ctx context.Context) (e error) {
-	Paginate(page)
+	paginate(page)
 
 	if len(search) != 0 {
 		//TODO searchAfeter的详细实现
@@ -52,7 +52,7 @@ func (page *Page[T]) SelectPages(ss *elastic.SearchService, search []string, ctx
 	return
 }
 
-func Paginate[T any](page *Page[T]) {
+func paginate[T any](page *Page[T]) {
 
 	if page.CurrentPage <= 0 {
 		page.CurrentPage = 0

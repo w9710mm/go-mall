@@ -1,4 +1,4 @@
-package repositroy
+package repository
 
 import (
 	elastic "github.com/olivere/elastic/v7"

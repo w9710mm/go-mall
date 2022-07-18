@@ -35,7 +35,7 @@ func (s *pmsBrandService) GetBrand(id int) (model.PmsBrand, error) {
 }
 
 func (s *pmsBrandService) ListBrand(num int, size int) (paginator.Page[model.PmsBrand], error) {
-	page := paginator.Page[model.PmsBrand]{CurrentPage: 1, PageSize: int64(size)}
+	page := paginator.Page[model.PmsBrand]{CurrentPage: int64(num), PageSize: int64(size)}
 
 	query := dao.DB.Model(&model.PmsBrand{})
 

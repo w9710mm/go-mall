@@ -6,7 +6,7 @@ import (
 	ginSwagger "github.com/swaggo/gin-swagger"
 	"go.uber.org/zap"
 	middleware "mall/internal/middleware"
-	v12 "mall/internal/route/api/v1"
+	v1 "mall/internal/route/api/v1"
 
 	_ "mall/docs"
 	"mall/global/log"
@@ -33,20 +33,32 @@ func newRouter() {
 
 	brand := router.Group("/brand")
 	{
-		brand.POST("/create", v12.CreateBrand)
-		brand.GET("/list", v12.ListBrand)
-		brand.GET("/:id", v12.Brand)
-		brand.GET("/delete/:id", v12.DeleteBrand)
-		brand.POST("/update/:id", v12.UpdateBrand)
-
+		brand.POST("/create", v1.PmsBrandController.Create)
+		brand.GET("/list", v1.PmsBrandController.ListBrand)
+		brand.GET("/:id", v1.PmsBrandController.Brand)
+		brand.GET("/delete/:id", v1.PmsBrandController.Delete)
+		brand.POST("/update/:id", v1.PmsBrandController.Update)
 	}
 	brand.Use(middleware.JWTAuth())
 	sso := router.Group("/sso")
 	{
-		sso.GET("/getAuthCode", v12.GetAuthCode)
-		sso.POST("/verifyAuthCode", v12.UpdatePassword)
+		sso.GET("/getAuthCode", v1.GetAuthCode)
+		sso.POST("/verifyAuthCode", v1.UpdatePassword)
 	}
 	sso.Use(middleware.JWTAuth())
+
+	esProduct := router.Group("/esProduct")
+	{
+		esProduct.POST("/importAll", v1.EsProductController.ImportAllList)
+		esProduct.GET("/delete/:id", v1.EsProductController.Delete)
+		esProduct.POST("/delete/batch", v1.EsProductController.DeleteBatch)
+		esProduct.POST("/create/:id", v1.EsProductController.Create)
+		esProduct.GET("/search/simple", v1.EsProductController.SearchSimple)
+		esProduct.GET("/search", v1.EsProductController.SearchDetail)
+		esProduct.GET("/recommend/:id", v1.EsProductController.Recommend)
+		esProduct.GET("/search/relate", v1.EsProductController.SearchRelatedInfo)
+	}
+
 }
 
 func GetRoute() *gin.Engine {

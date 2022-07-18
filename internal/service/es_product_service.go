@@ -5,7 +5,7 @@ import (
 	"mall/global/dao/document"
 	"mall/global/dao/domain"
 	"mall/global/dao/mapper"
-	"mall/global/dao/repositroy"
+	"mall/global/dao/repository"
 )
 
 type esProductService struct {
@@ -14,7 +14,7 @@ type esProductService struct {
 var EsProductService = new(esProductService)
 var esProductMapper = mapper.EsProductMapper
 
-var esProductRepository = repositroy.EsProductRepository
+var esProductRepository = repository.EsProductRepository
 
 func (s esProductService) ImportAll() (num int, err error) {
 	esProducts, err := esProductMapper.GetAllEsProductList(0)
@@ -58,10 +58,10 @@ func (s esProductService) Create(id int64) (esProduct document.EsProduct,
 }
 
 func (s esProductService) SearchByKeyword(keyword string, pageNum int, pageSize int) (
-	repositroy.Page[document.EsProduct], error) {
+	repository.Page[document.EsProduct], error) {
 
 	boolQuery := elastic.NewBoolQuery()
-	page := &repositroy.Page[document.EsProduct]{Pages: pageNum, PageSize: pageSize}
+	page := &repository.Page[document.EsProduct]{Pages: pageNum, PageSize: pageSize}
 	sortInfo := elastic.SortInfo{Field: "_id", Ascending: false}
 	searchSource := elastic.NewSearchSource()
 
@@ -78,11 +78,11 @@ func (s esProductService) SearchByKeyword(keyword string, pageNum int, pageSize 
 
 func (s esProductService) SearchByDetail(keyword string, brandId int64,
 	productCategoryId int64, pageNum int, pageSize int, sort int) (
-	repositroy.Page[document.EsProduct], error) {
+	repository.Page[document.EsProduct], error) {
 
 	query := elastic.NewBoolQuery()
 	sortInfo := elastic.SortInfo{}
-	page := &repositroy.Page[document.EsProduct]{Pages: pageNum, PageSize: pageSize}
+	page := &repository.Page[document.EsProduct]{Pages: pageNum, PageSize: pageSize}
 	searchSource := elastic.NewSearchSource()
 	if brandId != 0 || productCategoryId != 0 {
 		q := elastic.NewBoolQuery()
@@ -127,11 +127,11 @@ func (s esProductService) SearchByDetail(keyword string, brandId int64,
 }
 
 func (s esProductService) Recommend(id int64, pageNum int, pageSize int) (
-	repositroy.Page[document.EsProduct], error) {
+	repository.Page[document.EsProduct], error) {
 
 	query := elastic.NewBoolQuery()
 	sortInfo := elastic.SortInfo{}
-	page := &repositroy.Page[document.EsProduct]{Pages: pageNum, PageSize: pageSize}
+	page := &repository.Page[document.EsProduct]{Pages: pageNum, PageSize: pageSize}
 	searchSource := elastic.NewSearchSource()
 
 	esProducts, err := esProductMapper.GetAllEsProductList(id)

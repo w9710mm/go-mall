@@ -1,4 +1,176 @@
 definitions:
+  document.EsProduct:
+    properties:
+      album_pics:
+        description: 是否可空:YES 画册图片，连产品图片限制为5张，以逗号分割
+        type: string
+      attrValueList:
+        items:
+          $ref: '#/definitions/domain.EsProductAttributeValue'
+        type: array
+      brand_id:
+        description: 是否可空:YES
+        type: integer
+      brand_name:
+        description: 是否可空:YES 品牌名称
+        type: string
+      delete_status:
+        description: 是否可空:YES 删除状态：0->未删除；1->已删除
+        type: integer
+      description:
+        description: 是否可空:YES 商品描述
+        type: string
+      detail_desc:
+        description: 是否可空:YES
+        type: string
+      detail_html:
+        description: 是否可空:YES 产品详情网页内容
+        type: string
+      detail_mobile_html:
+        description: 是否可空:YES 移动端网页详情
+        type: string
+      detail_title:
+        description: 是否可空:YES
+        type: string
+      feight_template_id:
+        description: 是否可空:YES
+        type: integer
+      gift_growth:
+        description: 是否可空:YES 赠送的成长值
+        type: integer
+      gift_point:
+        description: 是否可空:YES 赠送的积分
+        type: integer
+      id:
+        description: 是否可空:NO
+        type: integer
+      keywords:
+        description: 是否可空:YES
+        type: string
+      low_stock:
+        description: 是否可空:YES 库存预警值
+        type: integer
+      name:
+        description: 是否可空:NO
+        type: string
+      new_status:
+        description: 是否可空:YES 新品状态:0->不是新品；1->新品
+        type: integer
+      note:
+        description: 是否可空:YES
+        type: string
+      original_price:
+        description: 是否可空:YES 市场价
+        type: number
+      pic:
+        description: 是否可空:YES
+        type: string
+      preview_status:
+        description: 是否可空:YES 是否为预告商品：0->不是；1->是
+        type: integer
+      price:
+        description: 是否可空:YES
+        type: number
+      product_attribute_category_id:
+        description: 是否可空:YES
+        type: integer
+      product_category_id:
+        description: 是否可空:YES
+        type: integer
+      product_category_name:
+        description: 是否可空:YES 商品分类名称
+        type: string
+      product_sn:
+        description: 是否可空:NO 货号
+        type: string
+      promotion_end_time:
+        description: 是否可空:YES 促销结束时间
+        type: string
+      promotion_per_limit:
+        description: 是否可空:YES 活动限购数量
+        type: integer
+      promotion_price:
+        description: 是否可空:YES 促销价格
+        type: number
+      promotion_start_time:
+        description: 是否可空:YES 促销开始时间
+        type: string
+      promotion_type:
+        description: 是否可空:YES 促销类型：0->没有促销使用原价;1->使用促销价；2->使用会员价；3->使用阶梯价格；4->使用满减价格；5->限时购
+        type: integer
+      publish_status:
+        description: 是否可空:YES 上架状态：0->下架；1->上架
+        type: integer
+      recommand_status:
+        description: 是否可空:YES 推荐状态；0->不推荐；1->推荐
+        type: integer
+      sale:
+        description: 是否可空:YES 销量
+        type: integer
+      service_ids:
+        description: 是否可空:YES 以逗号分割的产品服务：1->无忧退货；2->快速退款；3->免费包邮
+        type: string
+      sort:
+        description: 是否可空:YES 排序
+        type: integer
+      stock:
+        description: 是否可空:YES 库存
+        type: integer
+      sub_title:
+        description: 是否可空:YES 副标题
+        type: string
+      unit:
+        description: 是否可空:YES 单位
+        type: string
+      use_point_limit:
+        description: 是否可空:YES 限制使用的积分数
+        type: integer
+      verify_status:
+        description: 是否可空:YES 审核状态：0->未审核；1->审核通过
+        type: integer
+      weight:
+        description: 是否可空:YES 商品重量，默认为克
+        type: number
+    type: object
+  domain.EsProductAttributeValue:
+    properties:
+      attr_id:
+        type: integer
+      attr_name:
+        type: string
+      attr_product_attribute_id:
+        type: integer
+      attr_type:
+        type: string
+      attr_value:
+        type: string
+    type: object
+  domain.EsProductRelatedInfo:
+    properties:
+      brandNames:
+        items:
+          type: string
+        type: array
+      productAttrs:
+        items:
+          $ref: '#/definitions/domain.ProductAttr'
+        type: array
+      productCategoryNames:
+        items:
+          type: string
+        type: array
+    type: object
+  domain.ProductAttr:
+    properties:
+      attrId:
+        type: integer
+      attrName:
+        type: string
+      attrValues:
+        items:
+          type: string
+        type: array
+    type: object
   model.PmsBrand:
     properties:
       big_pic:
@@ -218,6 +390,263 @@ paths:
       summary: 更新品牌
       tags:
       - 品牌接口
+  /create/{id}:
+    post:
+      consumes:
+      - application/json
+      description: 根据id创建商品
+      operationId: v1/esProduct/Create
+      parameters:
+      - description: product_id
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: success
+          schema:
+            allOf:
+            - $ref: '#/definitions/response.ResponseMsg'
+            - properties:
+                data:
+                  $ref: '#/definitions/document.EsProduct'
+              type: object
+        "500":
+          description: failure
+          schema:
+            $ref: '#/definitions/response.ResponseMsg'
+      summary: 根据id创建商品
+      tags:
+      - 搜索商品管理
+  /delete/{id}:
+    get:
+      consumes:
+      - application/json
+      description: 根据id删除商品
+      operationId: v1/esProduct/Delete
+      parameters:
+      - description: product_id
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: success
+          schema:
+            $ref: '#/definitions/response.ResponseMsg'
+        "500":
+          description: failure
+          schema:
+            $ref: '#/definitions/response.ResponseMsg'
+      summary: 根据id删除商品
+      tags:
+      - 搜索商品管理
+  /delete/batch:
+    post:
+      consumes:
+      - application/json
+      description: 根据id批量删除商品
+      operationId: v1/esProduct/DeleteBatch
+      parameters:
+      - description: product_ids
+        in: query
+        items:
+          type: integer
+        name: ids
+        required: true
+        type: array
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: success
+          schema:
+            allOf:
+            - $ref: '#/definitions/response.ResponseMsg'
+            - properties:
+                data:
+                  type: integer
+              type: object
+        "500":
+          description: failure
+          schema:
+            $ref: '#/definitions/response.ResponseMsg'
+      summary: 根据id批量删除商品
+      tags:
+      - 搜索商品管理
+  /esProduct/importAll:
+    get:
+      consumes:
+      - application/json
+      description: 导入所有数据库中商品到ES
+      operationId: v1/esProduct/importAll
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: success
+          schema:
+            $ref: '#/definitions/response.ResponseMsg'
+        "500":
+          description: failure
+          schema:
+            $ref: '#/definitions/response.ResponseMsg'
+      summary: 导入所有数据库中商品到ES
+      tags:
+      - 搜索商品管理
+  /recommend/{id}:
+    get:
+      consumes:
+      - application/json
+      description: 根据商品id推荐商品
+      operationId: v1/esProduct/Recommend
+      parameters:
+      - description: brandId
+        in: path
+        name: brandId
+        required: true
+        type: integer
+      - description: page number
+        in: query
+        name: pageNum
+        type: integer
+      - description: page size
+        in: query
+        name: pageSize
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: success
+          schema:
+            $ref: '#/definitions/response.ResponseMsg'
+        "500":
+          description: failure
+          schema:
+            $ref: '#/definitions/response.ResponseMsg'
+      summary: 根据商品id推荐商品
+      tags:
+      - 搜索商品管理
+  /search:
+    get:
+      consumes:
+      - application/json
+      description: 综合搜索、筛选、排序
+      operationId: v1/esProduct/SearchDetail
+      parameters:
+      - description: keyword
+        in: query
+        name: keyword
+        type: string
+      - description: brandId
+        in: query
+        name: brandId
+        type: integer
+      - description: page number
+        in: query
+        name: productCategoryId
+        type: integer
+      - description: page number
+        in: query
+        name: pageNum
+        type: integer
+      - description: page size
+        in: query
+        name: pageSize
+        type: integer
+      - description: sort 排序字段:0->按相关度；1->按新品；2->按销量；3->价格从低到高；4->价格从高到低
+        in: query
+        name: sort
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: success
+          schema:
+            $ref: '#/definitions/response.ResponseMsg'
+        "500":
+          description: failure
+          schema:
+            $ref: '#/definitions/response.ResponseMsg'
+      summary: 综合搜索、筛选、排序
+      tags:
+      - 搜索商品管理
+  /search/relate:
+    get:
+      consumes:
+      - application/json
+      description: 获取搜索的相关品牌、分类及筛选属性
+      operationId: v1/esProduct/SearchRelatedInfo
+      parameters:
+      - description: keyword
+        in: query
+        name: keyword
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: success
+          schema:
+            allOf:
+            - $ref: '#/definitions/response.ResponseMsg'
+            - properties:
+                data:
+                  $ref: '#/definitions/domain.EsProductRelatedInfo'
+              type: object
+        "500":
+          description: failure
+          schema:
+            $ref: '#/definitions/response.ResponseMsg'
+      summary: 获取搜索的相关品牌、分类及筛选属性
+      tags:
+      - 搜索商品管理
+  /search/simple:
+    get:
+      consumes:
+      - application/json
+      description: 简单搜索
+      operationId: v1/esProduct/SearchSimple
+      parameters:
+      - description: page number
+        in: query
+        name: keyword
+        type: string
+      - description: page number
+        in: query
+        name: pageNum
+        type: integer
+      - description: page size
+        in: query
+        name: pageSize
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: success
+          schema:
+            allOf:
+            - $ref: '#/definitions/response.ResponseMsg'
+            - properties:
+                data:
+                  $ref: '#/definitions/document.EsProduct'
+              type: object
+        "500":
+          description: failure
+          schema:
+            $ref: '#/definitions/response.ResponseMsg'
+      summary: 简单搜索
+      tags:
+      - 搜索商品管理
   /sso/getAuthCode:
     get:
       consumes:
@@ -228,6 +657,7 @@ paths:
       - description: telephone
         in: query
         name: telephone
+        required: true
         type: string
       produces:
       - application/json
@@ -253,10 +683,12 @@ paths:
       - description: telephone
         in: query
         name: telephone
+        required: true
         type: string
       - description: authcode
         in: query
         name: authcode
+        required: true
         type: string
       produces:
       - application/json
