@@ -1,11 +1,11 @@
 package domain
 
 type EsProductAttributeValue struct {
-	Id                 *int64  `gorm:"column:attr_id" json:"attr_id" `
-	ProductAttributeID *int64  `gorm:"column:attr_product_attribute_id" json:"attr_product_attribute_id" `
-	Value              *string `gorm:"column:attr_value" json:"attr_value" `
-	Type               *string `gorm:"column:attr_type" json:"attr_type" `
-	Name               *string `gorm:"column:attr_name" json:"attr_name" `
+	Id                 *int64  `gorm:"column:attr_id" json:"id" `
+	ProductAttributeID *int64  `gorm:"column:attr_product_attribute_id" json:"productAttributeId" `
+	Value              *string `gorm:"column:attr_value" json:"value" `
+	Type               *int    `gorm:"column:attr_type" json:"type" `
+	Name               *string `gorm:"column:attr_name" json:"name" `
 
 	//model.PmsProductAttribute
 	//model.PmsProductAttributeValue

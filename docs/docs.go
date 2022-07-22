@@ -141,12 +141,14 @@ const docTemplate = `{
                 "parameters": [
                     {
                         "type": "integer",
+                        "default": 0,
                         "description": "page number",
                         "name": "pageNum",
                         "in": "query"
                     },
                     {
                         "type": "integer",
+                        "default": 3,
                         "description": "page size",
                         "name": "pageSize",
                         "in": "query"
@@ -291,7 +293,7 @@ const docTemplate = `{
                 }
             }
         },
-        "/create/{id}": {
+        "/esProduct/create/{id}": {
             "post": {
                 "description": "根据id创建商品",
                 "consumes": [
@@ -342,7 +344,7 @@ const docTemplate = `{
                 }
             }
         },
-        "/delete/batch": {
+        "/esProduct/delete/batch": {
             "post": {
                 "description": "根据id批量删除商品",
                 "consumes": [
@@ -396,7 +398,7 @@ const docTemplate = `{
                 }
             }
         },
-        "/delete/{id}": {
+        "/esProduct/delete/{id}": {
             "get": {
                 "description": "根据id删除商品",
                 "consumes": [
@@ -436,7 +438,7 @@ const docTemplate = `{
             }
         },
         "/esProduct/importAll": {
-            "get": {
+            "post": {
                 "description": "导入所有数据库中商品到ES",
                 "consumes": [
                     "application/json"
@@ -465,7 +467,7 @@ const docTemplate = `{
                 }
             }
         },
-        "/recommend/{id}": {
+        "/esProduct/recommend/{id}": {
             "get": {
                 "description": "根据商品id推荐商品",
                 "consumes": [
@@ -483,18 +485,20 @@ const docTemplate = `{
                     {
                         "type": "integer",
                         "description": "brandId",
-                        "name": "brandId",
+                        "name": "id",
                         "in": "path",
                         "required": true
                     },
                     {
                         "type": "integer",
+                        "default": 0,
                         "description": "page number",
                         "name": "pageNum",
                         "in": "query"
                     },
                     {
                         "type": "integer",
+                        "default": 5,
                         "description": "page size",
                         "name": "pageSize",
                         "in": "query"
@@ -508,7 +512,7 @@ const docTemplate = `{
                         }
                     },
                     "500": {
-                        "description": "failure",
+                        "description": "default",
                         "schema": {
                             "$ref": "#/definitions/response.ResponseMsg"
                         }
@@ -516,7 +520,7 @@ const docTemplate = `{
                 }
             }
         },
-        "/search": {
+        "/esProduct/search": {
             "get": {
                 "description": "综合搜索、筛选、排序",
                 "consumes": [
@@ -539,24 +543,28 @@ const docTemplate = `{
                     },
                     {
                         "type": "integer",
+                        "default": 0,
                         "description": "brandId",
                         "name": "brandId",
                         "in": "query"
                     },
                     {
                         "type": "integer",
-                        "description": "page number",
+                        "default": 0,
+                        "description": "product Category Id",
                         "name": "productCategoryId",
                         "in": "query"
                     },
                     {
                         "type": "integer",
+                        "default": 0,
                         "description": "page number",
                         "name": "pageNum",
                         "in": "query"
                     },
                     {
                         "type": "integer",
+                        "default": 5,
                         "description": "page size",
                         "name": "pageSize",
                         "in": "query"
@@ -584,7 +592,7 @@ const docTemplate = `{
                 }
             }
         },
-        "/search/relate": {
+        "/esProduct/search/relate": {
             "get": {
                 "description": "获取搜索的相关品牌、分类及筛选属性",
                 "consumes": [
@@ -634,7 +642,7 @@ const docTemplate = `{
                 }
             }
         },
-        "/search/simple": {
+        "/esProduct/search/simple": {
             "get": {
                 "description": "简单搜索",
                 "consumes": [
@@ -651,18 +659,21 @@ const docTemplate = `{
                 "parameters": [
                     {
                         "type": "string",
+                        "default": "\"\"",
                         "description": "page number",
                         "name": "keyword",
                         "in": "query"
                     },
                     {
                         "type": "integer",
+                        "default": 0,
                         "description": "page number",
                         "name": "pageNum",
                         "in": "query"
                     },
                     {
                         "type": "integer",
+                        "default": 5,
                         "description": "page size",
                         "name": "pageSize",
                         "in": "query"
@@ -786,198 +797,82 @@ const docTemplate = `{
         "document.EsProduct": {
             "type": "object",
             "properties": {
-                "album_pics": {
-                    "description": "是否可空:YES 画册图片，连产品图片限制为5张，以逗号分割",
-                    "type": "string"
-                },
                 "attrValueList": {
                     "type": "array",
                     "items": {
                         "$ref": "#/definitions/domain.EsProductAttributeValue"
                     }
                 },
-                "brand_id": {
-                    "description": "是否可空:YES",
+                "brandId": {
                     "type": "integer"
                 },
-                "brand_name": {
-                    "description": "是否可空:YES 品牌名称",
+                "brandName": {
                     "type": "string"
-                },
-                "delete_status": {
-                    "description": "是否可空:YES 删除状态：0-\u003e未删除；1-\u003e已删除",
-                    "type": "integer"
-                },
-                "description": {
-                    "description": "是否可空:YES 商品描述",
-                    "type": "string"
-                },
-                "detail_desc": {
-                    "description": "是否可空:YES",
-                    "type": "string"
-                },
-                "detail_html": {
-                    "description": "是否可空:YES 产品详情网页内容",
-                    "type": "string"
-                },
-                "detail_mobile_html": {
-                    "description": "是否可空:YES 移动端网页详情",
-                    "type": "string"
-                },
-                "detail_title": {
-                    "description": "是否可空:YES",
-                    "type": "string"
-                },
-                "feight_template_id": {
-                    "description": "是否可空:YES",
-                    "type": "integer"
-                },
-                "gift_growth": {
-                    "description": "是否可空:YES 赠送的成长值",
-                    "type": "integer"
-                },
-                "gift_point": {
-                    "description": "是否可空:YES 赠送的积分",
-                    "type": "integer"
                 },
                 "id": {
-                    "description": "是否可空:NO",
+                    "description": "model.PmsProduct",
                     "type": "integer"
                 },
                 "keywords": {
-                    "description": "是否可空:YES",
                     "type": "string"
-                },
-                "low_stock": {
-                    "description": "是否可空:YES 库存预警值",
-                    "type": "integer"
                 },
                 "name": {
-                    "description": "是否可空:NO",
                     "type": "string"
                 },
-                "new_status": {
-                    "description": "是否可空:YES 新品状态:0-\u003e不是新品；1-\u003e新品",
+                "newStatus": {
                     "type": "integer"
-                },
-                "note": {
-                    "description": "是否可空:YES",
-                    "type": "string"
-                },
-                "original_price": {
-                    "description": "是否可空:YES 市场价",
-                    "type": "number"
                 },
                 "pic": {
-                    "description": "是否可空:YES",
                     "type": "string"
-                },
-                "preview_status": {
-                    "description": "是否可空:YES 是否为预告商品：0-\u003e不是；1-\u003e是",
-                    "type": "integer"
                 },
                 "price": {
-                    "description": "是否可空:YES",
                     "type": "number"
                 },
-                "product_attribute_category_id": {
-                    "description": "是否可空:YES",
+                "productCategoryId": {
                     "type": "integer"
                 },
-                "product_category_id": {
-                    "description": "是否可空:YES",
-                    "type": "integer"
-                },
-                "product_category_name": {
-                    "description": "是否可空:YES 商品分类名称",
+                "productCategoryName": {
                     "type": "string"
                 },
-                "product_sn": {
-                    "description": "是否可空:NO 货号",
+                "productSn": {
                     "type": "string"
                 },
-                "promotion_end_time": {
-                    "description": "是否可空:YES 促销结束时间",
-                    "type": "string"
-                },
-                "promotion_per_limit": {
-                    "description": "是否可空:YES 活动限购数量",
+                "promotionType": {
                     "type": "integer"
                 },
-                "promotion_price": {
-                    "description": "是否可空:YES 促销价格",
-                    "type": "number"
-                },
-                "promotion_start_time": {
-                    "description": "是否可空:YES 促销开始时间",
-                    "type": "string"
-                },
-                "promotion_type": {
-                    "description": "是否可空:YES 促销类型：0-\u003e没有促销使用原价;1-\u003e使用促销价；2-\u003e使用会员价；3-\u003e使用阶梯价格；4-\u003e使用满减价格；5-\u003e限时购",
-                    "type": "integer"
-                },
-                "publish_status": {
-                    "description": "是否可空:YES 上架状态：0-\u003e下架；1-\u003e上架",
-                    "type": "integer"
-                },
-                "recommand_status": {
-                    "description": "是否可空:YES 推荐状态；0-\u003e不推荐；1-\u003e推荐",
+                "recommandStatus": {
                     "type": "integer"
                 },
                 "sale": {
-                    "description": "是否可空:YES 销量",
                     "type": "integer"
                 },
-                "service_ids": {
-                    "description": "是否可空:YES 以逗号分割的产品服务：1-\u003e无忧退货；2-\u003e快速退款；3-\u003e免费包邮",
-                    "type": "string"
-                },
                 "sort": {
-                    "description": "是否可空:YES 排序",
                     "type": "integer"
                 },
                 "stock": {
-                    "description": "是否可空:YES 库存",
                     "type": "integer"
                 },
-                "sub_title": {
-                    "description": "是否可空:YES 副标题",
+                "subTitle": {
                     "type": "string"
-                },
-                "unit": {
-                    "description": "是否可空:YES 单位",
-                    "type": "string"
-                },
-                "use_point_limit": {
-                    "description": "是否可空:YES 限制使用的积分数",
-                    "type": "integer"
-                },
-                "verify_status": {
-                    "description": "是否可空:YES 审核状态：0-\u003e未审核；1-\u003e审核通过",
-                    "type": "integer"
-                },
-                "weight": {
-                    "description": "是否可空:YES 商品重量，默认为克",
-                    "type": "number"
                 }
             }
         },
         "domain.EsProductAttributeValue": {
             "type": "object",
             "properties": {
-                "attr_id": {
+                "id": {
                     "type": "integer"
                 },
-                "attr_name": {
+                "name": {
                     "type": "string"
                 },
-                "attr_product_attribute_id": {
+                "productAttributeId": {
                     "type": "integer"
                 },
-                "attr_type": {
-                    "type": "string"
+                "type": {
+                    "type": "integer"
                 },
-                "attr_value": {
+                "value": {
                     "type": "string"
                 }
             }

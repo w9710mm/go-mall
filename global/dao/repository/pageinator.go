@@ -3,6 +3,7 @@ package repository
 import (
 	"context"
 	"encoding/json"
+	"fmt"
 	"github.com/olivere/elastic/v7"
 )
 
@@ -35,15 +36,16 @@ func (page *Page[T]) SelectPages(ss *elastic.SearchService, search []string, ctx
 	}
 	page.Total = re.Hits.TotalHits.Value
 	page.Data = []T{}
-	if page.Total == 0 {
-		page.Data = []T{}
+	if page.Total == 0 || re.Hits.TotalHits.Value == 0 {
+
 		return
 	} else {
-		page.Data = make([]T, page.PageSize)
+		page.Data = make([]T, len(re.Hits.Hits))
 	}
 	for i, hit := range re.Hits.Hits {
 		var model T
 		err := json.Unmarshal(hit.Source, &model)
+		fmt.Println(string(hit.Source))
 		if err != nil {
 			return err
 		}

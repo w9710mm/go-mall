@@ -3,7 +3,7 @@ package middleware
 import (
 	"github.com/gin-gonic/gin"
 	"go.uber.org/zap"
-	"mall/global/log"
+	log "mall/global/log"
 	"net"
 	"net/http"
 	"net/http/httputil"
@@ -15,6 +15,7 @@ import (
 func Recovery(stack bool) gin.HandlerFunc {
 	return func(c *gin.Context) {
 		defer func() {
+
 			if err := recover(); err != nil {
 				// Check for a broken connection, as it is not really a
 				// condition that warrants a panic stack trace.
@@ -40,14 +41,15 @@ func Recovery(stack bool) gin.HandlerFunc {
 				}
 
 				if stack {
-					zap.L().Error("[Recovery from panic]",
-						zap.Any("error", err),
+					log.Logger.Debug(
+						"[Recovery from panic]",
+						zap.Any("error", err.(error)),
 						zap.String("request", string(httpRequest)),
 						zap.String("stack", string(debug.Stack())),
 					)
 				} else {
-					zap.L().Error("[Recovery from panic]",
-						zap.Any("error", err),
+					log.Logger.Error("[Recovery from panic]",
+						zap.Any("error", err.(error)),
 						zap.String("request", string(httpRequest)),
 					)
 				}

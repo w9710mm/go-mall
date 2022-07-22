@@ -23,11 +23,12 @@ var esProductService = service.EsProductService
 // @Produce  json
 // @Success 200 {object} response.ResponseMsg "success"
 // @Failure 500 {object} response.ResponseMsg "failure"
-// @Router /esProduct/importAll [get]
+// @Router /esProduct/importAll [post]
 func (e esProductController) ImportAllList(c *gin.Context) {
 	count, err := esProductService.ImportAll()
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, response.FailedMsg(err.Error()))
+		panic(err)
 		return
 	}
 	c.JSON(http.StatusOK, response.SuccessMsg(count))
@@ -44,12 +45,13 @@ func (e esProductController) ImportAllList(c *gin.Context) {
 // @Param id path int true "product_id"
 // @Success 200 {object} response.ResponseMsg "success"
 // @Failure 500 {object} response.ResponseMsg "failure"
-// @Router /delete/{id} [get]
+// @Router /esProduct/delete/{id} [get]
 func (e esProductController) Delete(c *gin.Context) {
 	id, err := strconv.Atoi(c.Param("id"))
 	err = esProductService.DeleteById(id)
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, response.FailedMsg(err.Error()))
+		panic(err)
 		return
 	}
 	c.JSON(http.StatusOK, response.SuccessMsg("ok"))
@@ -66,7 +68,7 @@ func (e esProductController) Delete(c *gin.Context) {
 // @Param ids query []int true "product_ids"
 // @Success 200 {object} response.ResponseMsg{data=int} "success"
 // @Failure 500 {object} response.ResponseMsg "failure"
-// @Router /delete/batch [post]
+// @Router /esProduct/delete/batch [post]
 func (e esProductController) DeleteBatch(c *gin.Context) {
 	ids := c.QueryArray("ids")
 	idsInt := make([]int, len(ids))
@@ -76,6 +78,7 @@ func (e esProductController) DeleteBatch(c *gin.Context) {
 	count, err := esProductService.DeleteByList(idsInt)
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, response.FailedMsg(err.Error()))
+		panic(err)
 		return
 	}
 	c.JSON(http.StatusOK, response.SuccessMsg(count))
@@ -92,12 +95,13 @@ func (e esProductController) DeleteBatch(c *gin.Context) {
 // @Param id path int true "product_id"
 // @Success 200 {object} response.ResponseMsg{data=document.EsProduct} "success"
 // @Failure 500 {object} response.ResponseMsg "failure"
-// @Router /create/{id} [post]
+// @Router /esProduct/create/{id} [post]
 func (e esProductController) Create(c *gin.Context) {
 	id, _ := strconv.ParseInt(c.Param("id"), 10, 64)
 	product, err := esProductService.Create(id)
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, response.FailedMsg(err.Error()))
+		panic(err)
 		return
 	}
 	c.JSON(http.StatusOK, response.SuccessMsg(product))
@@ -110,12 +114,12 @@ func (e esProductController) Create(c *gin.Context) {
 // @ID v1/esProduct/SearchSimple
 // @Accept  json
 // @Produce  json
-// @Param keyword query string false "page number" defualt("")
-// @Param pageNum query int false "page number" defualt(0)
-// @Param pageSize query int false "page size"  defualt(5)
+// @Param keyword query string false "page number" default("")
+// @Param pageNum query int false "page number" default(0)
+// @Param pageSize query int false "page size"  default(5)
 // @Success 200 {object} response.ResponseMsg{data=document.EsProduct} "success"
 // @Failure 500 {object} response.ResponseMsg "failure"
-// @Router /search/simple [get]
+// @Router /esProduct/search/simple [get]
 func (e esProductController) SearchSimple(c *gin.Context) {
 	keyword := c.DefaultQuery("keyword", "")
 	pageNum, _ := strconv.Atoi(c.DefaultQuery("pageNum", "0"))
@@ -124,6 +128,7 @@ func (e esProductController) SearchSimple(c *gin.Context) {
 	page, err := esProductService.SearchByKeyword(keyword, pageNum, pageSize)
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, response.FailedMsg(err.Error()))
+		panic(err)
 		return
 	}
 	c.JSON(http.StatusOK, response.SuccessMsg(page))
@@ -137,15 +142,15 @@ func (e esProductController) SearchSimple(c *gin.Context) {
 // @ID v1/esProduct/SearchDetail
 // @Accept  json
 // @Produce  json
-// @Param keyword query string false "keyword" defualt("")
-// @Param brandId query int false "brandId" defualt(0)
-// @Param productCategoryId query int false "page number" defualt(0)
-// @Param pageNum query int false "page number" defualt(0)
-// @Param pageSize query int false "page size"  defualt(5)
+// @Param keyword query string false "keyword"
+// @Param brandId query int false "brandId" default(0)
+// @Param productCategoryId query int false "product Category Id" default(0)
+// @Param pageNum query int false "page number" default(0)
+// @Param pageSize query int false "page size"  default(5)
 // @Param sort query int false "sort 排序字段:0->按相关度；1->按新品；2->按销量；3->价格从低到高；4->价格从高到低"  defualt(5)
 // @Success 200 {object} response.ResponseMsg "success"
 // @Failure 500 {object} response.ResponseMsg "failure"
-// @Router /search [get]
+// @Router /esProduct/search [get]
 func (e esProductController) SearchDetail(c *gin.Context) {
 	keyword := c.Query("keyword")
 	brandId, _ := strconv.ParseInt(c.DefaultQuery("brandId", "0"), 10, 64)
@@ -155,25 +160,27 @@ func (e esProductController) SearchDetail(c *gin.Context) {
 	sort, _ := strconv.Atoi(c.DefaultQuery("sort", "5"))
 	page, err := esProductService.SearchByDetail(keyword, brandId, productCategoryId, pageNum, pageSize, sort)
 	if err != nil {
+
 		c.JSON(http.StatusInternalServerError, response.FailedMsg(err.Error()))
+		panic(err)
 		return
 	}
 	c.JSON(http.StatusOK, response.SuccessMsg(page))
 }
 
-//  Recommend godoc
+// Recommend godoc
 // @Summary 根据商品id推荐商品
 // @Description  根据商品id推荐商品
 // @Tags 搜索商品管理
 // @ID v1/esProduct/Recommend
 // @Accept  json
 // @Produce  json
-// @Param brandId path int true "brandId"
-// @Param pageNum query int false "page number" defualt(0)
-// @Param pageSize query int false "page size"  defualt(5)
+// @Param id path int true "Id"
+// @Param pageNum query int false "page number" default(0)
+// @Param pageSize query int false "page size"  default(5)
 // @Success 200 {object} response.ResponseMsg "success"
-// @Failure 500 {object} response.ResponseMsg "failure"
-// @Router /recommend/{id} [get]
+// @Failure 500 {object} response.ResponseMsg "default"
+// @Router /esProduct/recommend/{id} [get]
 func (e esProductController) Recommend(c *gin.Context) {
 	id, _ := strconv.ParseInt(c.Param("id"), 10, 64)
 	pageNum, _ := strconv.Atoi(c.DefaultQuery("pageNum", "0"))
@@ -181,28 +188,29 @@ func (e esProductController) Recommend(c *gin.Context) {
 	page, err := esProductService.Recommend(id, pageNum, pageSize)
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, response.FailedMsg(err.Error()))
-
+		panic(err)
 		return
 	}
 	c.JSON(http.StatusOK, response.SuccessMsg(page))
 }
 
-//  SearchRelatedInfo godoc
+// SearchRelatedInfo godoc
 // @Summary 获取搜索的相关品牌、分类及筛选属性
 // @Description  获取搜索的相关品牌、分类及筛选属性
 // @Tags 搜索商品管理
 // @ID v1/esProduct/SearchRelatedInfo
 // @Accept  json
 // @Produce  json
-// @Param keyword query string false "keyword" defualt("")
+// @Param keyword query string false "keyword"
 // @Success 200 {object} response.ResponseMsg{data=domain.EsProductRelatedInfo} "success"
 // @Failure 500 {object} response.ResponseMsg "failure"
-// @Router /search/relate [get]
+// @Router /esProduct/search/relate [get]
 func (e esProductController) SearchRelatedInfo(c *gin.Context) {
 	keyword := c.Query("keyword")
 	info, err := esProductService.SearchRelatedInfo(keyword)
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, response.FailedMsg(err.Error()))
+		panic(err)
 		return
 	}
 	c.JSON(http.StatusOK, response.SuccessMsg(info))

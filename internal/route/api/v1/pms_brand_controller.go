@@ -151,8 +151,8 @@ func (b pmsBrandController) Brand(c *gin.Context) {
 // @ID v1/PmsBrandController/list
 // @Accept  json
 // @Produce  json
-// @Param pageNum query int false "page number" defualt(0)
-// @Param pageSize query int false "page size"  defualt(3)
+// @Param pageNum query int false "page number" default(0)
+// @Param pageSize query int false "page size"  default(3)
 // @Success 200 {object} response.ResponseMsg{data=model.PmsBrand} "success"
 // @Failure 500 {object} response.ResponseMsg "failure"
 // @Router /brand/list [get]

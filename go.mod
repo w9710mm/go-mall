@@ -13,6 +13,7 @@ require (
 	github.com/olivere/elastic/v7 v7.0.32
 	github.com/pulingfu/tblschema v0.3.3
 	github.com/robfig/cron/v3 v3.0.1
+	github.com/shopspring/decimal v1.2.0
 	github.com/sirupsen/logrus v1.8.1
 	github.com/spf13/viper v1.12.0
 	github.com/swaggo/files v0.0.0-20220610200504-28940afbdbfe
