@@ -10,7 +10,7 @@ import (
 	"net/url"
 )
 
-var DB *gorm.DB // 全局db句柄
+var d *gorm.DB // 全局db句柄
 
 func init() {
 	dbconfig := config.GetConfig().MySQL
@@ -55,10 +55,10 @@ func init() {
 	}
 	log.Logger.Info("success to connect database")
 
-	DB = db
+	d = db
 }
 
 // 获取db句柄
-func GetDB() *gorm.DB {
-	return DB
+func GetMysqlDB() *gorm.DB {
+	return d
 }

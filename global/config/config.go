@@ -1,8 +1,8 @@
 package config
 
 import (
-	"github.com/sirupsen/logrus"
 	"github.com/spf13/viper"
+	"mall/global/log"
 )
 
 type Config struct {
@@ -13,6 +13,7 @@ type Config struct {
 	MsgChannelType MsgChannelType
 	Redis          RedisConfig
 	ElasticSearch  ElasticSearchConfig
+	Mongodb        MongoDBConfig
 }
 
 // MySQL相关配置
@@ -42,7 +43,7 @@ type PathConfig struct {
 }
 
 type RedisConfig struct {
-	Addr         string
+	Host         string
 	Password     string
 	DB           int
 	PoolSize     int
@@ -50,15 +51,34 @@ type RedisConfig struct {
 	DialTimeout  int
 	ReadTimeout  int
 	WriteTimeout int
-	Prefix       redisPrefix
+	Key          redisKey
 	Expire       redisExpire
 }
 type redisExpire struct {
 	AuthCode int
+	Common   int
 }
 
-type redisPrefix struct {
+type redisKey struct {
 	AuthCode string
+	Member   string
+	OrderId  string
+}
+
+type MongoDBConfig struct {
+	Host        []string
+	Database    string
+	Timeout     int
+	MaxPoolSize uint64
+	MinPoolSize uint64
+	Credential  mongoDBCredential
+}
+
+type mongoDBCredential struct {
+	AuthMechanism string
+	AuthSource    string
+	Username      string
+	Password      string
 }
 
 // 消息队列类型及其消息队列相关信息
@@ -90,7 +110,7 @@ func init() {
 	err := viper.ReadInConfig()
 
 	if err != nil {
-		logrus.Error("An error occurred while reading the configuration file.")
+		log.Logger.Error("An error occurred while reading the configuration file.")
 	}
 	viper.Unmarshal(&c)
 

@@ -4,7 +4,7 @@ import "time"
 
 //会员表
 type UmsMember struct {
-	Id                    int        `gorm:"column:id" json:"id" `                                         //是否可空:NO
+	Id                    int64      `gorm:"column:id" json:"id" `                                         //是否可空:NO
 	MemberLevelId         *int       `gorm:"column:member_level_id" json:"member_level_id" `               //是否可空:YES
 	Username              *string    `gorm:"column:username" json:"username" `                             //是否可空:YES 用户名
 	Password              *string    `gorm:"column:password" json:"password" `                             //是否可空:YES 密码

@@ -13,28 +13,25 @@ type RedisHelper struct {
 	*redis.Client
 }
 
-var redisHelper *RedisHelper
-var redisCtx = context.Background()
-
-var redisOnce sync.Once
+var (
+	redisHelper *RedisHelper
+	redisCtx    = context.Background()
+	redisOnce   sync.Once
+)
 
 func init() {
+	redisConfig := config.GetConfig().Redis
+
 	rdb := redis.NewClient(&redis.Options{
-		Addr:         "",
-		Password:     "",
-		DB:           0,
+		Addr:         redisConfig.Host,
+		Password:     redisConfig.Password,
+		DB:           redisConfig.DB,
 		DialTimeout:  10 * time.Second,
 		ReadTimeout:  30 * time.Second,
 		WriteTimeout: 30 * time.Second,
 		PoolSize:     10,
 		PoolTimeout:  30 * time.Second,
 	})
-
-	redisConfig := config.GetConfig().Redis
-
-	rdb.Options().Addr = redisConfig.Addr
-	rdb.Options().Password = redisConfig.Password
-	rdb.Options().DB = redisConfig.DB
 
 	if redisConfig.DialTimeout != 0 {
 		rdb.Options().DialTimeout = time.Second * time.Duration(redisConfig.DialTimeout)

@@ -4,7 +4,6 @@ import (
 	"errors"
 	"github.com/jinzhu/copier"
 	"mall/common/util"
-	"mall/global/dao"
 	"mall/global/dao/dto"
 	"mall/global/dao/model"
 	"time"
@@ -23,7 +22,7 @@ func (s *umsAdminService) Register(adminDto dto.UmsAdminParam) (admin model.UmsA
 	var status = 1
 	admin.Status = &status
 	var dbAdmin model.UmsAdmin
-	row := dao.DB.Where(&model.UmsAdmin{Username: admin.Username}).First(&dbAdmin).RowsAffected
+	row := db.Where(&model.UmsAdmin{Username: admin.Username}).First(&dbAdmin).RowsAffected
 	if row > 0 {
 		return model.UmsAdmin{}, errors.New("same username exists in database")
 	}
@@ -32,7 +31,7 @@ func (s *umsAdminService) Register(adminDto dto.UmsAdminParam) (admin model.UmsA
 		return model.UmsAdmin{}, errors.New("scrypt password error")
 	}
 	admin.Password = &password
-	dao.DB.Save(&admin)
+	db.Save(&admin)
 	return admin, nil
 }
 

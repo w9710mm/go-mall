@@ -1,8 +1,6 @@
 package service
 
 import (
-	"mall/global/dao"
-	"mall/global/dao/mapper"
 	"mall/global/dao/model"
 	time "time"
 )
@@ -12,12 +10,10 @@ type omsPortalOrderService struct {
 
 var OmsPortalOrderService = new(omsPortalOrderService)
 
-var portalOrderMapper = mapper.PortalOrderMapper
-
 func (s *omsPortalOrderService) CancelTimeOutOrder() (count int, err error) {
 
 	var orderSetting model.OmsOrderSetting
-	dao.DB.First(&orderSetting)
+	db.First(&orderSetting)
 	timeOutOrders, err := portalOrderMapper.GetTimeOutOrders(*orderSetting.NormalOrderOvertime)
 
 	if err != nil {
@@ -40,9 +36,9 @@ func (s *omsPortalOrderService) CancelTimeOutOrder() (count int, err error) {
 		updateCouponStatus(*order.CouponId, order.MemberId, 0)
 		if *order.UseIntegration != 0 {
 			var user model.UmsMember
-			dao.DB.First(&user, order.MemberId)
+			db.First(&user, order.MemberId)
 			*user.Integration = *user.Integration + *order.Integration
-			dao.DB.Save(&user)
+			db.Save(&user)
 		}
 	}
 	count = len(timeOutOrders)
@@ -60,7 +56,7 @@ func updateCouponStatus(couponId int, memberId int, useStatus int) {
 	}
 
 	var coupons []model.SmsCouponHistory
-	dao.DB.Model(&model.SmsCouponHistory{}).Where(&model.SmsCouponHistory{MemberId: &memberId,
+	db.Model(&model.SmsCouponHistory{}).Where(&model.SmsCouponHistory{MemberId: &memberId,
 		CouponId: &couponId, UseStatus: &useStatus,
 	}).Find(&coupons)
 
@@ -69,7 +65,7 @@ func updateCouponStatus(couponId int, memberId int, useStatus int) {
 		t := time.Now()
 		coupon.UseTime = &t
 		coupon.UseStatus = &useStatus
-		dao.DB.Save(&coupon)
+		db.Save(&coupon)
 	}
 
 }
