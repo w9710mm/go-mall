@@ -7,14 +7,9 @@ import (
 	"mall/global/config"
 	_ "mall/global/config"
 	"mall/global/log"
-	"sync"
 )
 
-var (
-	esctx    = context.Background()
-	esonce   sync.Once
-	esClient *elastic.Client
-)
+var esClient *elastic.Client
 
 func init() {
 
@@ -30,7 +25,7 @@ func init() {
 		panic("connect to eslasticSearch failed:" + err.Error())
 	}
 
-	info, code, err := client.Ping(url).Do(esctx)
+	info, code, err := client.Ping(url).Do(context.TODO())
 	if err != nil {
 		log.Logger.Error("ping es failed" + err.Error())
 	}
@@ -38,6 +33,6 @@ func init() {
 
 	esClient = client
 }
-func GetESDB() (*elastic.Client, context.Context, sync.Once) {
-	return esClient, esctx, esonce
+func GetESDB() *elastic.Client {
+	return esClient
 }

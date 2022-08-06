@@ -1,26 +1,37 @@
 package service
 
 import (
+	"context"
 	"encoding/json"
 	"fmt"
-	elastic "github.com/olivere/elastic/v7"
+	"github.com/olivere/elastic/v7"
 	"mall/global/dao/document"
 	"mall/global/dao/domain"
+	"mall/global/dao/mapper"
 	"mall/global/dao/repository"
 	"strconv"
 )
 
 type esProductService struct {
+	esProductRepository repository.EsProductRepository
+	esProductMapper     mapper.EsProductMapper
 }
 
-var EsProductService = new(esProductService)
+func NewEsProductService(r repository.EsProductRepository,
+	m mapper.EsProductMapper) EsProductService {
 
-func (s esProductService) ImportAll() (num int, err error) {
-	esProducts, err := esProductMapper.GetAllEsProductList(0)
+	return &esProductService{
+		esProductRepository: r,
+		esProductMapper:     m,
+	}
+}
+
+func (s *esProductService) ImportAll() (num int, err error) {
+	esProducts, err := s.esProductMapper.GetAllEsProductList(0)
 	if err != nil {
 		return
 	}
-	res, err := esProductRepository.SaveAll(esProducts)
+	res, err := s.esProductRepository.SaveAll(esProducts, context.TODO())
 	if err != nil {
 		return
 	}
@@ -29,26 +40,26 @@ func (s esProductService) ImportAll() (num int, err error) {
 
 }
 
-func (s esProductService) DeleteById(id int) (err error) {
-	_, err = esProductRepository.DeleteById(id)
+func (s *esProductService) DeleteById(id int) (err error) {
+	_, err = s.esProductRepository.DeleteById(id, context.TODO())
 	return
 }
 
-func (s esProductService) DeleteByList(ids []int) (count int, err error) {
-	res, err := esProductRepository.DeleteAll(ids)
+func (s *esProductService) DeleteByList(ids []int) (count int, err error) {
+	res, err := s.esProductRepository.DeleteAll(ids, context.TODO())
 	count = len(res.Succeeded())
 	return
 }
 
-func (s esProductService) Create(id int64) (esProduct document.EsProduct,
+func (s *esProductService) Create(id int64) (esProduct document.EsProduct,
 	err error) {
-	esProductList, err := esProductMapper.GetAllEsProductList(id)
+	esProductList, err := s.esProductMapper.GetAllEsProductList(id)
 	if err != nil {
 		return
 	}
 	if len(esProductList) > 0 {
 		esProduct = esProductList[0]
-		_, err = esProductRepository.Save(esProduct)
+		_, err = s.esProductRepository.Save(esProduct, context.TODO())
 		if err != nil {
 			return
 		}
@@ -56,7 +67,7 @@ func (s esProductService) Create(id int64) (esProduct document.EsProduct,
 	return
 }
 
-func (s esProductService) SearchByKeyword(keyword string, pageNum int, pageSize int) (
+func (s *esProductService) SearchByKeyword(keyword string, pageNum int, pageSize int) (
 	repository.Page[document.EsProduct], error) {
 
 	boolQuery := elastic.NewBoolQuery()
@@ -70,12 +81,12 @@ func (s esProductService) SearchByKeyword(keyword string, pageNum int, pageSize 
 
 	searchSource.Query(boolQuery)
 
-	err := esProductRepository.SearchPage(searchSource, page)
+	err := s.esProductRepository.SearchPage(searchSource, page, context.TODO())
 	return *page, err
 
 }
 
-func (s esProductService) SearchByDetail(keyword string, brandId int64,
+func (s *esProductService) SearchByDetail(keyword string, brandId int64,
 	productCategoryId int64, pageNum int, pageSize int, sort int) (
 	repository.Page[document.EsProduct], error) {
 
@@ -135,18 +146,18 @@ func (s esProductService) SearchByDetail(keyword string, brandId int64,
 
 	searchSource.Query(query)
 
-	err := esProductRepository.SearchPage(searchSource, page)
+	err := s.esProductRepository.SearchPage(searchSource, page, context.TODO())
 	return *page, err
 }
 
-func (s esProductService) Recommend(id int64, pageNum int, pageSize int) (
+func (s *esProductService) Recommend(id int64, pageNum int, pageSize int) (
 	repository.Page[document.EsProduct], error) {
 
 	query := elastic.NewBoolQuery()
 	page := &repository.Page[document.EsProduct]{Pages: pageNum, PageSize: pageSize}
 	searchSource := elastic.NewSearchSource()
 
-	esProducts, err := esProductMapper.GetAllEsProductList(id)
+	esProducts, err := s.esProductMapper.GetAllEsProductList(id)
 	if err != nil {
 		return *page, err
 	}
@@ -173,7 +184,7 @@ func (s esProductService) Recommend(id int64, pageNum int, pageSize int) (
 		query.MustNot(elastic.NewBoolQuery().MustNot(elastic.NewTermsQuery("id", id)))
 		query.Should(q)
 		searchSource.Query(query)
-		err = esProductRepository.SearchPage(searchSource, page)
+		err = s.esProductRepository.SearchPage(searchSource, page, context.TODO())
 		if err != nil {
 			return *page, err
 		}
@@ -184,7 +195,7 @@ func (s esProductService) Recommend(id int64, pageNum int, pageSize int) (
 
 }
 
-func (s esProductService) SearchRelatedInfo(keyword string) (domain.EsProductRelatedInfo,
+func (s *esProductService) SearchRelatedInfo(keyword string) (domain.EsProductRelatedInfo,
 	error) {
 
 	searchSource := elastic.NewSearchSource()
@@ -213,7 +224,7 @@ func (s esProductService) SearchRelatedInfo(keyword string) (domain.EsProductRel
 
 	data, _ := json.Marshal(source)
 	fmt.Println(string(data))
-	res, err := esProductRepository.SearchAll(searchSource)
+	res, err := s.esProductRepository.SearchAll(searchSource, context.TODO())
 	if err != nil {
 		return domain.EsProductRelatedInfo{}, err
 	}

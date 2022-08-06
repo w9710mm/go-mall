@@ -2,18 +2,20 @@ package mapper
 
 import (
 	"fmt"
-	"mall/global/dao"
+	"gorm.io/gorm"
 	"mall/global/dao/document"
 	"mall/global/dao/domain"
 	"mall/global/dao/model"
 )
 
 type esProductMapper struct {
+	db *gorm.DB
 }
 
-var EsProductMapper = new(esProductMapper)
-
-func (m esProductMapper) GetAllEsProductList(id int64) (esProducts []document.EsProduct,
+func NewEsProductMapper(db *gorm.DB) EsProductMapper {
+	return &esProductMapper{db: db}
+}
+func (m *esProductMapper) GetAllEsProductList(id int64) (esProducts []document.EsProduct,
 	err error) {
 
 	product := model.PmsProduct{}
@@ -44,7 +46,7 @@ func (m esProductMapper) GetAllEsProductList(id int64) (esProducts []document.Es
 	if id != 0 {
 		whe = whe + fmt.Sprintf(" and p.id = %d", id)
 	}
-	rows, err := dao.DB.Table(product.TableName() + " p").Select(sel).
+	rows, err := m.db.Table(product.TableName() + " p").Select(sel).
 		Joins("  left join pms_product_attribute_value pav on p.id = pav.product_id").
 		Joins(" left join pms_product_attribute pa on pav.product_attribute_id= pa.id").
 		Where(whe).

@@ -5,19 +5,10 @@ import (
 	"github.com/go-redis/redis/v9"
 	"mall/global/config"
 	"mall/global/log"
-	"sync"
 	"time"
 )
 
-type RedisHelper struct {
-	*redis.Client
-}
-
-var (
-	redisHelper *RedisHelper
-	redisCtx    = context.Background()
-	redisOnce   sync.Once
-)
+var redisDB *redis.Client
 
 func init() {
 	redisConfig := config.GetConfig().Redis
@@ -49,11 +40,7 @@ func init() {
 		rdb.Options().PoolTimeout = time.Second * time.Duration(redisConfig.PoolTimeout)
 	}
 
-	redisOnce.Do(func() {
-		rdh := new(RedisHelper)
-		rdh.Client = rdb
-		redisHelper = rdh
-	})
+	redisDB = rdb
 	ctx := context.Background()
 
 	if _, err := rdb.Ping(ctx).Result(); err != nil {
@@ -62,6 +49,6 @@ func init() {
 	}
 	log.Logger.Info("success to connect redis")
 }
-func GetRedis() (*RedisHelper, context.Context) {
-	return redisHelper, redisCtx
+func GetRedis() *redis.Client {
+	return redisDB
 }

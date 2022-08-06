@@ -20,6 +20,183 @@ const docTemplate = `{
     "host": "{{.Host}}",
     "basePath": "{{.BasePath}}",
     "paths": {
+        "//member/readHistory/clear": {
+            "get": {
+                "security": [
+                    {
+                        "JWT": []
+                    }
+                ],
+                "description": "分页获取浏览记录列表",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "用户浏览记录接口"
+                ],
+                "summary": "获取浏览记录列表",
+                "operationId": "v1/MemberReadHistoryController/List",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "default": 0,
+                        "description": "page number",
+                        "name": "pageNum",
+                        "in": "query"
+                    },
+                    {
+                        "type": "integer",
+                        "default": 5,
+                        "description": "page size",
+                        "name": "pageSize",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success",
+                        "schema": {
+                            "$ref": "#/definitions/response.ResponseMsg"
+                        }
+                    },
+                    "500": {
+                        "description": "failure",
+                        "schema": {
+                            "$ref": "#/definitions/response.ResponseMsg"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "security": [
+                    {
+                        "JWT": []
+                    }
+                ],
+                "description": "清空浏览记录",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "用户浏览记录接口"
+                ],
+                "summary": "清空浏览记录",
+                "operationId": "v1/MemberReadHistoryController/Clear",
+                "responses": {
+                    "200": {
+                        "description": "success",
+                        "schema": {
+                            "$ref": "#/definitions/response.ResponseMsg"
+                        }
+                    },
+                    "500": {
+                        "description": "failure",
+                        "schema": {
+                            "$ref": "#/definitions/response.ResponseMsg"
+                        }
+                    }
+                }
+            }
+        },
+        "//member/readHistory/create": {
+            "post": {
+                "security": [
+                    {
+                        "JWT": []
+                    }
+                ],
+                "description": "创建一个浏览记录",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "用户浏览记录接口"
+                ],
+                "summary": "创建浏览记录",
+                "operationId": "v1/MemberReadHistoryController/Create",
+                "parameters": [
+                    {
+                        "description": "MemberReadHistory",
+                        "name": "MemberReadHistory",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/domain.MemberReadHistory"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success",
+                        "schema": {
+                            "$ref": "#/definitions/response.ResponseMsg"
+                        }
+                    },
+                    "500": {
+                        "description": "failure",
+                        "schema": {
+                            "$ref": "#/definitions/response.ResponseMsg"
+                        }
+                    }
+                }
+            }
+        },
+        "//member/readHistory/delete": {
+            "post": {
+                "security": [
+                    {
+                        "JWT": []
+                    }
+                ],
+                "description": "根据ids清空出浏览记录",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "用户浏览记录接口"
+                ],
+                "summary": "删除浏览记录",
+                "operationId": "v1/MemberReadHistoryController/Delete",
+                "parameters": [
+                    {
+                        "type": "array",
+                        "items": {
+                            "type": "integer"
+                        },
+                        "description": "history_ids",
+                        "name": "ids",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success",
+                        "schema": {
+                            "$ref": "#/definitions/response.ResponseMsg"
+                        }
+                    },
+                    "500": {
+                        "description": "failure",
+                        "schema": {
+                            "$ref": "#/definitions/response.ResponseMsg"
+                        }
+                    }
+                }
+            }
+        },
         "/brand/create": {
             "post": {
                 "description": "创建一个品牌",
@@ -33,7 +210,7 @@ const docTemplate = `{
                     "品牌接口"
                 ],
                 "summary": "创建品牌",
-                "operationId": "v1/PmsBrandController/createBrand",
+                "operationId": "v1/PmsBrandController/Create",
                 "parameters": [
                     {
                         "description": "pmsBrand",
@@ -98,7 +275,7 @@ const docTemplate = `{
                     "品牌接口"
                 ],
                 "summary": "删除品牌",
-                "operationId": "v1/PmsBrandController/deleteBrand",
+                "operationId": "v1/PmsBrandController/Delete",
                 "parameters": [
                     {
                         "type": "integer",
@@ -137,7 +314,7 @@ const docTemplate = `{
                     "品牌接口"
                 ],
                 "summary": "获取品牌列表",
-                "operationId": "v1/PmsBrandController/list",
+                "operationId": "v1/PmsBrandController/ListBrand",
                 "parameters": [
                     {
                         "type": "integer",
@@ -195,7 +372,7 @@ const docTemplate = `{
                     "品牌接口"
                 ],
                 "summary": "更新品牌",
-                "operationId": "v1/PmsBrandController/updateBrand",
+                "operationId": "v1/PmsBrandController/Update",
                 "parameters": [
                     {
                         "type": "integer",
@@ -255,7 +432,7 @@ const docTemplate = `{
                     "品牌接口"
                 ],
                 "summary": "获取一个品牌",
-                "operationId": "v1/PmsBrandController/brand",
+                "operationId": "v1/PmsBrandController/Brand",
                 "parameters": [
                     {
                         "type": "integer",
@@ -484,7 +661,7 @@ const docTemplate = `{
                 "parameters": [
                     {
                         "type": "integer",
-                        "description": "brandId",
+                        "description": "Id",
                         "name": "id",
                         "in": "path",
                         "required": true
@@ -746,9 +923,9 @@ const docTemplate = `{
                 }
             }
         },
-        "/sso/verifyAuthCode": {
-            "post": {
-                "description": "确认验证码",
+        "/sso/info": {
+            "get": {
+                "description": "获取会员信息",
                 "consumes": [
                     "application/json"
                 ],
@@ -758,7 +935,173 @@ const docTemplate = `{
                 "tags": [
                     "用户接口"
                 ],
-                "summary": "确认验证码",
+                "summary": "获取会员信息",
+                "operationId": "v1/UmsMemberController/Info",
+                "responses": {
+                    "200": {
+                        "description": "success",
+                        "schema": {
+                            "$ref": "#/definitions/response.ResponseMsg"
+                        }
+                    },
+                    "500": {
+                        "description": "failure",
+                        "schema": {
+                            "$ref": "#/definitions/response.ResponseMsg"
+                        }
+                    }
+                }
+            }
+        },
+        "/sso/login": {
+            "post": {
+                "description": "登录",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "用户接口"
+                ],
+                "summary": "登录",
+                "operationId": "v1/UmsMemberController/Login",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "username",
+                        "name": "username",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "password",
+                        "name": "password",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success",
+                        "schema": {
+                            "$ref": "#/definitions/response.ResponseMsg"
+                        }
+                    },
+                    "500": {
+                        "description": "failure",
+                        "schema": {
+                            "$ref": "#/definitions/response.ResponseMsg"
+                        }
+                    }
+                }
+            }
+        },
+        "/sso/refreshToken": {
+            "get": {
+                "description": "刷新token",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "用户接口"
+                ],
+                "summary": "刷新token",
+                "operationId": "v1/UmsMemberController/RefreshToken",
+                "responses": {
+                    "200": {
+                        "description": "success",
+                        "schema": {
+                            "$ref": "#/definitions/response.ResponseMsg"
+                        }
+                    },
+                    "500": {
+                        "description": "failure",
+                        "schema": {
+                            "$ref": "#/definitions/response.ResponseMsg"
+                        }
+                    }
+                }
+            }
+        },
+        "/sso/register": {
+            "post": {
+                "description": "注册",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "用户接口"
+                ],
+                "summary": "注册",
+                "operationId": "v1/UmsMemberController/Register",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "username",
+                        "name": "username",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "password",
+                        "name": "password",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "telephone",
+                        "name": "telephone",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "authCode",
+                        "name": "authCode",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success",
+                        "schema": {
+                            "$ref": "#/definitions/response.ResponseMsg"
+                        }
+                    },
+                    "500": {
+                        "description": "failure",
+                        "schema": {
+                            "$ref": "#/definitions/response.ResponseMsg"
+                        }
+                    }
+                }
+            }
+        },
+        "/sso/updatePassword": {
+            "post": {
+                "description": "会员修改密码",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "用户接口"
+                ],
+                "summary": "会员修改密码",
                 "operationId": "v1/UmsMemberController/UpdatePassword",
                 "parameters": [
                     {
@@ -770,8 +1113,8 @@ const docTemplate = `{
                     },
                     {
                         "type": "string",
-                        "description": "authcode",
-                        "name": "authcode",
+                        "description": "authCode",
+                        "name": "authCode",
                         "in": "query",
                         "required": true
                     }
@@ -897,6 +1240,41 @@ const docTemplate = `{
                     "items": {
                         "type": "string"
                     }
+                }
+            }
+        },
+        "domain.MemberReadHistory": {
+            "type": "object",
+            "properties": {
+                "createTime": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "memberIcon": {
+                    "type": "string"
+                },
+                "memberId": {
+                    "type": "integer"
+                },
+                "memberNick": {
+                    "type": "string"
+                },
+                "productId": {
+                    "type": "integer"
+                },
+                "productName": {
+                    "type": "string"
+                },
+                "productPic": {
+                    "type": "string"
+                },
+                "productPrice": {
+                    "type": "string"
+                },
+                "productSubTittle": {
+                    "type": "string"
                 }
             }
         },

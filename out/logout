@@ -988,3 +988,81 @@
 2022-07-22T22:00:00.023+0800	info	G:/GoProject/mall/internal/componet/order_time_out_cancel_task.go:26	Cancel order and release locked inventory according to SKU number, number of canceled orders: 	{"application": "mall", "number": 0}
 2022-07-22T22:10:00.018+0800	info	G:/GoProject/mall/internal/componet/order_time_out_cancel_task.go:26	Cancel order and release locked inventory according to SKU number, number of canceled orders: 	{"application": "mall", "number": 0}
 2022-07-22T22:20:00.017+0800	info	G:/GoProject/mall/internal/componet/order_time_out_cancel_task.go:26	Cancel order and release locked inventory according to SKU number, number of canceled orders: 	{"application": "mall", "number": 0}
+2022-07-31T15:36:48.757+0800	info	G:/GoProject/mall/global/log/logger.go:95	Logger init success	{"application": "mall"}
+2022-07-31T15:36:50.916+0800	error	G:/GoProject/mall/global/dao/elastic_searchDB.go:30	ping es failedGet "http://127.0.0.1:9200/": dial tcp 127.0.0.1:9200: connectex: No connection could be made because the target machine actively refused it.	{"application": "mall"}
+2022-08-06T18:54:42.019+0800	info	G:/GoProject/mall/global/log/logger.go:95	Logger init success	{"application": "mall"}
+2022-08-06T18:54:44.117+0800	error	G:/GoProject/mall/global/dao/elastic_searchDB.go:30	ping es failedGet "http://127.0.0.1:9200/": dial tcp 127.0.0.1:9200: connectex: No connection could be made because the target machine actively refused it.	{"application": "mall"}
+2022-08-06T19:13:19.614+0800	info	G:/GoProject/mall/global/log/logger.go:95	Logger init success	{"application": "mall"}
+2022-08-06T19:13:21.704+0800	error	G:/GoProject/mall/global/dao/elastic_searchDB.go:30	ping es failedGet "http://127.0.0.1:9200/": dial tcp 127.0.0.1:9200: connectex: No connection could be made because the target machine actively refused it.	{"application": "mall"}
+2022-08-06T19:14:57.125+0800	info	G:/GoProject/mall/global/log/logger.go:95	Logger init success	{"application": "mall"}
+2022-08-06T19:14:57.329+0800	info	G:/GoProject/mall/global/dao/elastic_searchDB.go:32	Elasticsearch returned with code 200 and version 7.17.3
+	{"application": "mall"}
+2022-08-06T19:14:57.380+0800	info	G:/GoProject/mall/global/dao/mysqlDB.go:56	success to connect database	{"application": "mall"}
+2022-08-06T19:14:57.383+0800	info	G:/GoProject/mall/global/dao/redisDB.go:50	success to connect redis	{"application": "mall"}
+2022-08-06T19:14:57.383+0800	info	G:/GoProject/mall/main.go:17	starting server...	{"application": "mall"}
+2022-08-06T19:17:14.541+0800	info	G:/GoProject/mall/global/log/logger.go:95	Logger init success	{"application": "mall"}
+2022-08-06T19:17:14.607+0800	info	G:/GoProject/mall/global/dao/elastic_searchDB.go:32	Elasticsearch returned with code 200 and version 7.17.3
+	{"application": "mall"}
+2022-08-06T19:17:14.616+0800	info	G:/GoProject/mall/global/dao/mysqlDB.go:56	success to connect database	{"application": "mall"}
+2022-08-06T19:17:14.617+0800	info	G:/GoProject/mall/global/dao/redisDB.go:50	success to connect redis	{"application": "mall"}
+2022-08-06T19:17:14.618+0800	info	G:/GoProject/mall/main.go:17	starting server...	{"application": "mall"}
+2022-08-06T19:17:14.618+0800	info	G:/GoProject/mall/internal/server/server.go:134	Start server on: addr	{"application": "mall", "addr": "localhost:8888"}
+2022-08-06T19:28:29.523+0800	info	G:/GoProject/mall/internal/server/server.go:152	Receive signal: ch	{"application": "mall", "ch": "interrupt"}
+2022-08-06T19:28:29.525+0800	info	G:/GoProject/mall/internal/server/server.go:196	close server....	{"application": "mall"}
+2022-08-06T19:28:29.526+0800	info	G:/GoProject/mall/internal/server/server.go:206	close server.... over	{"application": "mall"}
+2022-08-06T19:30:06.446+0800	info	G:/GoProject/mall/global/log/logger.go:95	Logger init success	{"application": "mall"}
+2022-08-06T19:30:06.503+0800	info	G:/GoProject/mall/global/dao/elastic_searchDB.go:32	Elasticsearch returned with code 200 and version 7.17.3
+	{"application": "mall"}
+2022-08-06T19:30:06.517+0800	info	G:/GoProject/mall/global/dao/mysqlDB.go:56	success to connect database	{"application": "mall"}
+2022-08-06T19:30:06.519+0800	info	G:/GoProject/mall/global/dao/redisDB.go:50	success to connect redis	{"application": "mall"}
+2022-08-06T19:30:06.519+0800	info	G:/GoProject/mall/main.go:17	starting server...	{"application": "mall"}
+2022-08-06T19:30:06.519+0800	info	G:/GoProject/mall/internal/server/server.go:197	close server....	{"application": "mall"}
+2022-08-06T19:30:06.520+0800	info	G:/GoProject/mall/internal/server/server.go:207	close server.... over	{"application": "mall"}
+2022-08-06T19:33:16.136+0800	info	G:/GoProject/mall/global/log/logger.go:95	Logger init success	{"application": "mall"}
+2022-08-06T19:33:16.197+0800	info	G:/GoProject/mall/global/dao/elastic_searchDB.go:32	Elasticsearch returned with code 200 and version 7.17.3
+	{"application": "mall"}
+2022-08-06T19:33:16.208+0800	info	G:/GoProject/mall/global/dao/mysqlDB.go:56	success to connect database	{"application": "mall"}
+2022-08-06T19:33:16.210+0800	info	G:/GoProject/mall/global/dao/redisDB.go:50	success to connect redis	{"application": "mall"}
+2022-08-06T19:33:16.211+0800	info	G:/GoProject/mall/main.go:17	starting server...	{"application": "mall"}
+2022-08-06T19:33:16.211+0800	info	G:/GoProject/mall/internal/server/server.go:214	look at swagger: 
+ http://localhost:8080/swagger/index.html	{"application": "mall"}
+2022-08-06T19:33:16.213+0800	info	G:/GoProject/mall/internal/server/server.go:195	close server....	{"application": "mall"}
+2022-08-06T19:33:16.214+0800	info	G:/GoProject/mall/internal/server/server.go:205	close server.... over	{"application": "mall"}
+2022-08-06T19:38:29.603+0800	info	G:/GoProject/mall/global/log/logger.go:95	Logger init success	{"application": "mall"}
+2022-08-06T19:38:29.661+0800	info	G:/GoProject/mall/global/dao/elastic_searchDB.go:32	Elasticsearch returned with code 200 and version 7.17.3
+	{"application": "mall"}
+2022-08-06T19:38:29.677+0800	info	G:/GoProject/mall/global/dao/mysqlDB.go:56	success to connect database	{"application": "mall"}
+2022-08-06T19:38:29.679+0800	info	G:/GoProject/mall/global/dao/redisDB.go:50	success to connect redis	{"application": "mall"}
+2022-08-06T19:38:29.679+0800	info	G:/GoProject/mall/main.go:17	starting server...	{"application": "mall"}
+2022-08-06T19:38:29.680+0800	info	G:/GoProject/mall/internal/server/server.go:214	look at swagger: 
+ http://localhost:8080/swagger/index.html	{"application": "mall"}
+2022-08-06T19:38:29.681+0800	info	G:/GoProject/mall/internal/server/server.go:195	close server....	{"application": "mall"}
+2022-08-06T19:38:29.682+0800	info	G:/GoProject/mall/internal/server/server.go:205	close server.... over	{"application": "mall"}
+2022-08-06T19:39:17.319+0800	info	G:/GoProject/mall/global/log/logger.go:95	Logger init success	{"application": "mall"}
+2022-08-06T19:39:17.375+0800	info	G:/GoProject/mall/global/dao/elastic_searchDB.go:32	Elasticsearch returned with code 200 and version 7.17.3
+	{"application": "mall"}
+2022-08-06T19:39:17.388+0800	info	G:/GoProject/mall/global/dao/mysqlDB.go:56	success to connect database	{"application": "mall"}
+2022-08-06T19:39:17.390+0800	info	G:/GoProject/mall/global/dao/redisDB.go:50	success to connect redis	{"application": "mall"}
+2022-08-06T19:39:17.391+0800	info	G:/GoProject/mall/main.go:17	starting server...	{"application": "mall"}
+2022-08-06T19:39:17.392+0800	info	G:/GoProject/mall/internal/server/server.go:214	look at swagger: 
+ http://localhost:8080/swagger/index.html	{"application": "mall"}
+2022-08-06T19:39:34.738+0800	info	G:/GoProject/mall/internal/server/server.go:195	close server....	{"application": "mall"}
+2022-08-06T19:39:34.739+0800	info	G:/GoProject/mall/internal/server/server.go:205	close server.... over	{"application": "mall"}
+2022-08-06T19:39:49.000+0800	info	G:/GoProject/mall/global/log/logger.go:95	Logger init success	{"application": "mall"}
+2022-08-06T19:39:49.060+0800	info	G:/GoProject/mall/global/dao/elastic_searchDB.go:32	Elasticsearch returned with code 200 and version 7.17.3
+	{"application": "mall"}
+2022-08-06T19:39:49.072+0800	info	G:/GoProject/mall/global/dao/mysqlDB.go:56	success to connect database	{"application": "mall"}
+2022-08-06T19:39:49.073+0800	info	G:/GoProject/mall/global/dao/redisDB.go:50	success to connect redis	{"application": "mall"}
+2022-08-06T19:39:49.074+0800	info	G:/GoProject/mall/main.go:17	starting server...	{"application": "mall"}
+2022-08-06T19:39:49.074+0800	info	G:/GoProject/mall/internal/server/server.go:214	look at swagger: 
+ http://localhost:8080/swagger/index.html	{"application": "mall"}
+2022-08-06T19:42:46.662+0800	info	G:/GoProject/mall/global/log/logger.go:95	Logger init success	{"application": "mall"}
+2022-08-06T19:42:46.717+0800	info	G:/GoProject/mall/global/dao/elastic_searchDB.go:32	Elasticsearch returned with code 200 and version 7.17.3
+	{"application": "mall"}
+2022-08-06T19:42:46.729+0800	info	G:/GoProject/mall/global/dao/mysqlDB.go:56	success to connect database	{"application": "mall"}
+2022-08-06T19:42:46.731+0800	info	G:/GoProject/mall/global/dao/redisDB.go:50	success to connect redis	{"application": "mall"}
+2022-08-06T19:42:46.731+0800	info	G:/GoProject/mall/main.go:17	starting server...	{"application": "mall"}
+2022-08-06T19:42:46.732+0800	info	G:/GoProject/mall/internal/server/server.go:215	look at swagger: 
+ http://localhost:8080/swagger/index.html	{"application": "mall"}
+2022-08-06T19:43:27.128+0800	info	G:/GoProject/mall/internal/server/server.go:190	server enabled controllers: controllers 	{"application": "mall", "controllers": ["PmsBrandController", "UmsMemberController", "EsProductController", "MemberReadHistoryController"]}
+2022-08-06T19:43:27.129+0800	info	G:/GoProject/mall/internal/server/server.go:133	Start server on: addr	{"application": "mall", "addr": "localhost:8888"}

@@ -1,6 +1,7 @@
 # 服务器运行配置项
 server:
-  port: 9000
+  port: 8888
+  host: localhost
   jwt:
     tokenHead: 'Bearer '
     tokenHeader: Authorization

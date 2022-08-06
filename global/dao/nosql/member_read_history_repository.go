@@ -3,39 +3,38 @@ package nosql
 import (
 	"context"
 	"go.mongodb.org/mongo-driver/mongo"
-	"mall/global/dao"
 	"mall/global/dao/domain"
 )
 
 type memberReadHistoryRepository struct {
-	name string
+	Name       string
+	collection *mongo.Collection
 }
 
-var MemberReadHistoryRepository = memberReadHistoryRepository{
-	name: "Member_read_history"}
-
-var historyCollection = dao.GetMongoDB().Collection(MemberReadHistoryRepository.name)
+func NewMemberReadHistoryRepository(name string, collection *mongo.Collection) MemberReadHistoryRepository {
+	return &memberReadHistoryRepository{
+		Name:       name,
+		collection: collection,
+	}
+}
 
 func (r memberReadHistoryRepository) Save(ctx context.Context, h domain.MemberReadHistory) (result *mongo.InsertOneResult, err error) {
 	getCtx(&ctx)
 
-	return historyCollection.InsertOne(context.TODO(), h)
+	return r.collection.InsertOne(context.TODO(), h)
 }
 
 func (r memberReadHistoryRepository) Delete(ctx context.Context, d interface{}) (
 	count int64, err error) {
 	getCtx(&ctx)
 
-	result, err := historyCollection.DeleteMany(
+	result, err := r.collection.DeleteMany(
 		ctx,
 		d,
 	)
 	count = result.DeletedCount
 	return
 }
-
-func getCtx(ctx *context.Context) {
-	if ctx == nil {
-		*ctx = context.TODO()
-	}
+func (r memberReadHistoryRepository) List(query *PagingQuery[domain.MemberReadHistory]) (*PaginatedData[domain.MemberReadHistory], error) {
+	return query.SetCollection(r.collection).Find()
 }

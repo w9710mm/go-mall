@@ -1,20 +1,30 @@
 package service
 
 import (
+	"gorm.io/gorm"
+	"mall/global/dao/mapper"
 	"mall/global/dao/model"
 	time "time"
 )
 
 type omsPortalOrderService struct {
+	portalOrderMapper mapper.PortalOrderMapper
+	db                *gorm.DB
 }
 
-var OmsPortalOrderService = new(omsPortalOrderService)
+func NewOmsPortalOrderService(m mapper.PortalOrderMapper,
+	db *gorm.DB) OmsPortalOrderService {
+	return &omsPortalOrderService{
+		portalOrderMapper: m,
+		db:                db,
+	}
+}
 
 func (s *omsPortalOrderService) CancelTimeOutOrder() (count int, err error) {
 
 	var orderSetting model.OmsOrderSetting
-	db.First(&orderSetting)
-	timeOutOrders, err := portalOrderMapper.GetTimeOutOrders(*orderSetting.NormalOrderOvertime)
+	s.db.First(&orderSetting)
+	timeOutOrders, err := s.portalOrderMapper.GetTimeOutOrders(*orderSetting.NormalOrderOvertime)
 
 	if err != nil {
 		return 0, err
@@ -27,25 +37,25 @@ func (s *omsPortalOrderService) CancelTimeOutOrder() (count int, err error) {
 		ids[i] = order.Id
 	}
 
-	err = portalOrderMapper.UpdateOrderStatus(ids, 4)
+	err = s.portalOrderMapper.UpdateOrderStatus(ids, 4)
 	if err != nil {
 		return 0, err
 	}
 	for _, order := range timeOutOrders {
-		portalOrderMapper.ReleaseSkuStockLock(order.OrderItemList)
-		updateCouponStatus(*order.CouponId, order.MemberId, 0)
+		s.portalOrderMapper.ReleaseSkuStockLock(order.OrderItemList)
+		s.UpdateCouponStatus(*order.CouponId, order.MemberId, 0)
 		if *order.UseIntegration != 0 {
 			var user model.UmsMember
-			db.First(&user, order.MemberId)
+			s.db.First(&user, order.MemberId)
 			*user.Integration = *user.Integration + *order.Integration
-			db.Save(&user)
+			s.db.Save(&user)
 		}
 	}
 	count = len(timeOutOrders)
 	return
 }
 
-func updateCouponStatus(couponId int, memberId int, useStatus int) {
+func (s omsPortalOrderService) UpdateCouponStatus(couponId int, memberId int, useStatus int) {
 	if couponId == 0 {
 		return
 	}
@@ -56,7 +66,7 @@ func updateCouponStatus(couponId int, memberId int, useStatus int) {
 	}
 
 	var coupons []model.SmsCouponHistory
-	db.Model(&model.SmsCouponHistory{}).Where(&model.SmsCouponHistory{MemberId: &memberId,
+	s.db.Model(&model.SmsCouponHistory{}).Where(&model.SmsCouponHistory{MemberId: &memberId,
 		CouponId: &couponId, UseStatus: &useStatus,
 	}).Find(&coupons)
 
@@ -65,7 +75,7 @@ func updateCouponStatus(couponId int, memberId int, useStatus int) {
 		t := time.Now()
 		coupon.UseTime = &t
 		coupon.UseStatus = &useStatus
-		db.Save(&coupon)
+		s.db.Save(&coupon)
 	}
 
 }

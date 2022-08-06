@@ -69,6 +69,29 @@ definitions:
           type: string
         type: array
     type: object
+  domain.MemberReadHistory:
+    properties:
+      createTime:
+        type: string
+      id:
+        type: string
+      memberIcon:
+        type: string
+      memberId:
+        type: integer
+      memberNick:
+        type: string
+      productId:
+        type: integer
+      productName:
+        type: string
+      productPic:
+        type: string
+      productPrice:
+        type: string
+      productSubTittle:
+        type: string
+    type: object
   domain.ProductAttr:
     properties:
       attrId:
@@ -134,12 +157,125 @@ info:
   title: mall
   version: "1.0"
 paths:
+  //member/readHistory/clear:
+    get:
+      consumes:
+      - application/json
+      description: 分页获取浏览记录列表
+      operationId: v1/MemberReadHistoryController/List
+      parameters:
+      - default: 0
+        description: page number
+        in: query
+        name: pageNum
+        type: integer
+      - default: 5
+        description: page size
+        in: query
+        name: pageSize
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: success
+          schema:
+            $ref: '#/definitions/response.ResponseMsg'
+        "500":
+          description: failure
+          schema:
+            $ref: '#/definitions/response.ResponseMsg'
+      security:
+      - JWT: []
+      summary: 获取浏览记录列表
+      tags:
+      - 用户浏览记录接口
+    post:
+      consumes:
+      - application/json
+      description: 清空浏览记录
+      operationId: v1/MemberReadHistoryController/Clear
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: success
+          schema:
+            $ref: '#/definitions/response.ResponseMsg'
+        "500":
+          description: failure
+          schema:
+            $ref: '#/definitions/response.ResponseMsg'
+      security:
+      - JWT: []
+      summary: 清空浏览记录
+      tags:
+      - 用户浏览记录接口
+  //member/readHistory/create:
+    post:
+      consumes:
+      - application/json
+      description: 创建一个浏览记录
+      operationId: v1/MemberReadHistoryController/Create
+      parameters:
+      - description: MemberReadHistory
+        in: body
+        name: MemberReadHistory
+        required: true
+        schema:
+          $ref: '#/definitions/domain.MemberReadHistory'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: success
+          schema:
+            $ref: '#/definitions/response.ResponseMsg'
+        "500":
+          description: failure
+          schema:
+            $ref: '#/definitions/response.ResponseMsg'
+      security:
+      - JWT: []
+      summary: 创建浏览记录
+      tags:
+      - 用户浏览记录接口
+  //member/readHistory/delete:
+    post:
+      consumes:
+      - application/json
+      description: 根据ids清空出浏览记录
+      operationId: v1/MemberReadHistoryController/Delete
+      parameters:
+      - description: history_ids
+        in: query
+        items:
+          type: integer
+        name: ids
+        required: true
+        type: array
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: success
+          schema:
+            $ref: '#/definitions/response.ResponseMsg'
+        "500":
+          description: failure
+          schema:
+            $ref: '#/definitions/response.ResponseMsg'
+      security:
+      - JWT: []
+      summary: 删除浏览记录
+      tags:
+      - 用户浏览记录接口
   /brand/{id}:
     get:
       consumes:
       - application/json
       description: 获取一个品牌
-      operationId: v1/PmsBrandController/brand
+      operationId: v1/PmsBrandController/Brand
       parameters:
       - description: brand_id
         in: path
@@ -170,7 +306,7 @@ paths:
       consumes:
       - application/json
       description: 创建一个品牌
-      operationId: v1/PmsBrandController/createBrand
+      operationId: v1/PmsBrandController/Create
       parameters:
       - description: pmsBrand
         in: body
@@ -207,7 +343,7 @@ paths:
       consumes:
       - application/json
       description: 删除品牌
-      operationId: v1/PmsBrandController/deleteBrand
+      operationId: v1/PmsBrandController/Delete
       parameters:
       - description: brand_id
         in: path
@@ -233,7 +369,7 @@ paths:
       consumes:
       - application/json
       description: 获取品牌列表
-      operationId: v1/PmsBrandController/list
+      operationId: v1/PmsBrandController/ListBrand
       parameters:
       - default: 0
         description: page number
@@ -269,7 +405,7 @@ paths:
       consumes:
       - application/json
       description: 更新品牌
-      operationId: v1/PmsBrandController/updateBrand
+      operationId: v1/PmsBrandController/Update
       parameters:
       - description: brand_id
         in: path
@@ -418,7 +554,7 @@ paths:
       description: 根据商品id推荐商品
       operationId: v1/esProduct/Recommend
       parameters:
-      - description: brandId
+      - description: Id
         in: path
         name: id
         required: true
@@ -593,21 +729,41 @@ paths:
       summary: 获取验证码
       tags:
       - 用户接口
-  /sso/verifyAuthCode:
+  /sso/info:
+    get:
+      consumes:
+      - application/json
+      description: 获取会员信息
+      operationId: v1/UmsMemberController/Info
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: success
+          schema:
+            $ref: '#/definitions/response.ResponseMsg'
+        "500":
+          description: failure
+          schema:
+            $ref: '#/definitions/response.ResponseMsg'
+      summary: 获取会员信息
+      tags:
+      - 用户接口
+  /sso/login:
     post:
       consumes:
       - application/json
-      description: 确认验证码
-      operationId: v1/UmsMemberController/UpdatePassword
+      description: 登录
+      operationId: v1/UmsMemberController/Login
       parameters:
-      - description: telephone
+      - description: username
         in: query
-        name: telephone
+        name: username
         required: true
         type: string
-      - description: authcode
+      - description: password
         in: query
-        name: authcode
+        name: password
         required: true
         type: string
       produces:
@@ -621,7 +777,99 @@ paths:
           description: failure
           schema:
             $ref: '#/definitions/response.ResponseMsg'
-      summary: 确认验证码
+      summary: 登录
+      tags:
+      - 用户接口
+  /sso/refreshToken:
+    get:
+      consumes:
+      - application/json
+      description: 刷新token
+      operationId: v1/UmsMemberController/RefreshToken
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: success
+          schema:
+            $ref: '#/definitions/response.ResponseMsg'
+        "500":
+          description: failure
+          schema:
+            $ref: '#/definitions/response.ResponseMsg'
+      summary: 刷新token
+      tags:
+      - 用户接口
+  /sso/register:
+    post:
+      consumes:
+      - application/json
+      description: 注册
+      operationId: v1/UmsMemberController/Register
+      parameters:
+      - description: username
+        in: query
+        name: username
+        required: true
+        type: string
+      - description: password
+        in: query
+        name: password
+        required: true
+        type: string
+      - description: telephone
+        in: query
+        name: telephone
+        required: true
+        type: string
+      - description: authCode
+        in: query
+        name: authCode
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: success
+          schema:
+            $ref: '#/definitions/response.ResponseMsg'
+        "500":
+          description: failure
+          schema:
+            $ref: '#/definitions/response.ResponseMsg'
+      summary: 注册
+      tags:
+      - 用户接口
+  /sso/updatePassword:
+    post:
+      consumes:
+      - application/json
+      description: 会员修改密码
+      operationId: v1/UmsMemberController/UpdatePassword
+      parameters:
+      - description: telephone
+        in: query
+        name: telephone
+        required: true
+        type: string
+      - description: authCode
+        in: query
+        name: authCode
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: success
+          schema:
+            $ref: '#/definitions/response.ResponseMsg'
+        "500":
+          description: failure
+          schema:
+            $ref: '#/definitions/response.ResponseMsg'
+      summary: 会员修改密码
       tags:
       - 用户接口
 swagger: "2.0"

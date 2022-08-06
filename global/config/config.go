@@ -2,7 +2,6 @@ package config
 
 import (
 	"github.com/spf13/viper"
-	"mall/global/log"
 )
 
 type Config struct {
@@ -14,6 +13,19 @@ type Config struct {
 	Redis          RedisConfig
 	ElasticSearch  ElasticSearchConfig
 	Mongodb        MongoDBConfig
+	Server         ServerConfig
+}
+
+type ServerConfig struct {
+	Port int
+	Host string
+	Jwt  JWTConfig
+}
+type JWTConfig struct {
+	TokenHead   string
+	TokenHeader string
+	Key         string
+	Expiration  string
 }
 
 // MySQL相关配置
@@ -110,7 +122,7 @@ func init() {
 	err := viper.ReadInConfig()
 
 	if err != nil {
-		log.Logger.Error("An error occurred while reading the configuration file.")
+		panic(err)
 	}
 	viper.Unmarshal(&c)
 

@@ -2,19 +2,28 @@ package v1
 
 import (
 	"github.com/gin-gonic/gin"
+	"github.com/spf13/viper"
 	"go.uber.org/zap"
 	"mall/common/response"
 	"mall/global/log"
+	"mall/internal/controller/api"
 	"mall/internal/service"
 	"net/http"
 )
 
-var umsMemberService = service.UmsMemberService
-
-type umsMemberController struct {
+type UmsMemberController struct {
+	umsMemberService service.UmsMemberService
+	tokenHead        string
+	tokenHeader      string
 }
 
-var UmsMemberController = new(umsMemberController)
+func NewUmsMemberController(memberService service.UmsMemberService) api.Controller {
+	return &UmsMemberController{
+		umsMemberService: memberService,
+		tokenHead:        viper.GetString("server.jwt.tokenHead"),
+		tokenHeader:      viper.GetString("server.jwt.tokenHeader"),
+	}
+}
 
 // Register godoc
 // @Summary 注册
@@ -30,12 +39,12 @@ var UmsMemberController = new(umsMemberController)
 // @Success 200 {object} response.ResponseMsg "success"
 // @Failure 500 {object} response.ResponseMsg "failure"
 // @Router /sso/register [post]
-func (C umsMemberController) Register(c *gin.Context) {
+func (C *UmsMemberController) Register(c *gin.Context) {
 	username := c.Query("username")
 	password := c.Query("password")
 	telephone := c.Query("telephone")
 	authCode := c.Query("authCode")
-	err := umsMemberService.Register(username, password, telephone, authCode)
+	err := C.umsMemberService.Register(username, password, telephone, authCode)
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, response.FailedMsg(err.Error()))
 		panic(err)
@@ -56,10 +65,10 @@ func (C umsMemberController) Register(c *gin.Context) {
 // @Success 200 {object} response.ResponseMsg "success"
 // @Failure 500 {object} response.ResponseMsg "failure"
 // @Router /sso/login [post]
-func (C umsMemberController) Login(c *gin.Context) {
+func (C *UmsMemberController) Login(c *gin.Context) {
 	username := c.Query("username")
 	password := c.Query("password")
-	token, err := umsMemberService.Login(username, password)
+	token, err := C.umsMemberService.Login(username, password)
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, response.UnauthorizedMsg(err.Error()))
 		panic(err)
@@ -67,7 +76,7 @@ func (C umsMemberController) Login(c *gin.Context) {
 	}
 	tokenMap := make(map[string]string, 2)
 	tokenMap["token"] = token
-	tokenMap["tokenHead"] = tokenHead
+	tokenMap["tokenHead"] = C.tokenHead
 	c.JSON(http.StatusOK, response.SuccessMsg(tokenMap))
 }
 
@@ -81,10 +90,10 @@ func (C umsMemberController) Login(c *gin.Context) {
 // @Success 200 {object} response.ResponseMsg "success"
 // @Failure 500 {object} response.ResponseMsg "failure"
 // @Router /sso/info [GET]
-func (C umsMemberController) Info(c *gin.Context) {
+func (C *UmsMemberController) Info(c *gin.Context) {
 	//TODO 权限管理 casbin
-	tokenString := c.GetHeader(tokenHead)
-	member, err := umsMemberService.GetCurrentMember(tokenString)
+	tokenString := c.GetHeader(C.tokenHead)
+	member, err := C.umsMemberService.GetCurrentMember(tokenString)
 	if err != nil {
 		c.JSON(http.StatusUnauthorized, response.FailedMsg(err.Error()))
 		panic(err)
@@ -104,10 +113,10 @@ func (C umsMemberController) Info(c *gin.Context) {
 // @Success 200 {object} response.ResponseMsg "success"
 // @Failure 500 {object} response.ResponseMsg "failure"
 // @Router /sso/getAuthCode [get]
-func GetAuthCode(c *gin.Context) {
+func (C *UmsMemberController) GetAuthCode(c *gin.Context) {
 
 	telephone := c.Query("telephone")
-	code := umsMemberService.GenerateAuthCode(telephone)
+	code := C.umsMemberService.GenerateAuthCode(telephone)
 
 	log.Logger.Info("Generate telephone auth code",
 		zap.String("telephone", telephone),
@@ -127,10 +136,10 @@ func GetAuthCode(c *gin.Context) {
 // @Success 200 {object} response.ResponseMsg "success"
 // @Failure 500 {object} response.ResponseMsg "failure"
 // @Router /sso/updatePassword [post]
-func UpdatePassword(c *gin.Context) {
+func (C *UmsMemberController) UpdatePassword(c *gin.Context) {
 	telephone := c.Query("telephone")
 	authCode := c.Query("authCode")
-	verify, err := umsMemberService.VerifyAuthCode(telephone, authCode)
+	verify, err := C.umsMemberService.VerifyAuthCode(telephone, authCode)
 	if err != nil {
 
 		c.JSON(http.StatusInternalServerError, response.FailedMsg("error"))
@@ -156,9 +165,9 @@ func UpdatePassword(c *gin.Context) {
 // @Success 200 {object} response.ResponseMsg "success"
 // @Failure 500 {object} response.ResponseMsg "failure"
 // @Router /sso/refreshToken [GET]
-func (C umsMemberController) RefreshToken(c *gin.Context) {
-	tokenString := c.GetHeader(tokenHeader)
-	refreshToken, err := umsMemberService.RefreshToken(tokenString)
+func (C *UmsMemberController) RefreshToken(c *gin.Context) {
+	tokenString := c.GetHeader(C.tokenHeader)
+	refreshToken, err := C.umsMemberService.RefreshToken(tokenString)
 
 	if err != nil {
 		c.JSON(http.StatusUnauthorized, response.UnauthorizedMsg("token is expire"))
@@ -166,7 +175,21 @@ func (C umsMemberController) RefreshToken(c *gin.Context) {
 	}
 	tokenMap := make(map[string]string, 2)
 	tokenMap["token"] = refreshToken
-	tokenMap["tokenHead"] = tokenHead
+	tokenMap["tokenHead"] = C.tokenHead
 	c.JSON(http.StatusOK, response.SuccessMsg(tokenMap))
+
+}
+func (C *UmsMemberController) Name() string {
+	//TODO implement me
+	return "UmsMemberController"
+}
+
+func (C *UmsMemberController) RegisterRoute(api *gin.RouterGroup) {
+	api.POST("/register", C.Register)
+	api.POST("/login", C.Login)
+	api.GET("/info", C.Info)
+	api.GET("/getAuthCode", C.GetAuthCode)
+	api.POST("/updatePassword", C.UpdatePassword)
+	api.GET("/refreshToken", C.RefreshToken)
 
 }
