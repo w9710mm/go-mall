@@ -5,23 +5,28 @@ import (
 	"github.com/spf13/viper"
 	"go.uber.org/zap"
 	"mall/common/response"
+	"mall/common/util"
 	"mall/global/log"
 	"mall/internal/controller/api"
+	"mall/internal/middleware"
 	"mall/internal/service"
 	"net/http"
+	"strings"
 )
 
 type UmsMemberController struct {
-	umsMemberService service.UmsMemberService
-	tokenHead        string
-	tokenHeader      string
+	umsMemberService      service.UmsMemberService
+	umsMemberCacheService service.UmsMemberCacheService
+	tokenHead             string
+	tokenHeader           string
 }
 
-func NewUmsMemberController(memberService service.UmsMemberService) api.Controller {
+func NewUmsMemberController(memberService service.UmsMemberService, cacheService service.UmsMemberCacheService) api.Controller {
 	return &UmsMemberController{
-		umsMemberService: memberService,
-		tokenHead:        viper.GetString("server.jwt.tokenHead"),
-		tokenHeader:      viper.GetString("server.jwt.tokenHeader"),
+		umsMemberService:      memberService,
+		umsMemberCacheService: cacheService,
+		tokenHead:             viper.GetString("server.jwt.tokenHead"),
+		tokenHeader:           viper.GetString("server.jwt.tokenHeader"),
 	}
 }
 
@@ -71,7 +76,7 @@ func (C *UmsMemberController) Login(c *gin.Context) {
 	token, err := C.umsMemberService.Login(username, password)
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, response.UnauthorizedMsg(err.Error()))
-		panic(err)
+		//panic(err)
 		return
 	}
 	tokenMap := make(map[string]string, 2)
@@ -87,19 +92,26 @@ func (C *UmsMemberController) Login(c *gin.Context) {
 // @ID v1/UmsMemberController/Info
 // @Accept  json
 // @Produce  json
+// @Security JWT
 // @Success 200 {object} response.ResponseMsg "success"
 // @Failure 500 {object} response.ResponseMsg "failure"
 // @Router /sso/info [GET]
 func (C *UmsMemberController) Info(c *gin.Context) {
 	//TODO 权限管理 casbin
-	tokenString := c.GetHeader(C.tokenHead)
-	member, err := C.umsMemberService.GetCurrentMember(tokenString)
-	if err != nil {
-		c.JSON(http.StatusUnauthorized, response.FailedMsg(err.Error()))
-		panic(err)
+	//tokenString := c.GetHeader(C.tokenHead)
+	value, exists := c.Get("clamis")
+	if !exists {
+		c.JSON(http.StatusUnauthorized, response.FailedMsg("token is failed"))
 		return
 	}
+	claims := value.(*util.Claims)
+	member, err := C.umsMemberCacheService.GetMember(claims.Username)
+	if err != nil {
+		return
+	}
+
 	c.JSON(http.StatusOK, member)
+
 }
 
 // GetAuthCode godoc
@@ -131,27 +143,22 @@ func (C *UmsMemberController) GetAuthCode(c *gin.Context) {
 // @ID v1/UmsMemberController/UpdatePassword
 // @Accept  json
 // @Produce  json
+// @Security JWT
 // @Param telephone query string true "telephone"
 // @Param authCode query string true "authCode"
+// @Param password query string true "password"
 // @Success 200 {object} response.ResponseMsg "success"
 // @Failure 500 {object} response.ResponseMsg "failure"
 // @Router /sso/updatePassword [post]
 func (C *UmsMemberController) UpdatePassword(c *gin.Context) {
 	telephone := c.Query("telephone")
 	authCode := c.Query("authCode")
-	verify, err := C.umsMemberService.VerifyAuthCode(telephone, authCode)
+	password := c.Query("password")
+	err := C.umsMemberService.UpdatePassword(telephone, password, authCode)
 	if err != nil {
-
 		c.JSON(http.StatusInternalServerError, response.FailedMsg("error"))
-		panic(err)
-	}
-
-	if !verify {
-		c.JSON(http.StatusOK, response.FailedMsg("failed"))
 		return
 	}
-	log.Logger.Info("check auth code success,telephone",
-		zap.String(telephone, authCode))
 	c.JSON(http.StatusOK, response.SuccessMsg("success"))
 }
 
@@ -162,16 +169,23 @@ func (C *UmsMemberController) UpdatePassword(c *gin.Context) {
 // @ID v1/UmsMemberController/RefreshToken
 // @Accept  json
 // @Produce  json
+// @Security JWT
 // @Success 200 {object} response.ResponseMsg "success"
 // @Failure 500 {object} response.ResponseMsg "failure"
 // @Router /sso/refreshToken [GET]
 func (C *UmsMemberController) RefreshToken(c *gin.Context) {
-	tokenString := c.GetHeader(C.tokenHeader)
-	refreshToken, err := C.umsMemberService.RefreshToken(tokenString)
+	authString := c.Request.Header.Get(C.tokenHeader)
 
-	if err != nil {
+	tokenString := strings.Fields(authString)
+	if len(tokenString) != 2 || tokenString[0] != "Bearer" || tokenString[1] == "" {
 		c.JSON(http.StatusUnauthorized, response.UnauthorizedMsg("token is expire"))
-		panic(err)
+		return
+	}
+
+	refreshToken, err := C.umsMemberService.RefreshToken(tokenString[1])
+	if err != nil {
+		c.JSON(http.StatusUnauthorized, response.UnauthorizedMsg("generate token error"))
+		return
 	}
 	tokenMap := make(map[string]string, 2)
 	tokenMap["token"] = refreshToken
@@ -185,10 +199,12 @@ func (C *UmsMemberController) Name() string {
 }
 
 func (C *UmsMemberController) RegisterRoute(api *gin.RouterGroup) {
+
 	api.POST("/register", C.Register)
 	api.POST("/login", C.Login)
-	api.GET("/info", C.Info)
 	api.GET("/getAuthCode", C.GetAuthCode)
+	api.Use(middleware.JWTAuth())
+	api.GET("/info", C.Info)
 	api.POST("/updatePassword", C.UpdatePassword)
 	api.GET("/refreshToken", C.RefreshToken)
 

@@ -23,11 +23,12 @@ const (
 // filter data with page, limit, sort key
 // and sort value
 type PagingQuery[T any] struct {
-	collection  *mongo.Collection
-	sortFields  bson.D
-	ctx         context.Context
-	data        PaginatedData[T]
-	project     interface{}
+	collection *mongo.Collection
+	sortFields bson.D
+	ctx        context.Context
+	data       PaginatedData[T]
+	project    interface{}
+
 	filterQuery interface{}
 	limitCount  int64
 	pageCount   int64
@@ -212,7 +213,7 @@ func (paging *PagingQuery[T]) Aggregate(filters ...interface{}) (paginatedData *
 	var agg []T
 	for i, raw := range data {
 
-		if marshallErr := bson.Unmarshal(raw, &dec[i]); marshallErr == nil {
+		if marshallErr := bson.Unmarshal(raw, dec[i]); marshallErr == nil {
 			agg = append(agg, agg[i])
 		}
 
@@ -257,12 +258,15 @@ func (paging *PagingQuery[T]) Find() (paginatedData *PaginatedData[T], err error
 		return nil, err
 	}
 	defer cursor.Close(ctx)
-	docs := paging.data
-	err = cursor.All(ctx, docs)
+	//docs := paging.data.Data
+	var docs = make([]T, 10)
+
+	err = cursor.All(ctx, &docs)
 	if err != nil {
 		return nil, err
 	}
 
+	paging.data.Data = docs
 	paginationInfo := <-paginationInfoChan
 
 	paging.data.Pagination = *paginationInfo.PaginationData()

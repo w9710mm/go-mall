@@ -14,6 +14,7 @@ type Config struct {
 	ElasticSearch  ElasticSearchConfig
 	Mongodb        MongoDBConfig
 	Server         ServerConfig
+	RabbitMQ       RabbitMQConfig
 }
 
 type ServerConfig struct {
@@ -102,6 +103,13 @@ type MsgChannelType struct {
 	KafkaTopic  string
 }
 
+type RabbitMQConfig struct {
+	Host        string
+	Port        int
+	VirtualHost string
+	Username    string
+	Password    string
+}
 type ElasticSearchConfig struct {
 	Repositories struct {
 		Enabled bool
@@ -128,6 +136,6 @@ func init() {
 
 }
 
-func GetConfig() Config {
-	return c
+func GetConfig() *Config {
+	return &c
 }

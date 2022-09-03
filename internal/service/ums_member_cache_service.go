@@ -6,7 +6,7 @@ import (
 	"github.com/go-redis/redis/v9"
 	"gorm.io/gorm"
 	"mall/global/config"
-	"mall/global/dao/model"
+	"mall/global/model"
 	"time"
 )
 
@@ -26,21 +26,26 @@ func NewUmsMemberCacheService(mysqlDB *gorm.DB,
 
 }
 
-func (s *umsMemberCacheService) SetMember(member model.UmsMember) {
-	key := fmt.Sprintf("%d:%s:%s", s.config.DB, s.config.Key.Member, member.Username)
-	s.redisDB.Set(context.TODO(), key, member, time.Duration(s.config.Expire.AuthCode)*time.Second)
+func (s *umsMemberCacheService) SetMember(member model.UmsMember) (err error) {
+	key := fmt.Sprintf("%d:%s:%s", s.config.DB, s.config.Key.Member, *member.Username)
+	//marshal, err := json.Marshal(member)
+	//if err != nil {
+	//return
+	//}
+	_, err = s.redisDB.Set(context.TODO(), key, &member, time.Duration(s.config.Expire.Common)*time.Second).Result()
+	return
 }
 func (s umsMemberCacheService) DelMember(memberId int64) {
 	member := model.UmsMember{}
 	s.mysqlDB.Where(&model.UmsMember{Id: memberId}).First(&member)
 	if member.Username == nil {
-		key := fmt.Sprintf("%d:%s:%s", s.config.DB, s.config.Key.Member, member.Username)
+		key := fmt.Sprintf("%d:%s:%s", s.config.DB, s.config.Key.Member, *member.Username)
 		s.redisDB.Del(context.TODO(), key)
 	}
 }
 
 func (s umsMemberCacheService) GetMember(username string) (member model.UmsMember, err error) {
-	key := fmt.Sprintf("%d:%s:%s", s.config.DB, s.config.Key.Member, member.Username)
+	key := fmt.Sprintf("%d:%s:%s", s.config.DB, s.config.Key.Member, username)
 	err = s.redisDB.Get(context.TODO(), key).Scan(&member)
 	return
 }

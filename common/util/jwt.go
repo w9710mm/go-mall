@@ -54,13 +54,9 @@ func ValidateToken(token string, name string) bool {
 	return name == GetUserNameFromToken(token)
 }
 
-func isTokenExpired(tokenString string) bool {
-	token, claims, err := ParseToken(tokenString)
-	if err != nil || !token.Valid {
-		return false
-	}
+func IsTokenExpired(c *Claims) bool {
 
-	return claims.VerifyExpiresAt(time.Now(), false)
+	return c.VerifyExpiresAt(time.Now(), false)
 }
 
 func RefreshToken(tokenString string) (string, error) {

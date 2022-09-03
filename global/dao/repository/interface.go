@@ -3,7 +3,7 @@ package repository
 import (
 	"context"
 	"github.com/olivere/elastic/v7"
-	"mall/global/dao/document"
+	"mall/global/document"
 )
 
 type EsProductRepository interface {

@@ -3,9 +3,10 @@ package service
 import (
 	"context"
 	"go.mongodb.org/mongo-driver/bson"
-	"mall/global/dao/domain"
-	"mall/global/dao/model"
+	"go.mongodb.org/mongo-driver/bson/primitive"
 	"mall/global/dao/nosql"
+	"mall/global/domain"
+	"mall/global/model"
 	"time"
 )
 
@@ -19,24 +20,27 @@ func NewMemberReadHistoryService(service nosql.MemberReadHistoryRepository) Memb
 	}
 }
 
-func (s *memberReadHistoryService) Create(member model.UmsMember, h domain.MemberReadHistory) (id string, err error) {
+func (s *memberReadHistoryService) Create(member model.UmsMember, h domain.MemberReadHistory) (err error) {
 
 	h.MemberId = member.Id
-	h.MemberNick = *member.Nickname
-	h.MemberIcon = *member.Icon
-	h.Id = ""
+	if member.Nickname != nil {
+		h.MemberNickname = *member.Nickname
+	}
+
+	h.Id = primitive.NewObjectID().Hex()
 	h.CreateTime = time.Now()
 
-	result, err := s.memberReadHistoryRepository.Save(context.TODO(), h)
-	if err != nil {
-		return "", err
-	}
-	id = result.InsertedID.(string)
+	_, err = s.memberReadHistoryRepository.Save(context.TODO(), h)
+
 	return
 }
 
 func (s *memberReadHistoryService) Delete(ids []string) (count int64, err error) {
-	d := bson.D{{Key: "_id", Value: bson.M{"$in": ids}}}
+	Newids := make([]primitive.ObjectID, len(ids))
+	for i, id := range ids {
+		Newids[i], _ = primitive.ObjectIDFromHex(id)
+	}
+	d := bson.D{{"_id", bson.D{{"$in", ids}}}}
 	count, err = s.memberReadHistoryRepository.Delete(context.TODO(), d)
 	return
 }
@@ -44,9 +48,7 @@ func (s *memberReadHistoryService) Delete(ids []string) (count int64, err error)
 func (s *memberReadHistoryService) List(memberID int64, pageNum int, pageSize int) (
 	p *nosql.PaginatedData[domain.MemberReadHistory], err error) {
 	page := &nosql.PagingQuery[domain.MemberReadHistory]{}
-	if err != nil {
-		return
-	}
+
 	page.Page(int64(pageNum)).Limit(int64(pageSize)).Context(context.TODO()).
 		Sort("createTime", -1).Filter(bson.D{{"memberId", memberID}})
 

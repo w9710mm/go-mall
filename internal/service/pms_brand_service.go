@@ -4,7 +4,7 @@ import (
 	"errors"
 	paginator "github.com/yafeng-Soong/gorm-paginator" // 导入包
 	"gorm.io/gorm"
-	"mall/global/dao/model"
+	"mall/global/model"
 )
 
 type pmsBrandService struct {

@@ -5,10 +5,10 @@ import (
 	"encoding/json"
 	"fmt"
 	"github.com/olivere/elastic/v7"
-	"mall/global/dao/document"
-	"mall/global/dao/domain"
 	"mall/global/dao/mapper"
 	"mall/global/dao/repository"
+	"mall/global/document"
+	"mall/global/domain"
 	"strconv"
 )
 

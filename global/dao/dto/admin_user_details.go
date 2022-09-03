@@ -1,6 +1,6 @@
 package dto
 
-import "mall/global/dao/model"
+import "mall/global/model"
 
 type AdminUserDetails struct {
 	UmsAdmin       model.UmsAdmin

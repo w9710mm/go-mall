@@ -3,9 +3,9 @@ package mapper
 import (
 	"fmt"
 	"gorm.io/gorm"
-	"mall/global/dao/document"
-	"mall/global/dao/domain"
-	"mall/global/dao/model"
+	"mall/global/document"
+	"mall/global/domain"
+	"mall/global/model"
 )
 
 type esProductMapper struct {

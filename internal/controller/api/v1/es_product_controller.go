@@ -68,6 +68,7 @@ func (C *EsProductController) Delete(c *gin.Context) {
 // @ID v1/esProduct/DeleteBatch
 // @Accept  json
 // @Produce  json
+// @Security JWT
 // @Param ids query []int true "product_ids"
 // @Success 200 {object} response.ResponseMsg{data=int} "success"
 // @Failure 500 {object} response.ResponseMsg "failure"
@@ -95,6 +96,7 @@ func (C *EsProductController) DeleteBatch(c *gin.Context) {
 // @ID v1/esProduct/Create
 // @Accept  json
 // @Produce  json
+// @Security JWT
 // @Param id path int true "product_id"
 // @Success 200 {object} response.ResponseMsg{data=document.EsProduct} "success"
 // @Failure 500 {object} response.ResponseMsg "failure"
@@ -117,6 +119,7 @@ func (C *EsProductController) Create(c *gin.Context) {
 // @ID v1/esProduct/SearchSimple
 // @Accept  json
 // @Produce  json
+// @Security JWT
 // @Param keyword query string false "page number" default("")
 // @Param pageNum query int false "page number" default(0)
 // @Param pageSize query int false "page size"  default(5)
@@ -145,6 +148,7 @@ func (C *EsProductController) SearchSimple(c *gin.Context) {
 // @ID v1/esProduct/SearchDetail
 // @Accept  json
 // @Produce  json
+// @Security JWT
 // @Param keyword query string false "keyword"
 // @Param brandId query int false "brandId" default(0)
 // @Param productCategoryId query int false "product Category Id" default(0)
@@ -178,6 +182,7 @@ func (C *EsProductController) SearchDetail(c *gin.Context) {
 // @ID v1/esProduct/Recommend
 // @Accept  json
 // @Produce  json
+// @Security JWT
 // @Param id path int true "Id"
 // @Param pageNum query int false "page number" default(0)
 // @Param pageSize query int false "page size"  default(5)
@@ -204,6 +209,7 @@ func (C *EsProductController) Recommend(c *gin.Context) {
 // @ID v1/esProduct/SearchRelatedInfo
 // @Accept  json
 // @Produce  json
+// @Security JWT
 // @Param keyword query string false "keyword"
 // @Success 200 {object} response.ResponseMsg{data=domain.EsProductRelatedInfo} "success"
 // @Failure 500 {object} response.ResponseMsg "failure"

@@ -11,194 +11,19 @@ const docTemplate = `{
         "description": "{{escape .Description}}",
         "title": "{{.Title}}",
         "termsOfService": "https://github.com/18211167516/Go-Gin-Api",
-        "contact": {
-            "name": "meme",
-            "email": "962349367@qq.com"
-        },
+        "contact": {},
         "version": "{{.Version}}"
     },
     "host": "{{.Host}}",
     "basePath": "{{.BasePath}}",
     "paths": {
-        "//member/readHistory/clear": {
-            "get": {
-                "security": [
-                    {
-                        "JWT": []
-                    }
-                ],
-                "description": "分页获取浏览记录列表",
-                "consumes": [
-                    "application/json"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "tags": [
-                    "用户浏览记录接口"
-                ],
-                "summary": "获取浏览记录列表",
-                "operationId": "v1/MemberReadHistoryController/List",
-                "parameters": [
-                    {
-                        "type": "integer",
-                        "default": 0,
-                        "description": "page number",
-                        "name": "pageNum",
-                        "in": "query"
-                    },
-                    {
-                        "type": "integer",
-                        "default": 5,
-                        "description": "page size",
-                        "name": "pageSize",
-                        "in": "query"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "success",
-                        "schema": {
-                            "$ref": "#/definitions/response.ResponseMsg"
-                        }
-                    },
-                    "500": {
-                        "description": "failure",
-                        "schema": {
-                            "$ref": "#/definitions/response.ResponseMsg"
-                        }
-                    }
-                }
-            },
-            "post": {
-                "security": [
-                    {
-                        "JWT": []
-                    }
-                ],
-                "description": "清空浏览记录",
-                "consumes": [
-                    "application/json"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "tags": [
-                    "用户浏览记录接口"
-                ],
-                "summary": "清空浏览记录",
-                "operationId": "v1/MemberReadHistoryController/Clear",
-                "responses": {
-                    "200": {
-                        "description": "success",
-                        "schema": {
-                            "$ref": "#/definitions/response.ResponseMsg"
-                        }
-                    },
-                    "500": {
-                        "description": "failure",
-                        "schema": {
-                            "$ref": "#/definitions/response.ResponseMsg"
-                        }
-                    }
-                }
-            }
-        },
-        "//member/readHistory/create": {
-            "post": {
-                "security": [
-                    {
-                        "JWT": []
-                    }
-                ],
-                "description": "创建一个浏览记录",
-                "consumes": [
-                    "application/json"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "tags": [
-                    "用户浏览记录接口"
-                ],
-                "summary": "创建浏览记录",
-                "operationId": "v1/MemberReadHistoryController/Create",
-                "parameters": [
-                    {
-                        "description": "MemberReadHistory",
-                        "name": "MemberReadHistory",
-                        "in": "body",
-                        "required": true,
-                        "schema": {
-                            "$ref": "#/definitions/domain.MemberReadHistory"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "success",
-                        "schema": {
-                            "$ref": "#/definitions/response.ResponseMsg"
-                        }
-                    },
-                    "500": {
-                        "description": "failure",
-                        "schema": {
-                            "$ref": "#/definitions/response.ResponseMsg"
-                        }
-                    }
-                }
-            }
-        },
-        "//member/readHistory/delete": {
-            "post": {
-                "security": [
-                    {
-                        "JWT": []
-                    }
-                ],
-                "description": "根据ids清空出浏览记录",
-                "consumes": [
-                    "application/json"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "tags": [
-                    "用户浏览记录接口"
-                ],
-                "summary": "删除浏览记录",
-                "operationId": "v1/MemberReadHistoryController/Delete",
-                "parameters": [
-                    {
-                        "type": "array",
-                        "items": {
-                            "type": "integer"
-                        },
-                        "description": "history_ids",
-                        "name": "ids",
-                        "in": "query",
-                        "required": true
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "success",
-                        "schema": {
-                            "$ref": "#/definitions/response.ResponseMsg"
-                        }
-                    },
-                    "500": {
-                        "description": "failure",
-                        "schema": {
-                            "$ref": "#/definitions/response.ResponseMsg"
-                        }
-                    }
-                }
-            }
-        },
         "/brand/create": {
             "post": {
+                "security": [
+                    {
+                        "JWT": []
+                    }
+                ],
                 "description": "创建一个品牌",
                 "consumes": [
                     "application/json"
@@ -264,6 +89,11 @@ const docTemplate = `{
         },
         "/brand/delete/{id}": {
             "get": {
+                "security": [
+                    {
+                        "JWT": []
+                    }
+                ],
                 "description": "删除品牌",
                 "consumes": [
                     "application/json"
@@ -303,6 +133,11 @@ const docTemplate = `{
         },
         "/brand/list": {
             "get": {
+                "security": [
+                    {
+                        "JWT": []
+                    }
+                ],
                 "description": "获取品牌列表",
                 "consumes": [
                     "application/json"
@@ -361,6 +196,11 @@ const docTemplate = `{
         },
         "/brand/update/{id}": {
             "post": {
+                "security": [
+                    {
+                        "JWT": []
+                    }
+                ],
                 "description": "更新品牌",
                 "consumes": [
                     "application/json"
@@ -421,6 +261,11 @@ const docTemplate = `{
         },
         "/brand/{id}": {
             "get": {
+                "security": [
+                    {
+                        "JWT": []
+                    }
+                ],
                 "description": "获取一个品牌",
                 "consumes": [
                     "application/json"
@@ -472,6 +317,11 @@ const docTemplate = `{
         },
         "/esProduct/create/{id}": {
             "post": {
+                "security": [
+                    {
+                        "JWT": []
+                    }
+                ],
                 "description": "根据id创建商品",
                 "consumes": [
                     "application/json"
@@ -523,6 +373,11 @@ const docTemplate = `{
         },
         "/esProduct/delete/batch": {
             "post": {
+                "security": [
+                    {
+                        "JWT": []
+                    }
+                ],
                 "description": "根据id批量删除商品",
                 "consumes": [
                     "application/json"
@@ -646,6 +501,11 @@ const docTemplate = `{
         },
         "/esProduct/recommend/{id}": {
             "get": {
+                "security": [
+                    {
+                        "JWT": []
+                    }
+                ],
                 "description": "根据商品id推荐商品",
                 "consumes": [
                     "application/json"
@@ -699,6 +559,11 @@ const docTemplate = `{
         },
         "/esProduct/search": {
             "get": {
+                "security": [
+                    {
+                        "JWT": []
+                    }
+                ],
                 "description": "综合搜索、筛选、排序",
                 "consumes": [
                     "application/json"
@@ -771,6 +636,11 @@ const docTemplate = `{
         },
         "/esProduct/search/relate": {
             "get": {
+                "security": [
+                    {
+                        "JWT": []
+                    }
+                ],
                 "description": "获取搜索的相关品牌、分类及筛选属性",
                 "consumes": [
                     "application/json"
@@ -821,6 +691,11 @@ const docTemplate = `{
         },
         "/esProduct/search/simple": {
             "get": {
+                "security": [
+                    {
+                        "JWT": []
+                    }
+                ],
                 "description": "简单搜索",
                 "consumes": [
                     "application/json"
@@ -884,6 +759,185 @@ const docTemplate = `{
                 }
             }
         },
+        "/member/readHistory/clear": {
+            "post": {
+                "security": [
+                    {
+                        "JWT": []
+                    }
+                ],
+                "description": "清空浏览记录",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "用户浏览记录接口"
+                ],
+                "summary": "清空浏览记录",
+                "operationId": "v1/MemberReadHistoryController/Clear",
+                "responses": {
+                    "200": {
+                        "description": "success",
+                        "schema": {
+                            "$ref": "#/definitions/response.ResponseMsg"
+                        }
+                    },
+                    "500": {
+                        "description": "failure",
+                        "schema": {
+                            "$ref": "#/definitions/response.ResponseMsg"
+                        }
+                    }
+                }
+            }
+        },
+        "/member/readHistory/create": {
+            "post": {
+                "security": [
+                    {
+                        "JWT": []
+                    }
+                ],
+                "description": "创建一个浏览记录",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "用户浏览记录接口"
+                ],
+                "summary": "创建浏览记录",
+                "operationId": "v1/MemberReadHistoryController/Create",
+                "parameters": [
+                    {
+                        "description": "MemberReadHistory",
+                        "name": "MemberReadHistory",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/domain.MemberReadHistory"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success",
+                        "schema": {
+                            "$ref": "#/definitions/response.ResponseMsg"
+                        }
+                    },
+                    "500": {
+                        "description": "failure",
+                        "schema": {
+                            "$ref": "#/definitions/response.ResponseMsg"
+                        }
+                    }
+                }
+            }
+        },
+        "/member/readHistory/delete": {
+            "post": {
+                "security": [
+                    {
+                        "JWT": []
+                    }
+                ],
+                "description": "根据ids清空出浏览记录",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "用户浏览记录接口"
+                ],
+                "summary": "删除浏览记录",
+                "operationId": "v1/MemberReadHistoryController/Delete",
+                "parameters": [
+                    {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "history_ids",
+                        "name": "ids",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success",
+                        "schema": {
+                            "$ref": "#/definitions/response.ResponseMsg"
+                        }
+                    },
+                    "500": {
+                        "description": "failure",
+                        "schema": {
+                            "$ref": "#/definitions/response.ResponseMsg"
+                        }
+                    }
+                }
+            }
+        },
+        "/member/readHistory/list": {
+            "get": {
+                "security": [
+                    {
+                        "JWT": []
+                    }
+                ],
+                "description": "分页获取浏览记录列表",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "用户浏览记录接口"
+                ],
+                "summary": "获取浏览记录列表",
+                "operationId": "v1/MemberReadHistoryController/List",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "default": 0,
+                        "description": "page number",
+                        "name": "pageNum",
+                        "in": "query"
+                    },
+                    {
+                        "type": "integer",
+                        "default": 5,
+                        "description": "page size",
+                        "name": "pageSize",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success",
+                        "schema": {
+                            "$ref": "#/definitions/response.ResponseMsg"
+                        }
+                    },
+                    "500": {
+                        "description": "failure",
+                        "schema": {
+                            "$ref": "#/definitions/response.ResponseMsg"
+                        }
+                    }
+                }
+            }
+        },
         "/sso/getAuthCode": {
             "get": {
                 "description": "获取验证码",
@@ -925,6 +979,11 @@ const docTemplate = `{
         },
         "/sso/info": {
             "get": {
+                "security": [
+                    {
+                        "JWT": []
+                    }
+                ],
                 "description": "获取会员信息",
                 "consumes": [
                     "application/json"
@@ -1001,6 +1060,11 @@ const docTemplate = `{
         },
         "/sso/refreshToken": {
             "get": {
+                "security": [
+                    {
+                        "JWT": []
+                    }
+                ],
                 "description": "刷新token",
                 "consumes": [
                     "application/json"
@@ -1091,6 +1155,11 @@ const docTemplate = `{
         },
         "/sso/updatePassword": {
             "post": {
+                "security": [
+                    {
+                        "JWT": []
+                    }
+                ],
                 "description": "会员修改密码",
                 "consumes": [
                     "application/json"
@@ -1115,6 +1184,13 @@ const docTemplate = `{
                         "type": "string",
                         "description": "authCode",
                         "name": "authCode",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "password",
+                        "name": "password",
                         "in": "query",
                         "required": true
                     }
@@ -1356,13 +1432,20 @@ const docTemplate = `{
                 }
             }
         }
+    },
+    "securityDefinitions": {
+        "JWT": {
+            "type": "apiKey",
+            "name": "Authorization",
+            "in": "header"
+        }
     }
 }`
 
 // SwaggerInfo holds exported Swagger Info so clients can modify it
 var SwaggerInfo = &swag.Spec{
 	Version:          "1.0",
-	Host:             "127.0.0.1:8080",
+	Host:             "",
 	BasePath:         "",
 	Schemes:          []string{},
 	Title:            "mall",

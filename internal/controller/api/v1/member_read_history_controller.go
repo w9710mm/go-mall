@@ -3,8 +3,9 @@ package v1
 import (
 	"github.com/gin-gonic/gin"
 	"mall/common/response"
+	"mall/common/util"
 	"mall/global/config"
-	"mall/global/dao/domain"
+	"mall/global/domain"
 	"mall/internal/controller/api"
 	"mall/internal/service"
 	"net/http"
@@ -14,14 +15,16 @@ import (
 type MemberReadHistoryController struct {
 	memberReadHistoryService service.MemberReadHistoryService
 	umsMemberService         service.UmsMemberService
+	umsMemberCacheService    service.UmsMemberCacheService
 	tokenHeader              string
 }
 
 func NewMemberReadHistoryController(memberReadHistoryService service.MemberReadHistoryService,
-	umsMemberService service.UmsMemberService) api.Controller {
+	umsMemberService service.UmsMemberService, umsMemberCacheService service.UmsMemberCacheService) api.Controller {
 	return &MemberReadHistoryController{
 		memberReadHistoryService: memberReadHistoryService,
 		umsMemberService:         umsMemberService,
+		umsMemberCacheService:    umsMemberCacheService,
 		tokenHeader:              config.GetConfig().Server.Jwt.TokenHeader,
 	}
 }
@@ -37,28 +40,31 @@ func NewMemberReadHistoryController(memberReadHistoryService service.MemberReadH
 // @Param MemberReadHistory body domain.MemberReadHistory true "MemberReadHistory"
 // @Success 200 {object} response.ResponseMsg "success"
 // @Failure 500 {object} response.ResponseMsg "failure"
-// @Router //member/readHistory/create [post]
+// @Router /member/readHistory/create [post]
 func (C *MemberReadHistoryController) Create(c *gin.Context) {
 	var history domain.MemberReadHistory
 	err := c.ShouldBind(&history)
 	if err != nil {
-		c.JSON(http.StatusExpectationFailed, response.FailedMsg(err))
-		panic(err)
-
+		c.JSON(http.StatusExpectationFailed, response.FailedMsg(err.Error()))
+		return
 	}
-	tokenString := c.Request.Header.Get(C.tokenHeader)
-	member, err := C.umsMemberService.GetCurrentMember(tokenString)
+	value, exists := c.Get("clamis")
+	if !exists {
+		c.JSON(http.StatusUnauthorized, response.FailedMsg("token is failed"))
+		return
+	}
+	claims := value.(*util.Claims)
+	member, err := C.umsMemberCacheService.GetMember(claims.Username)
 	if err != nil {
-		c.JSON(http.StatusExpectationFailed, response.UnauthorizedMsg(err))
-		panic(err)
-
+		c.JSON(http.StatusExpectationFailed, response.UnauthorizedMsg(err.Error()))
+		return
 	}
-	result, err := C.memberReadHistoryService.Create(member, history)
+	err = C.memberReadHistoryService.Create(member, history)
 	if err != nil {
-		c.JSON(http.StatusExpectationFailed, response.FailedMsg(err))
-		panic(err)
+		c.JSON(http.StatusExpectationFailed, response.FailedMsg(err.Error()))
+		return
 	}
-	c.JSON(http.StatusOK, response.SuccessMsg(result))
+	c.JSON(http.StatusOK, response.SuccessMsg("OK"))
 }
 
 // Delete godoc
@@ -69,17 +75,16 @@ func (C *MemberReadHistoryController) Create(c *gin.Context) {
 // @Accept  json
 // @Produce  json
 // @Security JWT
-// @Param ids query []int true "history_ids"
+// @Param ids query []string true "history_ids"
 // @Success 200 {object} response.ResponseMsg "success"
 // @Failure 500 {object} response.ResponseMsg "failure"
-// @Router //member/readHistory/delete [post]
+// @Router /member/readHistory/delete [post]
 func (C *MemberReadHistoryController) Delete(c *gin.Context) {
 	values := c.QueryArray("ids")
 	count, err := C.memberReadHistoryService.Delete(values)
 	if err != nil {
-		c.JSON(http.StatusInternalServerError, response.FailedMsg(err))
-		panic(err)
-
+		c.JSON(http.StatusInternalServerError, response.FailedMsg(err.Error()))
+		return
 	}
 	c.JSON(http.StatusOK, response.SuccessMsg(count))
 
@@ -95,19 +100,24 @@ func (C *MemberReadHistoryController) Delete(c *gin.Context) {
 // @Security JWT
 // @Success 200 {object} response.ResponseMsg "success"
 // @Failure 500 {object} response.ResponseMsg "failure"
-// @Router //member/readHistory/clear [post]
+// @Router /member/readHistory/clear [post]
 func (C *MemberReadHistoryController) Clear(c *gin.Context) {
-	tokenString := c.Request.Header.Get(C.tokenHeader)
-	member, err := C.umsMemberService.GetCurrentMember(tokenString)
-	if err != nil {
-		c.JSON(http.StatusUnauthorized, response.UnauthorizedMsg(err))
-		panic(err)
 
+	value, exists := c.Get("clamis")
+	if !exists {
+		c.JSON(http.StatusUnauthorized, response.FailedMsg("token is failed"))
+		return
+	}
+	claims := value.(*util.Claims)
+	member, err := C.umsMemberCacheService.GetMember(claims.Username)
+	if err != nil {
+		c.JSON(http.StatusUnauthorized, response.UnauthorizedMsg(err.Error()))
+		return
 	}
 	resut, err := C.memberReadHistoryService.Clear(member.Id)
 	if err != nil {
-		c.JSON(http.StatusInternalServerError, response.FailedMsg(err))
-		panic(err)
+		c.JSON(http.StatusInternalServerError, response.FailedMsg(err.Error()))
+		return
 	}
 	c.JSON(http.StatusOK, response.SuccessMsg(resut))
 }
@@ -124,23 +134,27 @@ func (C *MemberReadHistoryController) Clear(c *gin.Context) {
 // @Param pageSize query int false "page size"  default(5)
 // @Success 200 {object} response.ResponseMsg "success"
 // @Failure 500 {object} response.ResponseMsg "failure"
-// @Router //member/readHistory/clear [get]
+// @Router /member/readHistory/list [get]
 func (C *MemberReadHistoryController) List(c *gin.Context) {
 	pageNum, _ := strconv.Atoi(c.Query("pageNum"))
 
 	pageSize, _ := strconv.Atoi(c.Query("pageSize"))
-
-	tokenString := c.Request.Header.Get(C.tokenHeader)
-	member, err := C.umsMemberService.GetCurrentMember(tokenString)
+	value, exists := c.Get("clamis")
+	if !exists {
+		c.JSON(http.StatusUnauthorized, response.FailedMsg("token is failed"))
+		return
+	}
+	claims := value.(*util.Claims)
+	member, err := C.umsMemberCacheService.GetMember(claims.Username)
 	if err != nil {
 		c.JSON(http.StatusUnauthorized, response.UnauthorizedMsg(err))
-		panic(err)
+		return
 	}
 
-	page, err := C.memberReadHistoryService.List(member.Id, pageSize, pageNum)
+	page, err := C.memberReadHistoryService.List(member.Id, pageNum, pageSize)
 	if err != nil {
-		c.JSON(http.StatusInternalServerError, response.FailedMsg(err))
-		panic(err)
+		c.JSON(http.StatusInternalServerError, response.FailedMsg(err.Error()))
+		return
 	}
 	c.JSON(http.StatusOK, response.SuccessMsg(page))
 }

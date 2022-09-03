@@ -36,8 +36,8 @@ Redis:
   poolTimeout: 30
   database: mall
   key:
-    orderId: 'ums:authCode'
-    member: 'oms:orderId'
+    orderId: 'ums:orderId'
+    member: 'oms:member'
     authCode: 'ums:authCode'
   expire:
     authCode: 60
@@ -50,15 +50,21 @@ elasticsearch:
   clusterName: elasticsearch # es集群的名称
 
 mongodb:
-  credential:
-    authMechanism:
-    authSource:
-    username:
-    password:
   timeout: 10
   maxPoolSize: 10
   minPoolSize: 2
   host:
-    - localhost:2701
+    - localhost:27017
   database: mall-port
+  credential:
+    authMechanism: SCRAM-SHA-1
+    authSource:
+    username: root
+    password: root
 
+  rabbitmq:
+    host: localhost
+    port: 5672
+    virtual-host: /mall
+    username: mall
+    password: mall

@@ -43,7 +43,7 @@ func New() (*Server, error) {
 
 	esProductRepository := repository.NewEsProductRepository(esDB)
 
-	historyRepository := nosql.NewMemberReadHistoryRepository("Member_read_history", mongoDB.Collection("Member_read_history"))
+	historyRepository := nosql.NewMemberReadHistoryRepository("memberReadHistory", mongoDB.Collection("memberReadHistory"))
 
 	productService := service.NewEsProductService(esProductRepository, productMapper)
 	historyService := service.NewMemberReadHistoryService(historyRepository)
@@ -54,10 +54,10 @@ func New() (*Server, error) {
 	memberService := service.NewUmsMemberService(cacheService, mysqlDb)
 
 	esProductController := v1.NewEsProductController(productService)
-	memberReadHistoryController := v1.NewMemberReadHistoryController(historyService, memberService)
+	memberReadHistoryController := v1.NewMemberReadHistoryController(historyService, memberService, cacheService)
 	pmsBrandController := v1.NewPmsBrandController(brandService)
 	umsAdminController := v1.NewUmsAdminController(adminService)
-	umsMemberController := v1.NewUmsMemberController(memberService)
+	umsMemberController := v1.NewUmsMemberController(memberService, cacheService)
 
 	controllers := &controllers{
 		esProductController,
@@ -84,7 +84,7 @@ func New() (*Server, error) {
 	conf := config.GetConfig()
 	s := &Server{
 		engine:  r,
-		config:  &conf,
+		config:  conf,
 		logger:  log.Logger,
 		mysqldb: mysqlDb,
 		rdb:     redisDB,
@@ -167,7 +167,7 @@ func (S *Server) initRouter() {
 
 	sso := router.Group("/sso")
 	{
-		sso.Use(middleware.JWTAuth())
+		//sso.Use(middleware.JWTAuth())
 		S.controllers.umsMemberController.RegisterRoute(sso)
 		controllers = append(controllers, S.controllers.umsMemberController.Name())
 
@@ -175,7 +175,7 @@ func (S *Server) initRouter() {
 
 	esProduct := router.Group("/esProduct")
 	{
-		sso.Use(middleware.JWTAuth())
+		esProduct.Use(middleware.JWTAuth())
 		S.controllers.esProductController.RegisterRoute(esProduct)
 		controllers = append(controllers, S.controllers.esProductController.Name())
 
@@ -183,7 +183,7 @@ func (S *Server) initRouter() {
 
 	memberReadHistory := router.Group("/member/readHistory")
 	{
-		sso.Use(middleware.JWTAuth())
+		memberReadHistory.Use(middleware.JWTAuth())
 		S.controllers.memberReadHistoryController.RegisterRoute(memberReadHistory)
 		controllers = append(controllers, S.controllers.memberReadHistoryController.Name())
 	}

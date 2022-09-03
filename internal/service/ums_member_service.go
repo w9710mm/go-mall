@@ -5,8 +5,8 @@ import (
 	"fmt"
 	"gorm.io/gorm"
 	"mall/common/util"
-	"mall/global/dao/model"
 	"mall/global/log"
+	"mall/global/model"
 	"math/rand"
 	"strconv"
 	"time"
@@ -29,7 +29,11 @@ func (s *umsMemberService) GetByUserName(username string) (member model.UmsMembe
 	if err == nil && member.Id != 0 {
 		return
 	}
-	s.db.Where(&model.UmsMember{Username: &username}).First(&member)
+	err = s.db.Where(&model.UmsMember{Username: &username}).First(&member).Error
+	if err != nil {
+		return
+	}
+	s.umsMemberCacheService.SetMember(member)
 	return
 }
 
@@ -43,7 +47,7 @@ func (s *umsMemberService) Register(username string, password, telephone string,
 		return
 	}
 
-	rows := s.db.Where(&model.UmsMember{Username: &username}).RowsAffected
+	rows := s.db.Where(&model.UmsMember{Username: &username}).First(&model.UmsMember{}).RowsAffected
 	if rows != 0 {
 		err = errors.New("this username is exists")
 		return
@@ -104,10 +108,10 @@ func (s *umsMemberService) GetCurrentMember(tokenString string) (member model.Um
 	return s.umsMemberCacheService.GetMember(claims.Username)
 }
 
-func (s *umsMemberService) UpdateIntegration(id int64, integration int) {
+func (s *umsMemberService) UpdateIntegration(id int64, integration int64) {
 	member := model.UmsMember{
 		Id:          id,
-		Integration: &integration,
+		Integration: integration,
 	}
 	s.db.Save(&member)
 	s.umsMemberCacheService.DelMember(id)
@@ -123,6 +127,11 @@ func (s *umsMemberService) Login(username string, password string) (tokenString 
 
 	member, err := s.LoadUserByUsername(username)
 	if err != nil {
+		return
+	}
+	scryptPassword, _ := util.ScryptPassword(password)
+	if scryptPassword != *member.Password {
+		err = errors.New("password error")
 		return
 	}
 	tokenString, err = util.GenerateToken(*member.Username)

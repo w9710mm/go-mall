@@ -6,7 +6,7 @@ import (
 	"gorm.io/gorm"
 	"mall/common/util"
 	"mall/global/dao/dto"
-	"mall/global/dao/model"
+	"mall/global/model"
 	"time"
 )
 

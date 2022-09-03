@@ -147,129 +147,13 @@ definitions:
       message:
         type: string
     type: object
-host: 127.0.0.1:8080
 info:
-  contact:
-    email: 962349367@qq.com
-    name: meme
+  contact: {}
   description: mall
   termsOfService: https://github.com/18211167516/Go-Gin-Api
   title: mall
   version: "1.0"
 paths:
-  //member/readHistory/clear:
-    get:
-      consumes:
-      - application/json
-      description: 分页获取浏览记录列表
-      operationId: v1/MemberReadHistoryController/List
-      parameters:
-      - default: 0
-        description: page number
-        in: query
-        name: pageNum
-        type: integer
-      - default: 5
-        description: page size
-        in: query
-        name: pageSize
-        type: integer
-      produces:
-      - application/json
-      responses:
-        "200":
-          description: success
-          schema:
-            $ref: '#/definitions/response.ResponseMsg'
-        "500":
-          description: failure
-          schema:
-            $ref: '#/definitions/response.ResponseMsg'
-      security:
-      - JWT: []
-      summary: 获取浏览记录列表
-      tags:
-      - 用户浏览记录接口
-    post:
-      consumes:
-      - application/json
-      description: 清空浏览记录
-      operationId: v1/MemberReadHistoryController/Clear
-      produces:
-      - application/json
-      responses:
-        "200":
-          description: success
-          schema:
-            $ref: '#/definitions/response.ResponseMsg'
-        "500":
-          description: failure
-          schema:
-            $ref: '#/definitions/response.ResponseMsg'
-      security:
-      - JWT: []
-      summary: 清空浏览记录
-      tags:
-      - 用户浏览记录接口
-  //member/readHistory/create:
-    post:
-      consumes:
-      - application/json
-      description: 创建一个浏览记录
-      operationId: v1/MemberReadHistoryController/Create
-      parameters:
-      - description: MemberReadHistory
-        in: body
-        name: MemberReadHistory
-        required: true
-        schema:
-          $ref: '#/definitions/domain.MemberReadHistory'
-      produces:
-      - application/json
-      responses:
-        "200":
-          description: success
-          schema:
-            $ref: '#/definitions/response.ResponseMsg'
-        "500":
-          description: failure
-          schema:
-            $ref: '#/definitions/response.ResponseMsg'
-      security:
-      - JWT: []
-      summary: 创建浏览记录
-      tags:
-      - 用户浏览记录接口
-  //member/readHistory/delete:
-    post:
-      consumes:
-      - application/json
-      description: 根据ids清空出浏览记录
-      operationId: v1/MemberReadHistoryController/Delete
-      parameters:
-      - description: history_ids
-        in: query
-        items:
-          type: integer
-        name: ids
-        required: true
-        type: array
-      produces:
-      - application/json
-      responses:
-        "200":
-          description: success
-          schema:
-            $ref: '#/definitions/response.ResponseMsg'
-        "500":
-          description: failure
-          schema:
-            $ref: '#/definitions/response.ResponseMsg'
-      security:
-      - JWT: []
-      summary: 删除浏览记录
-      tags:
-      - 用户浏览记录接口
   /brand/{id}:
     get:
       consumes:
@@ -298,6 +182,8 @@ paths:
           description: failure
           schema:
             $ref: '#/definitions/response.ResponseMsg'
+      security:
+      - JWT: []
       summary: 获取一个品牌
       tags:
       - 品牌接口
@@ -335,6 +221,8 @@ paths:
                 data:
                   $ref: '#/definitions/model.PmsBrand'
               type: object
+      security:
+      - JWT: []
       summary: 创建品牌
       tags:
       - 品牌接口
@@ -361,6 +249,8 @@ paths:
           description: failure
           schema:
             $ref: '#/definitions/response.ResponseMsg'
+      security:
+      - JWT: []
       summary: 删除品牌
       tags:
       - 品牌接口
@@ -397,6 +287,8 @@ paths:
           description: failure
           schema:
             $ref: '#/definitions/response.ResponseMsg'
+      security:
+      - JWT: []
       summary: 获取品牌列表
       tags:
       - 品牌接口
@@ -434,6 +326,8 @@ paths:
           description: failure
           schema:
             $ref: '#/definitions/response.ResponseMsg'
+      security:
+      - JWT: []
       summary: 更新品牌
       tags:
       - 品牌接口
@@ -465,6 +359,8 @@ paths:
           description: failure
           schema:
             $ref: '#/definitions/response.ResponseMsg'
+      security:
+      - JWT: []
       summary: 根据id创建商品
       tags:
       - 搜索商品管理
@@ -524,6 +420,8 @@ paths:
           description: failure
           schema:
             $ref: '#/definitions/response.ResponseMsg'
+      security:
+      - JWT: []
       summary: 根据id批量删除商品
       tags:
       - 搜索商品管理
@@ -580,6 +478,8 @@ paths:
           description: default
           schema:
             $ref: '#/definitions/response.ResponseMsg'
+      security:
+      - JWT: []
       summary: 根据商品id推荐商品
       tags:
       - 搜索商品管理
@@ -629,6 +529,8 @@ paths:
           description: failure
           schema:
             $ref: '#/definitions/response.ResponseMsg'
+      security:
+      - JWT: []
       summary: 综合搜索、筛选、排序
       tags:
       - 搜索商品管理
@@ -659,6 +561,8 @@ paths:
           description: failure
           schema:
             $ref: '#/definitions/response.ResponseMsg'
+      security:
+      - JWT: []
       summary: 获取搜索的相关品牌、分类及筛选属性
       tags:
       - 搜索商品管理
@@ -700,9 +604,125 @@ paths:
           description: failure
           schema:
             $ref: '#/definitions/response.ResponseMsg'
+      security:
+      - JWT: []
       summary: 简单搜索
       tags:
       - 搜索商品管理
+  /member/readHistory/clear:
+    post:
+      consumes:
+      - application/json
+      description: 清空浏览记录
+      operationId: v1/MemberReadHistoryController/Clear
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: success
+          schema:
+            $ref: '#/definitions/response.ResponseMsg'
+        "500":
+          description: failure
+          schema:
+            $ref: '#/definitions/response.ResponseMsg'
+      security:
+      - JWT: []
+      summary: 清空浏览记录
+      tags:
+      - 用户浏览记录接口
+  /member/readHistory/create:
+    post:
+      consumes:
+      - application/json
+      description: 创建一个浏览记录
+      operationId: v1/MemberReadHistoryController/Create
+      parameters:
+      - description: MemberReadHistory
+        in: body
+        name: MemberReadHistory
+        required: true
+        schema:
+          $ref: '#/definitions/domain.MemberReadHistory'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: success
+          schema:
+            $ref: '#/definitions/response.ResponseMsg'
+        "500":
+          description: failure
+          schema:
+            $ref: '#/definitions/response.ResponseMsg'
+      security:
+      - JWT: []
+      summary: 创建浏览记录
+      tags:
+      - 用户浏览记录接口
+  /member/readHistory/delete:
+    post:
+      consumes:
+      - application/json
+      description: 根据ids清空出浏览记录
+      operationId: v1/MemberReadHistoryController/Delete
+      parameters:
+      - description: history_ids
+        in: query
+        items:
+          type: string
+        name: ids
+        required: true
+        type: array
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: success
+          schema:
+            $ref: '#/definitions/response.ResponseMsg'
+        "500":
+          description: failure
+          schema:
+            $ref: '#/definitions/response.ResponseMsg'
+      security:
+      - JWT: []
+      summary: 删除浏览记录
+      tags:
+      - 用户浏览记录接口
+  /member/readHistory/list:
+    get:
+      consumes:
+      - application/json
+      description: 分页获取浏览记录列表
+      operationId: v1/MemberReadHistoryController/List
+      parameters:
+      - default: 0
+        description: page number
+        in: query
+        name: pageNum
+        type: integer
+      - default: 5
+        description: page size
+        in: query
+        name: pageSize
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: success
+          schema:
+            $ref: '#/definitions/response.ResponseMsg'
+        "500":
+          description: failure
+          schema:
+            $ref: '#/definitions/response.ResponseMsg'
+      security:
+      - JWT: []
+      summary: 获取浏览记录列表
+      tags:
+      - 用户浏览记录接口
   /sso/getAuthCode:
     get:
       consumes:
@@ -746,6 +766,8 @@ paths:
           description: failure
           schema:
             $ref: '#/definitions/response.ResponseMsg'
+      security:
+      - JWT: []
       summary: 获取会员信息
       tags:
       - 用户接口
@@ -797,6 +819,8 @@ paths:
           description: failure
           schema:
             $ref: '#/definitions/response.ResponseMsg'
+      security:
+      - JWT: []
       summary: 刷新token
       tags:
       - 用户接口
@@ -858,6 +882,11 @@ paths:
         name: authCode
         required: true
         type: string
+      - description: password
+        in: query
+        name: password
+        required: true
+        type: string
       produces:
       - application/json
       responses:
@@ -869,7 +898,14 @@ paths:
           description: failure
           schema:
             $ref: '#/definitions/response.ResponseMsg'
+      security:
+      - JWT: []
       summary: 会员修改密码
       tags:
       - 用户接口
+securityDefinitions:
+  JWT:
+    in: header
+    name: Authorization
+    type: apiKey
 swagger: "2.0"

@@ -14,13 +14,15 @@ import (
 var db *mongo.Database
 
 func init() {
-	dbConfig := config.MongoDBConfig{}
-	option := options.Client().SetAuth(options.Credential{
-		AuthMechanism: dbConfig.Credential.AuthMechanism,
-		AuthSource:    dbConfig.Credential.AuthSource,
-		Username:      dbConfig.Credential.Username,
-		Password:      dbConfig.Credential.Password,
-	})
+	dbConfig := config.GetConfig().Mongodb
+	//option := options.Client().SetAuth(options.Credential{
+	//	AuthMechanism: dbConfig.Credential.AuthMechanism,
+	//	AuthSource:    dbConfig.Credential.AuthSource,
+	//	Username:      dbConfig.Credential.Username,
+	//	Password:      dbConfig.Credential.Password,
+	//})
+	//
+	option := options.Client().ApplyURI("mongodb://localhost:27017")
 	if dbConfig.Timeout == 0 {
 		option.SetConnectTimeout(10 * time.Second)
 	} else {

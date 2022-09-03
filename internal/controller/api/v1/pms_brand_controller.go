@@ -5,8 +5,8 @@ import (
 	"github.com/gin-gonic/gin"
 	paginator "github.com/yafeng-Soong/gorm-paginator" // 导入包
 	"mall/common/response"
-	"mall/global/dao/model"
 	"mall/global/log"
+	"mall/global/model"
 	"mall/internal/controller/api"
 	"mall/internal/service"
 	"net/http"
@@ -29,6 +29,7 @@ func NewPmsBrandController(brandService service.PmsBrandService) api.Controller 
 // @ID v1/PmsBrandController/Create
 // @Accept  json
 // @Produce  json
+// @Security JWT
 // @Param pmsBrand body model.PmsBrand true "pmsBrand"
 // @Success 200 {object} response.ResponseMsg{data=model.PmsBrand} "success"
 // @Failure 500 {object} response.ResponseMsg{data=model.PmsBrand} "failure"
@@ -56,6 +57,7 @@ func (C *PmsBrandController) Create(c *gin.Context) {
 // @ID v1/PmsBrandController/Update
 // @Accept  json
 // @Produce  json
+// @Security JWT
 // @Param id path int true "brand_id"
 // @Param pmsBrand body model.PmsBrand true "pmsBrand"
 // @Success 200 {object} response.ResponseMsg{data=model.PmsBrand} "success"
@@ -91,6 +93,7 @@ func (C *PmsBrandController) Update(c *gin.Context) {
 // @ID v1/PmsBrandController/Delete
 // @Accept  json
 // @Produce  json
+// @Security JWT
 // @Param id path int true "brand_id"
 // @Success 200 {object} response.ResponseMsg "success"
 // @Failure 500 {object} response.ResponseMsg "failure"
@@ -123,6 +126,7 @@ func (C *PmsBrandController) Delete(c *gin.Context) {
 // @ID v1/PmsBrandController/Brand
 // @Accept  json
 // @Produce  json
+// @Security JWT
 // @Param id path int true "brand_id"
 // @Success 200 {object} response.ResponseMsg{data=model.PmsBrand} "success"
 // @Failure 500 {object} response.ResponseMsg "failure"
@@ -154,6 +158,7 @@ func (C *PmsBrandController) Brand(c *gin.Context) {
 // @ID v1/PmsBrandController/ListBrand
 // @Accept  json
 // @Produce  json
+// @Security JWT
 // @Param pageNum query int false "page number" default(0)
 // @Param pageSize query int false "page size"  default(3)
 // @Success 200 {object} response.ResponseMsg{data=model.PmsBrand} "success"

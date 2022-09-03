@@ -5,9 +5,9 @@ go 1.18
 require (
 	github.com/casbin/casbin/v2 v2.48.0
 	github.com/casbin/gorm-adapter/v3 v3.7.2
+	github.com/gin-contrib/cors v1.4.0
 	github.com/gin-gonic/gin v1.8.1
 	github.com/go-redis/redis/v9 v9.0.0-beta.1
-	github.com/gobeam/mongo-go-pagination v0.0.8
 	github.com/golang-jwt/jwt/v4 v4.4.2
 	github.com/jinzhu/copier v0.3.5
 	github.com/natefinch/lumberjack v2.0.0+incompatible
@@ -16,11 +16,13 @@ require (
 	github.com/robfig/cron/v3 v3.0.1
 	github.com/shopspring/decimal v1.2.0
 	github.com/spf13/viper v1.12.0
+	github.com/streadway/amqp v1.0.0
 	github.com/swaggo/files v0.0.0-20220610200504-28940afbdbfe
 	github.com/swaggo/gin-swagger v1.5.0
 	github.com/swaggo/swag v1.8.3
+	github.com/wxnacy/wgo v1.0.4
 	github.com/yafeng-Soong/gorm-paginator v1.0.1
-	go.mongodb.org/mongo-driver v1.10.0
+	go.mongodb.org/mongo-driver v1.10.1
 	go.uber.org/zap v1.17.0
 	golang.org/x/crypto v0.0.0-20220722155217-630584e8d5aa
 	gorm.io/driver/mysql v1.3.4

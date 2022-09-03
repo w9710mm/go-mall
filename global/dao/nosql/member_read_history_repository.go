@@ -3,7 +3,7 @@ package nosql
 import (
 	"context"
 	"go.mongodb.org/mongo-driver/mongo"
-	"mall/global/dao/domain"
+	"mall/global/domain"
 )
 
 type memberReadHistoryRepository struct {
@@ -24,13 +24,13 @@ func (r memberReadHistoryRepository) Save(ctx context.Context, h domain.MemberRe
 	return r.collection.InsertOne(context.TODO(), h)
 }
 
-func (r memberReadHistoryRepository) Delete(ctx context.Context, d interface{}) (
+func (r memberReadHistoryRepository) Delete(ctx context.Context, m interface{}) (
 	count int64, err error) {
 	getCtx(&ctx)
 
 	result, err := r.collection.DeleteMany(
 		ctx,
-		d,
+		m,
 	)
 	count = result.DeletedCount
 	return
