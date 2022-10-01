@@ -1,0 +1,3 @@
+# go-mall
+
+尝试对项目https://github.com/macrozheng/mall使用go语言进行重构...
